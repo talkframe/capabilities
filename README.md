@@ -18,9 +18,9 @@ The initial data snapshot contains 13 capability entries, including five L1 decl
 
 首批数据快照包含 13 支能力，其中五支带 L1 声明式定义，另有九份模板和两份 agent 技能。代码实现的能力只公开不可执行的元数据。技能用于连接已安装的 Talkframe App 或核心项目；本仓库不含 App、渲染脚本或引擎组件。
 
-`@talkframe/contracts` has not been published yet. The validation workflow deliberately expects a local package archive placeholder and remains pending until the release supplies it.
+`@talkframe/contracts@0.1.0` is published on npm; the validation workflow installs it directly.
 
-`@talkframe/contracts` 尚未发布。当前验证工作流明确使用本地包归档占位，待正式发布流程提供该文件后才能运行通过。
+`@talkframe/contracts@0.1.0` 已发布到 npm，验证工作流直接安装该包。
 
 ## Licensing / 许可
 
