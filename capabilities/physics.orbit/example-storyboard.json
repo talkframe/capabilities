@@ -1,0 +1,60 @@
+{
+  "contractVersion": 2,
+  "profile": "motion",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "圆轨道教学示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "example",
+      "role": "flow",
+      "kicker": "L1 声明式样例",
+      "title": "圆轨道教学",
+      "bullets": [],
+      "narration": "周期的平方与轨道半长轴的立方成正比。",
+      "sourceQuote": "周期的平方与轨道半长轴的立方成正比。",
+      "capability": {
+        "id": "physics.orbit",
+        "version": 1,
+        "params": {
+          "trails": true
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "s-law",
+          "text": "周期的平方与轨道半长轴的立方成正比。"
+        }
+      ]
+    },
+    {
+      "id": "example-2",
+      "role": "flow",
+      "kicker": "L1 声明式样例",
+      "title": "圆轨道教学",
+      "bullets": [],
+      "narration": "周期的平方与轨道半长轴的立方成正比。",
+      "sourceQuote": "周期的平方与轨道半长轴的立方成正比。",
+      "capability": {
+        "id": "physics.orbit",
+        "version": 1,
+        "params": {
+          "trails": true
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "example-2-sentence-1",
+          "text": "周期的平方与轨道半长轴的立方成正比。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

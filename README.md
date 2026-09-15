@@ -8,15 +8,19 @@
 - **Agent skills** — how an external agent (Claude Code, Codex, Cursor …) drives Talkframe over MCP
 - **Community index & CI** — the acceptance battery every contributed pack must pass
 
-The rendering engine, code-implemented capabilities and desktop app live in the private `talkframe-core` repository. Anyone can read, fork and contribute here; you need the Talkframe app to render.
+The rendering engine, code-implemented capabilities and desktop app live in the private `talkframe/core` repository. Anyone can read, fork and contribute here; you need the Talkframe app to render.
 
-文影把文档变成有旁白、有动画的视频，配音与渲染都在本机完成。本仓库只放**数据**，不放引擎代码：契约 Schema、L1 声明式与 L2 素材型能力包、题材模板与风格档、外部 agent 的驾驭说明、社区索引与验收电池。引擎、代码实现的能力与桌面 App 在私有仓库 `talkframe-core`。任何人都可以阅读、fork 与贡献；渲染需要 Talkframe App。
+文影把文档变成有旁白、有动画的视频，配音与渲染都在本机完成。本仓库只放**数据**，不放引擎代码：契约 Schema、L1 声明式与 L2 素材型能力包、题材模板与风格档、外部 agent 的驾驭说明、社区索引与验收电池。引擎、代码实现的能力与桌面 App 在私有仓库 `talkframe/core`。任何人都可以阅读、fork 与贡献；渲染需要 Talkframe App。
 
 ## Status / 状态
 
-Pre-release. The contract is being finalised against thirteen architecture experiments; the first capability packs and the `@talkframe/contracts` package will be published here once the core repository completes its split (task T2.7).
+The initial data snapshot contains 13 capability entries, including five L1 declarative definitions, nine templates and two agent skills. Code-implemented capabilities expose inert metadata only. The skills drive an installed Talkframe app or core checkout; this public repository does not contain the app, rendering scripts or engine components.
 
-预发布阶段。契约正按 13 个架构实验的结论定稿；核心库完成拆分（T2.7）后，首批能力包与 `@talkframe/contracts` 会在此发布。
+首批数据快照包含 13 支能力，其中五支带 L1 声明式定义，另有九份模板和两份 agent 技能。代码实现的能力只公开不可执行的元数据。技能用于连接已安装的 Talkframe App 或核心项目；本仓库不含 App、渲染脚本或引擎组件。
+
+`@talkframe/contracts` has not been published yet. The validation workflow deliberately expects a local package archive placeholder and remains pending until the release supplies it.
+
+`@talkframe/contracts` 尚未发布。当前验证工作流明确使用本地包归档占位，待正式发布流程提供该文件后才能运行通过。
 
 ## Licensing / 许可
 

@@ -1,0 +1,212 @@
+{
+  "contractVersion": 2,
+  "profile": "motion",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "狼来了 · 诚实与信任示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "opening",
+      "role": "flow",
+      "kicker": "田园寓言",
+      "title": "山坡上的牧童",
+      "bullets": [],
+      "narration": "从前，有个牧童每天在山坡上放羊。羊群低头吃草，村庄就在不远处。日子久了，他觉得很无聊，想捉弄村民。",
+      "sourceQuote": "从前，有个牧童每天在山坡上放羊。羊群低头吃草，村庄就在不远处。日子久了，他觉得很无聊，想捉弄村民。",
+      "capability": {
+        "id": "story.wolfCry",
+        "version": 1,
+        "params": {
+          "beat": 0,
+          "sheepCount": 6,
+          "villagerCount": 5
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "cue-1",
+          "text": "从前，有个牧童每天在山坡上放羊。"
+        },
+        {
+          "id": "cue-2",
+          "text": "羊群低头吃草，村庄就在不远处。"
+        },
+        {
+          "id": "cue-3",
+          "text": "日子久了，他觉得很无聊，想捉弄村民。"
+        }
+      ]
+    },
+    {
+      "id": "falseAlarm1",
+      "role": "flow",
+      "kicker": "田园寓言",
+      "title": "第一次谎报",
+      "bullets": [],
+      "narration": "他忽然大喊：狼来了，快来帮忙！村民听见呼喊，赶紧跑上山坡。可是根本没有狼，牧童却哈哈大笑，村民生气地走了。",
+      "sourceQuote": "他忽然大喊：狼来了，快来帮忙！村民听见呼喊，赶紧跑上山坡。可是根本没有狼，牧童却哈哈大笑，村民生气地走了。",
+      "capability": {
+        "id": "story.wolfCry",
+        "version": 1,
+        "params": {
+          "beat": 1,
+          "sheepCount": 6,
+          "villagerCount": 5
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "cue-1",
+          "text": "他忽然大喊：狼来了，快来帮忙！"
+        },
+        {
+          "id": "cue-2",
+          "text": "村民听见呼喊，赶紧跑上山坡。"
+        },
+        {
+          "id": "cue-3",
+          "text": "可是根本没有狼，牧童却哈哈大笑，村民生气地走了。"
+        }
+      ]
+    },
+    {
+      "id": "falseAlarm2",
+      "role": "flow",
+      "kicker": "田园寓言",
+      "title": "第二次谎报",
+      "bullets": [],
+      "narration": "过了几天，他又喊：狼来了！这次来的人少了，脚步也慢了，大家仍担心羊群。到了山坡，又是一场骗局，村民更不耐烦地离开了。",
+      "sourceQuote": "过了几天，他又喊：狼来了！这次来的人少了，脚步也慢了，大家仍担心羊群。到了山坡，又是一场骗局，村民更不耐烦地离开了。",
+      "capability": {
+        "id": "story.wolfCry",
+        "version": 1,
+        "params": {
+          "beat": 2,
+          "sheepCount": 6,
+          "villagerCount": 5
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "cue-1",
+          "text": "过了几天，他又喊：狼来了！"
+        },
+        {
+          "id": "cue-2",
+          "text": "这次来的人少了，脚步也慢了，大家仍担心羊群。"
+        },
+        {
+          "id": "cue-3",
+          "text": "到了山坡，又是一场骗局，村民更不耐烦地离开了。"
+        }
+      ]
+    },
+    {
+      "id": "wolf",
+      "role": "flow",
+      "kicker": "田园寓言",
+      "title": "狼真的来了",
+      "bullets": [],
+      "narration": "有一天，一匹狼真的从山后走来。羊群惊慌地挤在一起，向远处躲开。牧童害怕极了，拼命呼喊：狼真的来了，救救羊群！",
+      "sourceQuote": "有一天，一匹狼真的从山后走来。羊群惊慌地挤在一起，向远处躲开。牧童害怕极了，拼命呼喊：狼真的来了，救救羊群！",
+      "capability": {
+        "id": "story.wolfCry",
+        "version": 1,
+        "params": {
+          "beat": 3,
+          "sheepCount": 6,
+          "villagerCount": 5
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "cue-1",
+          "text": "有一天，一匹狼真的从山后走来。"
+        },
+        {
+          "id": "cue-2",
+          "text": "羊群惊慌地挤在一起，向远处躲开。"
+        },
+        {
+          "id": "cue-3",
+          "text": "牧童害怕极了，拼命呼喊：狼真的来了，救救羊群！"
+        }
+      ]
+    },
+    {
+      "id": "ignored",
+      "role": "flow",
+      "kicker": "田园寓言",
+      "title": "再也没有人赶来",
+      "bullets": [],
+      "narration": "可是这一次，山路上没有人赶来。村民留在村庄，心想：他一定又在骗人。牧童喊了很久，也没有人相信，羊群受损，四处失散。",
+      "sourceQuote": "可是这一次，山路上没有人赶来。村民留在村庄，心想：他一定又在骗人。牧童喊了很久，也没有人相信，羊群受损，四处失散。",
+      "capability": {
+        "id": "story.wolfCry",
+        "version": 1,
+        "params": {
+          "beat": 4,
+          "sheepCount": 6,
+          "villagerCount": 5
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "cue-1",
+          "text": "可是这一次，山路上没有人赶来。"
+        },
+        {
+          "id": "cue-2",
+          "text": "村民留在村庄，心想：他一定又在骗人。"
+        },
+        {
+          "id": "cue-3",
+          "text": "牧童喊了很久，也没有人相信，羊群受损，四处失散。"
+        }
+      ]
+    },
+    {
+      "id": "moral",
+      "role": "outro",
+      "kicker": "田园寓言",
+      "title": "信任需要诚实",
+      "bullets": [],
+      "narration": "狼离开后，牧童望着失散的羊群，后悔不已。谎话说多了，即使再说真话，也难以让人相信。诚实待人，才能守住珍贵的信任。",
+      "sourceQuote": "狼离开后，牧童望着失散的羊群，后悔不已。谎话说多了，即使再说真话，也难以让人相信。诚实待人，才能守住珍贵的信任。",
+      "capability": {
+        "id": "story.wolfCry",
+        "version": 1,
+        "params": {
+          "beat": 5,
+          "sheepCount": 6,
+          "villagerCount": 5
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "cue-1",
+          "text": "狼离开后，牧童望着失散的羊群，后悔不已。"
+        },
+        {
+          "id": "cue-2",
+          "text": "谎话说多了，即使再说真话，也难以让人相信。"
+        },
+        {
+          "id": "cue-3",
+          "text": "诚实待人，才能守住珍贵的信任。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "news",
+  "version": 1,
+  "name": "新闻解说",
+  "description": "先交代事件，再讲背景、影响与仍待观察之处。",
+  "audience": "希望快速了解事件的普通读者",
+  "strategy": {
+    "structure": [
+      "发生了什么",
+      "必要背景",
+      "来源提到的影响",
+      "仍待观察"
+    ],
+    "tone": "中性，保留来源、日期和不确定性。影响只能来自原文，推测标明推测；未提供时间不可写今日或最新。",
+    "visuals": [
+      "globe",
+      "book",
+      "network"
+    ]
+  },
+  "defaults": {
+    "targetSeconds": 60,
+    "width": 1080,
+    "height": 1920,
+    "visualStyle": "motion",
+    "presenter": false,
+    "musicFile": "",
+    "speechRate": 245,
+    "theme": {
+      "background": "#101D2B",
+      "accent": "#FF9F87",
+      "text": "#F5F4EC",
+      "muted": "#A9B9CC"
+    }
+  }
+}

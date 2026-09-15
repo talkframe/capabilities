@@ -1,0 +1,319 @@
+{
+  "id": "story.wolfCry",
+  "version": 1,
+  "tier": "builtin",
+  "name": "狼来了 · 诚实与信任",
+  "summary": "L1 纯几何寓言：两次谎报消耗信任，真正求助时无人赶来。",
+  "when": {
+    "use": [
+      "用抽象几何讲述狼来了的完整故事",
+      "比较两次谎报与真正求助"
+    ],
+    "avoid": [
+      "写实动物动作",
+      "血腥捕食",
+      "任意故事的自动角色导演"
+    ],
+    "roles": [
+      "flow",
+      "outro"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "beat": {
+        "type": "integer",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "description": "0 开场；1 首次谎报；2 再次谎报；3 真狼；4 无人赶来；5 寓意"
+      },
+      "sheepCount": {
+        "type": "integer",
+        "minimum": 4,
+        "maximum": 8
+      },
+      "villagerCount": {
+        "type": "integer",
+        "minimum": 3,
+        "maximum": 6
+      }
+    },
+    "required": [
+      "beat",
+      "sheepCount",
+      "villagerCount"
+    ],
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9"
+    ],
+    "minSeconds": 10,
+    "maxSeconds": 60,
+    "languages": [
+      "zh"
+    ]
+  },
+  "timing": {
+    "enter": "cue-1 开始；每幕必须提供 cue-1/cue-2/cue-3 三个句子锚点",
+    "hold": "动作随句级配音起点；cue-2 到 cue-3 至少 3.2 秒，尾句后保留至少 2.2 秒动作时间",
+    "exit": "逐幕硬切，无外部素材"
+  },
+  "examples": [
+    {
+      "source": "capabilities/story.wolfCry/example-storyboard.json",
+      "scene": {
+        "id": "opening",
+        "role": "flow",
+        "kicker": "田园寓言",
+        "title": "山坡上的牧童",
+        "bullets": [],
+        "narration": "从前，有个牧童每天在山坡上放羊。羊群低头吃草，村庄就在不远处。日子久了，他觉得很无聊，想捉弄村民。",
+        "sourceQuote": "从前，有个牧童每天在山坡上放羊。羊群低头吃草，村庄就在不远处。日子久了，他觉得很无聊，想捉弄村民。",
+        "capability": {
+          "id": "story.wolfCry",
+          "version": 1,
+          "params": {
+            "beat": 0,
+            "sheepCount": 6,
+            "villagerCount": 5
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "cue-1",
+            "text": "从前，有个牧童每天在山坡上放羊。"
+          },
+          {
+            "id": "cue-2",
+            "text": "羊群低头吃草，村庄就在不远处。"
+          },
+          {
+            "id": "cue-3",
+            "text": "日子久了，他觉得很无聊，想捉弄村民。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    },
+    {
+      "source": "capabilities/story.wolfCry/example-storyboard.json",
+      "scene": {
+        "id": "falseAlarm1",
+        "role": "flow",
+        "kicker": "田园寓言",
+        "title": "第一次谎报",
+        "bullets": [],
+        "narration": "他忽然大喊：狼来了，快来帮忙！村民听见呼喊，赶紧跑上山坡。可是根本没有狼，牧童却哈哈大笑，村民生气地走了。",
+        "sourceQuote": "他忽然大喊：狼来了，快来帮忙！村民听见呼喊，赶紧跑上山坡。可是根本没有狼，牧童却哈哈大笑，村民生气地走了。",
+        "capability": {
+          "id": "story.wolfCry",
+          "version": 1,
+          "params": {
+            "beat": 1,
+            "sheepCount": 6,
+            "villagerCount": 5
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "cue-1",
+            "text": "他忽然大喊：狼来了，快来帮忙！"
+          },
+          {
+            "id": "cue-2",
+            "text": "村民听见呼喊，赶紧跑上山坡。"
+          },
+          {
+            "id": "cue-3",
+            "text": "可是根本没有狼，牧童却哈哈大笑，村民生气地走了。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    },
+    {
+      "source": "capabilities/story.wolfCry/example-storyboard.json",
+      "scene": {
+        "id": "falseAlarm2",
+        "role": "flow",
+        "kicker": "田园寓言",
+        "title": "第二次谎报",
+        "bullets": [],
+        "narration": "过了几天，他又喊：狼来了！这次来的人少了，脚步也慢了，大家仍担心羊群。到了山坡，又是一场骗局，村民更不耐烦地离开了。",
+        "sourceQuote": "过了几天，他又喊：狼来了！这次来的人少了，脚步也慢了，大家仍担心羊群。到了山坡，又是一场骗局，村民更不耐烦地离开了。",
+        "capability": {
+          "id": "story.wolfCry",
+          "version": 1,
+          "params": {
+            "beat": 2,
+            "sheepCount": 6,
+            "villagerCount": 5
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "cue-1",
+            "text": "过了几天，他又喊：狼来了！"
+          },
+          {
+            "id": "cue-2",
+            "text": "这次来的人少了，脚步也慢了，大家仍担心羊群。"
+          },
+          {
+            "id": "cue-3",
+            "text": "到了山坡，又是一场骗局，村民更不耐烦地离开了。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    },
+    {
+      "source": "capabilities/story.wolfCry/example-storyboard.json",
+      "scene": {
+        "id": "wolf",
+        "role": "flow",
+        "kicker": "田园寓言",
+        "title": "狼真的来了",
+        "bullets": [],
+        "narration": "有一天，一匹狼真的从山后走来。羊群惊慌地挤在一起，向远处躲开。牧童害怕极了，拼命呼喊：狼真的来了，救救羊群！",
+        "sourceQuote": "有一天，一匹狼真的从山后走来。羊群惊慌地挤在一起，向远处躲开。牧童害怕极了，拼命呼喊：狼真的来了，救救羊群！",
+        "capability": {
+          "id": "story.wolfCry",
+          "version": 1,
+          "params": {
+            "beat": 3,
+            "sheepCount": 6,
+            "villagerCount": 5
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "cue-1",
+            "text": "有一天，一匹狼真的从山后走来。"
+          },
+          {
+            "id": "cue-2",
+            "text": "羊群惊慌地挤在一起，向远处躲开。"
+          },
+          {
+            "id": "cue-3",
+            "text": "牧童害怕极了，拼命呼喊：狼真的来了，救救羊群！"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    },
+    {
+      "source": "capabilities/story.wolfCry/example-storyboard.json",
+      "scene": {
+        "id": "ignored",
+        "role": "flow",
+        "kicker": "田园寓言",
+        "title": "再也没有人赶来",
+        "bullets": [],
+        "narration": "可是这一次，山路上没有人赶来。村民留在村庄，心想：他一定又在骗人。牧童喊了很久，也没有人相信，羊群受损，四处失散。",
+        "sourceQuote": "可是这一次，山路上没有人赶来。村民留在村庄，心想：他一定又在骗人。牧童喊了很久，也没有人相信，羊群受损，四处失散。",
+        "capability": {
+          "id": "story.wolfCry",
+          "version": 1,
+          "params": {
+            "beat": 4,
+            "sheepCount": 6,
+            "villagerCount": 5
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "cue-1",
+            "text": "可是这一次，山路上没有人赶来。"
+          },
+          {
+            "id": "cue-2",
+            "text": "村民留在村庄，心想：他一定又在骗人。"
+          },
+          {
+            "id": "cue-3",
+            "text": "牧童喊了很久，也没有人相信，羊群受损，四处失散。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    },
+    {
+      "source": "capabilities/story.wolfCry/example-storyboard.json",
+      "scene": {
+        "id": "moral",
+        "role": "outro",
+        "kicker": "田园寓言",
+        "title": "信任需要诚实",
+        "bullets": [],
+        "narration": "狼离开后，牧童望着失散的羊群，后悔不已。谎话说多了，即使再说真话，也难以让人相信。诚实待人，才能守住珍贵的信任。",
+        "sourceQuote": "狼离开后，牧童望着失散的羊群，后悔不已。谎话说多了，即使再说真话，也难以让人相信。诚实待人，才能守住珍贵的信任。",
+        "capability": {
+          "id": "story.wolfCry",
+          "version": 1,
+          "params": {
+            "beat": 5,
+            "sheepCount": 6,
+            "villagerCount": 5
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "cue-1",
+            "text": "狼离开后，牧童望着失散的羊群，后悔不已。"
+          },
+          {
+            "id": "cue-2",
+            "text": "谎话说多了，即使再说真话，也难以让人相信。"
+          },
+          {
+            "id": "cue-3",
+            "text": "诚实待人，才能守住珍贵的信任。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "declarative",
+    "ref": "capabilities/story.wolfCry/definition.json"
+  },
+  "notes": "单能力六个 beat；羊群 4..8，村民基数 3..6；第二次少两人，结局少两只羊表示失散。人数与位置通过输入 schema 和结构单测校验；不新增检查类型。"
+}

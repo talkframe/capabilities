@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "product",
+  "version": 1,
+  "name": "产品介绍",
+  "description": "围绕用户问题，说明方案、工作方式和价值。",
+  "audience": "潜在使用者、产品和技术团队",
+  "strategy": {
+    "structure": [
+      "用户问题",
+      "产品方案",
+      "如何工作",
+      "适用场景与限制",
+      "下一步"
+    ],
+    "tone": "具体、简洁，少营销口号。画面优先呈现真实产品界面、参与者及其关系或操作步骤；区分已上线、演示和规划功能，没有原文证据不得声称可用、免费或领先。",
+    "visuals": [
+      "rocket",
+      "network",
+      "compare"
+    ]
+  },
+  "defaults": {
+    "targetSeconds": 60,
+    "width": 1920,
+    "height": 1080,
+    "visualStyle": "motion",
+    "presenter": false,
+    "musicFile": "",
+    "speechRate": 245,
+    "theme": {
+      "background": "#191827",
+      "accent": "#B9A2FF",
+      "text": "#F5F4EC",
+      "muted": "#A9B9CC"
+    }
+  }
+}

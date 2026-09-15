@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "text-science",
+  "version": 1,
+  "name": "文字科普",
+  "description": "无需图片，复用弹入文字与句级同步。大字与公式突出核心概念。",
+  "audience": "希望清楚阅读与聆听的普通观众",
+  "strategy": {
+    "structure": [
+      "开篇",
+      "展开",
+      "收束"
+    ],
+    "tone": "用简短中文讲解一个知识主题，核心概念或公式做大标题，旁白保留事实条件，避免把近似公式说成无条件成立。使用文字舞台，diagram为null，nodes和metrics为空，不需要外部素材。",
+    "visuals": [
+      "book"
+    ]
+  },
+  "defaults": {
+    "targetSeconds": 55,
+    "width": 1920,
+    "height": 1080,
+    "visualStyle": "typography",
+    "typographyPreset": "science",
+    "presenter": false,
+    "brandOutro": "off",
+    "musicFile": "",
+    "speechRate": 255,
+    "theme": {
+      "background": "#101820",
+      "accent": "#C9F65A",
+      "text": "#F5F4EC",
+      "muted": "#9BA8AD"
+    }
+  }
+}

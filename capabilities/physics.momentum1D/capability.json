@@ -1,0 +1,174 @@
+{
+  "id": "physics.momentum1D",
+  "version": 1,
+  "tier": "builtin",
+  "name": "一维碰撞与动量守恒",
+  "summary": "L1 声明式能力：解析一维两体碰撞，展示速度变化与总动量守恒。",
+  "when": {
+    "use": [
+      "演示孤立系统一维两体碰撞与动量守恒",
+      "比较弹性与完全非弹性碰撞"
+    ],
+    "avoid": [
+      "存在外力或摩擦的碰撞",
+      "多体、二维碰撞或旋转",
+      "按真实半径测量接触几何；圆形尺寸与偏移为示意"
+    ],
+    "roles": [
+      "flow",
+      "comparison"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "m1": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1000,
+        "description": "质量（kg），大于零且不超过 1000"
+      },
+      "m2": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1000,
+        "description": "质量（kg），大于零且不超过 1000"
+      },
+      "v1": {
+        "type": "number",
+        "minimum": -100,
+        "maximum": 100,
+        "description": "初速度（m/s），正值向右、负值向左"
+      },
+      "v2": {
+        "type": "number",
+        "minimum": -100,
+        "maximum": 100,
+        "description": "初速度（m/s），正值向右、负值向左"
+      },
+      "e": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "恢复系数：1 完全弹性，0 完全非弹性"
+      },
+      "trails": {
+        "type": "boolean"
+      },
+      "formula": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "m1",
+      "m2",
+      "v1",
+      "v2",
+      "e",
+      "trails",
+      "formula"
+    ],
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9"
+    ],
+    "minSeconds": 8,
+    "maxSeconds": 60,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "场景开始 0.4 秒后标题入场，无固定句子编号要求",
+    "hold": "跟随配音时长",
+    "exit": "幕末退场"
+  },
+  "examples": [
+    {
+      "source": "capabilities/physics.momentum1D/example-storyboard.json",
+      "scene": {
+        "id": "elastic",
+        "role": "flow",
+        "kicker": "一维碰撞 · 孤立系统",
+        "title": "弹性碰撞：动量守恒",
+        "bullets": [],
+        "narration": "两个物体碰撞前后，总动量保持不变。",
+        "sourceQuote": "两个物体碰撞前后，总动量保持不变。",
+        "capability": {
+          "id": "physics.momentum1D",
+          "version": 1,
+          "params": {
+            "m1": 2,
+            "m2": 1,
+            "v1": 2,
+            "v2": -1,
+            "e": 1,
+            "trails": true,
+            "formula": true
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "s-law",
+            "text": "两个物体碰撞前后，总动量保持不变。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    },
+    {
+      "source": "capabilities/physics.momentum1D/example-storyboard.json",
+      "scene": {
+        "id": "inelastic",
+        "role": "flow",
+        "kicker": "一维碰撞 · 孤立系统",
+        "title": "完全非弹性：共同速度",
+        "bullets": [],
+        "narration": "两个物体碰撞前后，总动量保持不变。",
+        "sourceQuote": "两个物体碰撞前后，总动量保持不变。",
+        "capability": {
+          "id": "physics.momentum1D",
+          "version": 1,
+          "params": {
+            "m1": 2,
+            "m2": 1,
+            "v1": 2,
+            "v2": -1,
+            "e": 0,
+            "trails": true,
+            "formula": true
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "s-law",
+            "text": "两个物体碰撞前后，总动量保持不变。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "declarative",
+    "ref": "capabilities/physics.momentum1D/definition.json"
+  },
+  "notes": "级别 L1；SI 单位；4 秒处瞬时碰撞。圆形大小与接触偏移为示意，轨迹自动适配；等初速度时速度不变。"
+}

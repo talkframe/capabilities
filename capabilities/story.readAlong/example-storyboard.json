@@ -1,0 +1,60 @@
+{
+  "contractVersion": 2,
+  "profile": "story",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "故事跟读示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "01",
+      "role": "intro",
+      "kicker": "清早出发",
+      "title": "哒哒能送到吗？",
+      "bullets": [
+        "妈妈，我也能帮忙啦！"
+      ],
+      "narration": "第一次送粮，哒哒能顺利到磨坊吗？清早，他甩甩尾巴：“妈妈，我也能帮忙啦！”妈妈把一小袋麦子放上他的背：“路上慢一点。”嗒嗒嗒，哒哒挺起胸膛出发了。",
+      "sourceQuote": "清早，小马哒哒一甩尾巴：“妈妈，我也能帮忙啦！”妈妈把一小袋麦子放上他的背：“送到磨坊去吧，路上慢一点。”",
+      "capability": {
+        "id": "story.readAlong",
+        "version": 1,
+        "params": {}
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-sentence-1",
+          "text": "第一次送粮，哒哒能顺利到磨坊吗？清早，他甩甩尾巴：“妈妈，我也能帮忙啦！”妈妈把一小袋麦子放上他的背：“路上慢一点。”嗒嗒嗒，哒哒挺起胸膛出发了。"
+        }
+      ]
+    },
+    {
+      "id": "01-2",
+      "role": "intro",
+      "kicker": "清早出发",
+      "title": "哒哒能送到吗？",
+      "bullets": [
+        "妈妈，我也能帮忙啦！"
+      ],
+      "narration": "第一次送粮，哒哒能顺利到磨坊吗？清早，他甩甩尾巴：“妈妈，我也能帮忙啦！”妈妈把一小袋麦子放上他的背：“路上慢一点。”嗒嗒嗒，哒哒挺起胸膛出发了。",
+      "sourceQuote": "清早，小马哒哒一甩尾巴：“妈妈，我也能帮忙啦！”妈妈把一小袋麦子放上他的背：“送到磨坊去吧，路上慢一点。”",
+      "capability": {
+        "id": "story.readAlong",
+        "version": 1,
+        "params": {}
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-2-sentence-1",
+          "text": "第一次送粮，哒哒能顺利到磨坊吗？清早，他甩甩尾巴：“妈妈，我也能帮忙啦！”妈妈把一小袋麦子放上他的背：“路上慢一点。”嗒嗒嗒，哒哒挺起胸膛出发了。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

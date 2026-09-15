@@ -1,0 +1,83 @@
+{
+  "id": "classic.card",
+  "version": 1,
+  "tier": "builtin",
+  "name": "经典文字卡片",
+  "summary": "按叙事角色使用经典样式的标题、要点、引用与总结卡片。",
+  "when": {
+    "use": [
+      "内容以标题、要点或引用为主",
+      "无需流程节点或数据指标专用画面"
+    ],
+    "avoid": [
+      "flow 角色有两步以上流程",
+      "chart 角色有可比较指标",
+      "需要整幕配图"
+    ],
+    "roles": [
+      "intro",
+      "keypoints",
+      "comparison",
+      "outro"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 4,
+    "maxSeconds": 40,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "文字卡片依次进入",
+    "hold": "随旁白",
+    "exit": "随场景淡出"
+  },
+  "examples": [
+    {
+      "source": "capabilities/classic.card/example-storyboard.json",
+      "scene": {
+        "id": "03",
+        "type": "keypoints",
+        "kicker": "能力边界 · 非真实业务数据",
+        "title": "数据有来源，能力有边界",
+        "bullets": [
+          "A=20、B=40、C=80仅作动画演示",
+          "折线、K线与直接表格导入尚未接入"
+        ],
+        "narration": "这里的 A 二十、B 四十、C 八十只用于演示动画，不代表真实业务结果。复杂图表和表格导入尚未接入。",
+        "sourceQuote": "这里的 A 二十、B 四十、C 八十只用于演示动画，不代表真实业务结果。复杂图表和表格导入尚未接入。",
+        "nodes": [],
+        "metrics": [],
+        "visual": "book",
+        "diagram": null
+      },
+      "settings": {
+        "visualStyle": "classic"
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "component",
+    "ref": "builtin:classic.card"
+  },
+  "notes": "元数据已登记；黄金帧与视觉验收由总调度执行。"
+}

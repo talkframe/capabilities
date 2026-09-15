@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "general",
+  "version": 1,
+  "name": "通用文档",
+  "description": "把长文讲清楚，保留现有制作风格与品牌设置。",
+  "audience": "第一次接触主题的普通观众",
+  "strategy": {
+    "structure": [
+      "核心问题",
+      "概念解释",
+      "关键要点",
+      "总结"
+    ],
+    "tone": "清晰、克制，保留原文的计划、条件和限制。",
+    "visuals": [
+      "book",
+      "network",
+      "globe"
+    ]
+  },
+  "defaults": {
+    "targetSeconds": 60
+  }
+}

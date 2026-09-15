@@ -1,0 +1,91 @@
+{
+  "id": "physics.orbit",
+  "version": 1,
+  "tier": "builtin",
+  "name": "圆轨道教学",
+  "summary": "L1 声明式能力：以冻结状态表展示二体圆轨道与周期公式。",
+  "when": {
+    "use": [
+      "解释圆轨道与周期"
+    ],
+    "avoid": [
+      "某日真实行星位置"
+    ],
+    "roles": [
+      "flow"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "trails": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "trails"
+    ],
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 1,
+    "maxSeconds": 60,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "句级锚点，标签在位置交接结束后出现",
+    "hold": "跟随配音时长",
+    "exit": "幕末退场"
+  },
+  "examples": [
+    {
+      "source": "capabilities/physics.orbit/example-storyboard.json",
+      "scene": {
+        "id": "example",
+        "role": "flow",
+        "kicker": "L1 声明式样例",
+        "title": "圆轨道教学",
+        "bullets": [],
+        "narration": "周期的平方与轨道半长轴的立方成正比。",
+        "sourceQuote": "周期的平方与轨道半长轴的立方成正比。",
+        "capability": {
+          "id": "physics.orbit",
+          "version": 1,
+          "params": {
+            "trails": true
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "s-law",
+            "text": "周期的平方与轨道半长轴的立方成正比。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "declarative",
+    "ref": "capabilities/physics.orbit/definition.json"
+  },
+  "notes": "级别 L1；编译期展开与求解，渲染仅消费冻结帧表。"
+}

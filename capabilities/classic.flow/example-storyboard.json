@@ -1,0 +1,70 @@
+{
+  "contractVersion": 2,
+  "profile": "classic",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "经典流程示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "01",
+      "role": "flow",
+      "kicker": "当前已接入 · 只改分镜与设置",
+      "title": "让步骤一眼看懂",
+      "bullets": [],
+      "narration": "同一段流程，可以用简洁卡片说明先后步骤，也可以用角色关系图解释参与者之间如何连接。",
+      "sourceQuote": "同一段流程，可以用简洁卡片说明先后步骤，也可以用角色关系图解释参与者之间如何连接。",
+      "capability": {
+        "id": "classic.flow",
+        "version": 1,
+        "params": {
+          "nodes": [
+            "提交内容",
+            "整理要点",
+            "人工核对",
+            "生成视频"
+          ]
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-sentence-1",
+          "text": "同一段流程，可以用简洁卡片说明先后步骤，也可以用角色关系图解释参与者之间如何连接。"
+        }
+      ]
+    },
+    {
+      "id": "01-2",
+      "role": "flow",
+      "kicker": "当前已接入 · 只改分镜与设置",
+      "title": "让步骤一眼看懂",
+      "bullets": [],
+      "narration": "同一段流程，可以用简洁卡片说明先后步骤，也可以用角色关系图解释参与者之间如何连接。",
+      "sourceQuote": "同一段流程，可以用简洁卡片说明先后步骤，也可以用角色关系图解释参与者之间如何连接。",
+      "capability": {
+        "id": "classic.flow",
+        "version": 1,
+        "params": {
+          "nodes": [
+            "提交内容",
+            "整理要点",
+            "人工核对",
+            "生成视频"
+          ]
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-2-sentence-1",
+          "text": "同一段流程，可以用简洁卡片说明先后步骤，也可以用角色关系图解释参与者之间如何连接。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

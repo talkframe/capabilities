@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "story",
+  "version": 1,
+  "name": "故事绘本",
+  "description": "插画配完整故事正文，旁白读到的段落自动高亮。",
+  "audience": "喜欢听故事和跟读的观众",
+  "strategy": {
+    "structure": ["人物与出发", "遇到难题", "尝试与转折", "温暖结局"],
+    "tone": "生动自然、有角色对话和适量拟声，保留来源的情节与寓意，不编造来源之外的事实。每幕旁白就是本页故事正文，建议60～100字，短句便于跟读。diagram为null，nodes与metrics为空数组，bullets可为空。不要强行变成知识要点或数据图表。",
+    "visuals": ["book"]
+  },
+  "defaults": {
+    "targetSeconds": 120,
+    "width": 1920,
+    "height": 1080,
+    "visualStyle": "story",
+    "presenter": false,
+    "brandOutro": "off",
+    "musicFile": "",
+    "speechRate": 245,
+    "theme": {"background": "#F7F0E3", "accent": "#B77930", "text": "#382F24", "muted": "#8B7F6C"}
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "work",
+  "version": 1,
+  "name": "工作汇报",
+  "description": "结论先行，用进展、风险和下一步支撑决策。",
+  "audience": "团队同事、负责人和协作方",
+  "strategy": {
+    "structure": [
+      "结论",
+      "已完成进展",
+      "风险与阻塞",
+      "下一步"
+    ],
+    "tone": "直接、可执行。严格区分已完成、进行中与待验证；不编造负责人、日期、数据和承诺。",
+    "visuals": [
+      "book",
+      "network",
+      "compare"
+    ]
+  },
+  "defaults": {
+    "targetSeconds": 60,
+    "width": 1920,
+    "height": 1080,
+    "visualStyle": "motion",
+    "presenter": false,
+    "musicFile": "",
+    "speechRate": 245,
+    "theme": {
+      "background": "#111D30",
+      "accent": "#70D7F7",
+      "text": "#F5F4EC",
+      "muted": "#A9B9CC"
+    }
+  }
+}

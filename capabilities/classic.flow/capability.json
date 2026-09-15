@@ -1,0 +1,93 @@
+{
+  "id": "classic.flow",
+  "version": 1,
+  "tier": "builtin",
+  "name": "经典流程",
+  "summary": "用两至五个短节点依次呈现线性流程。",
+  "when": {
+    "use": [
+      "内容有清楚的先后步骤",
+      "每步可压缩为短标签"
+    ],
+    "avoid": [
+      "步骤之间需要复杂分支或参与者关系",
+      "没有可辨识的先后顺序"
+    ],
+    "roles": [
+      "flow"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "nodes": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 5,
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "nodes"
+    ],
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 4,
+    "maxSeconds": 40,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "流程节点按顺序出现",
+    "hold": "随旁白",
+    "exit": "随场景淡出"
+  },
+  "examples": [
+    {
+      "source": "capabilities/classic.flow/example-storyboard.json",
+      "scene": {
+        "id": "01",
+        "type": "flow",
+        "kicker": "当前已接入 · 只改分镜与设置",
+        "title": "让步骤一眼看懂",
+        "bullets": [],
+        "narration": "同一段流程，可以用简洁卡片说明先后步骤，也可以用角色关系图解释参与者之间如何连接。",
+        "sourceQuote": "同一段流程，可以用简洁卡片说明先后步骤，也可以用角色关系图解释参与者之间如何连接。",
+        "nodes": [
+          "提交内容",
+          "整理要点",
+          "人工核对",
+          "生成视频"
+        ],
+        "metrics": [],
+        "visual": "book",
+        "diagram": null
+      },
+      "settings": {
+        "visualStyle": "classic"
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "component",
+    "ref": "builtin:classic.flow"
+  },
+  "notes": "元数据已登记；黄金帧与视觉验收由总调度执行。"
+}

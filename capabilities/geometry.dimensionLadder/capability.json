@@ -1,0 +1,196 @@
+{
+  "id": "geometry.dimensionLadder",
+  "version": 1,
+  "tier": "builtin",
+  "name": "维度阶梯",
+  "summary": "L1 声明式能力：逐句展示点、线、面、体与四维投影。",
+  "when": {
+    "use": [
+      "展示 0～4 维几何"
+    ],
+    "avoid": [
+      "连续拓扑变形或五维以上"
+    ],
+    "roles": [
+      "flow"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "steps": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "dim": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "id": {
+              "type": "string"
+            },
+            "previous": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sentence": {
+              "type": "string"
+            },
+            "x": {
+              "type": "number"
+            },
+            "scale": {
+              "type": "number"
+            },
+            "color": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "dim",
+            "id",
+            "previous",
+            "sentence",
+            "x",
+            "scale",
+            "color"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "steps"
+    ],
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 1,
+    "maxSeconds": 60,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "句级锚点，标签在位置交接结束后出现",
+    "hold": "跟随配音时长",
+    "exit": "幕末退场"
+  },
+  "examples": [
+    {
+      "source": "capabilities/geometry.dimensionLadder/example-storyboard.json",
+      "scene": {
+        "id": "example",
+        "role": "flow",
+        "kicker": "L1 声明式样例",
+        "title": "维度阶梯",
+        "bullets": [],
+        "narration": "零维，是一个点。一维，是一条线。二维，是一个面。三维，是一个立体。这是四维几何的投影。",
+        "sourceQuote": "零维，是一个点。一维，是一条线。二维，是一个面。三维，是一个立体。这是四维几何的投影。",
+        "capability": {
+          "id": "geometry.dimensionLadder",
+          "version": 1,
+          "params": {
+            "steps": [
+              {
+                "dim": 0,
+                "id": "cube0",
+                "previous": null,
+                "sentence": "s-d0",
+                "x": -7,
+                "scale": 1,
+                "color": "#ffd166"
+              },
+              {
+                "dim": 1,
+                "id": "cube1",
+                "previous": "cube0",
+                "sentence": "s-d1",
+                "x": -3.5,
+                "scale": 1,
+                "color": "#ef476f"
+              },
+              {
+                "dim": 2,
+                "id": "cube2",
+                "previous": "cube1",
+                "sentence": "s-d2",
+                "x": 0,
+                "scale": 1,
+                "color": "#06d6a0"
+              },
+              {
+                "dim": 3,
+                "id": "cube3",
+                "previous": "cube2",
+                "sentence": "s-d3",
+                "x": 3.5,
+                "scale": 0.82,
+                "color": "#56b6e0"
+              },
+              {
+                "dim": 4,
+                "id": "cube4",
+                "previous": "cube3",
+                "sentence": "s-d4",
+                "x": 7,
+                "scale": 0.65,
+                "color": "#c77dff"
+              }
+            ]
+          }
+        },
+        "assets": [],
+        "sentences": [
+          {
+            "id": "s-d0",
+            "text": "零维，是一个点。"
+          },
+          {
+            "id": "s-d1",
+            "text": "一维，是一条线。"
+          },
+          {
+            "id": "s-d2",
+            "text": "二维，是一个面。"
+          },
+          {
+            "id": "s-d3",
+            "text": "三维，是一个立体。"
+          },
+          {
+            "id": "s-d4",
+            "text": "这是四维几何的投影。"
+          }
+        ]
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "declarative",
+    "ref": "capabilities/geometry.dimensionLadder/definition.json"
+  },
+  "notes": "级别 L1；编译期展开与求解，渲染仅消费冻结帧表。"
+}

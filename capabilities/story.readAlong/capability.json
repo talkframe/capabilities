@@ -1,0 +1,96 @@
+{
+  "id": "story.readAlong",
+  "version": 1,
+  "tier": "builtin",
+  "name": "故事跟读",
+  "summary": "以旁白正文和一张场景插画组成适合故事阅读的画面。",
+  "when": {
+    "use": [
+      "旁白是连续的故事正文",
+      "每幕有与正文对应的一张插画"
+    ],
+    "avoid": [
+      "需要展示流程节点、指标或语义关系图",
+      "旁白只是要点摘要"
+    ],
+    "roles": [
+      "intro",
+      "keypoints",
+      "flow",
+      "chart",
+      "comparison",
+      "outro"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "assets": [
+    {
+      "slot": "illustration",
+      "kind": "image",
+      "optional": true,
+      "note": "可选的一张与本幕正文对应的插画；无插画时仍使用正文跟读画面。"
+    }
+  ],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 4,
+    "maxSeconds": 40,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "插画与正文进入",
+    "hold": "正文随旁白跟读",
+    "exit": "随场景淡出"
+  },
+  "examples": [
+    {
+      "source": "capabilities/story.readAlong/example-storyboard.json",
+      "scene": {
+        "id": "01",
+        "type": "intro",
+        "kicker": "清早出发",
+        "title": "哒哒能送到吗？",
+        "bullets": [
+          "妈妈，我也能帮忙啦！"
+        ],
+        "narration": "第一次送粮，哒哒能顺利到磨坊吗？清早，他甩甩尾巴：“妈妈，我也能帮忙啦！”妈妈把一小袋麦子放上他的背：“路上慢一点。”嗒嗒嗒，哒哒挺起胸膛出发了。",
+        "sourceQuote": "清早，小马哒哒一甩尾巴：“妈妈，我也能帮忙啦！”妈妈把一小袋麦子放上他的背：“送到磨坊去吧，路上慢一点。”",
+        "nodes": [],
+        "metrics": [],
+        "visual": "book",
+        "diagram": null
+      },
+      "settings": {
+        "visualStyle": "story",
+        "sceneAssets": {
+          "01": {
+            "assetId": "9cd8277c45b6ef416c07799e-4486a8f1b21a",
+            "fit": "contain"
+          }
+        }
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "component",
+    "ref": "builtin:story.readAlong"
+  },
+  "notes": "元数据已登记；黄金帧与视觉验收由总调度执行。"
+}

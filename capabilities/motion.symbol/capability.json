@@ -1,0 +1,150 @@
+{
+  "id": "motion.symbol",
+  "version": 1,
+  "tier": "builtin",
+  "name": "形态粒子",
+  "summary": "用十种稳定的粒子形态表达单一主题，并可叠加少量指标或短标签。",
+  "when": {
+    "use": [
+      "单一概念可由明确形态表达",
+      "需要延续 motion 幕间的粒子变形"
+    ],
+    "avoid": [
+      "参与者关系或步骤需要连线表达",
+      "需要 classic 的独立数据卡片"
+    ],
+    "roles": [
+      "intro",
+      "keypoints",
+      "flow",
+      "chart",
+      "comparison",
+      "outro"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "visual": {
+        "type": "string",
+        "enum": [
+          "wallet",
+          "key",
+          "network",
+          "coins",
+          "lock",
+          "compare",
+          "shield",
+          "globe",
+          "book",
+          "rocket"
+        ],
+        "x-enumDescriptions": [
+          "钱包与账户",
+          "密钥",
+          "连接关系",
+          "供应量",
+          "锁仓",
+          "两种产品或网络对照",
+          "保护与权限",
+          "生态范围",
+          "知识或文档",
+          "启动或成长"
+        ]
+      },
+      "nodes": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 5,
+        "items": {
+          "type": "string"
+        }
+      },
+      "metrics": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label",
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "visual"
+    ],
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 4,
+    "maxSeconds": 40,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "粒子聚合成目标形态",
+    "hold": "随旁白保持并轻微运动",
+    "exit": "向下一幕目标形态过渡"
+  },
+  "examples": [
+    {
+      "source": "capabilities/motion.symbol/example-storyboard.json",
+      "scene": {
+        "id": "01",
+        "type": "intro",
+        "kicker": "从协作关系说起",
+        "title": "社区如何连接？",
+        "bullets": [
+          "成员参与共同事务",
+          "连接互动、表达与认同"
+        ],
+        "narration": "一个活跃社区依靠成员持续参与，通过互动、表达与共同认同建立连接。",
+        "sourceQuote": "社区通过成员参与、互动与表达形成持续的协作关系。",
+        "nodes": [],
+        "metrics": [],
+        "visual": "coins"
+      },
+      "settings": {
+        "visualStyle": "motion"
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "component",
+    "ref": "builtin:motion.symbol"
+  },
+  "authoringGuide": [
+    "- visual 每幕也必须输出，在 diagram 不适用时作为形态视觉，diagram 存在时作为备用形态。从 wallet/key/network/coins/lock/compare/shield/globe/book/rocket 中按内容选择；只有形态本身能表达主题时才使用，不要无意义地反复更换形状。钱包与账户选 wallet；密钥选 key；连接关系选 network；供应量选 coins；锁仓选 lock；两种产品或网络对照选 compare；保护与权限选 shield；生态范围选 globe；知识或文档选 book；启动或成长选 rocket。"
+  ],
+  "notes": "能力元数据已登记；黄金帧与视觉验收由总调度执行。"
+}

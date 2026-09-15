@@ -1,0 +1,153 @@
+{
+  "id": "media.fullScene",
+  "version": 1,
+  "tier": "builtin",
+  "name": "整幕媒体",
+  "summary": "在 motion 画面中以一张整幕图片替代粒子主体，并保留形态提示及可选指标和节点叠层。",
+  "when": {
+    "use": [
+      "已有与本幕内容直接对应的图片",
+      "图片应成为画面主体而不是图示节点"
+    ],
+    "avoid": [
+      "图片只对应 diagram 中的一个参与者",
+      "story profile 的插画应使用 story.readAlong"
+    ],
+    "roles": [
+      "intro",
+      "keypoints",
+      "flow",
+      "chart",
+      "comparison",
+      "outro"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "visual": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "wallet",
+              "key",
+              "network",
+              "coins",
+              "lock",
+              "compare",
+              "shield",
+              "globe",
+              "book",
+              "rocket"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "nodes": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 5,
+        "items": {
+          "type": "string"
+        }
+      },
+      "metrics": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label",
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "additionalProperties": false
+  },
+  "assets": [
+    {
+      "slot": "scene",
+      "kind": "image",
+      "optional": false,
+      "note": "整幕图片；fit 使用 contain 或 cover。"
+    }
+  ],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 4,
+    "maxSeconds": 40,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "整幕图片进入",
+    "hold": "图片保持，指标或节点叠层随旁白出现",
+    "exit": "按 visual 提示衔接相邻幕"
+  },
+  "examples": [
+    {
+      "source": "capabilities/media.fullScene/example-storyboard.json",
+      "scene": {
+        "id": "01",
+        "type": "intro",
+        "kicker": "虚构演示 · 非真实新闻",
+        "title": "阅读助手能做什么？",
+        "bullets": [
+          "整理文章要点",
+          "生成提纲",
+          "保留原文引用"
+        ],
+        "narration": "这是虚构演示。阅读助手可整理要点、生成提纲，并保留原文引用。",
+        "sourceQuote": "一个虚构的 AI 阅读助手演示了三项功能：整理文章要点、生成提纲、将原文引用保留在讲解稿里。",
+        "nodes": [],
+        "metrics": [],
+        "visual": "book"
+      },
+      "settings": {
+        "visualStyle": "motion",
+        "sceneAssets": {
+          "01": {
+            "assetId": "935c49f95024b7d62f29f9f2-38abb84c74f9",
+            "fit": "contain"
+          }
+        }
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "component",
+    "ref": "builtin:media.fullScene"
+  },
+  "notes": "visual 决定背景明暗与相邻幕 morph 目标；元数据黄金帧与视觉验收由总调度执行。"
+}

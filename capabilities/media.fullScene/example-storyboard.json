@@ -1,0 +1,80 @@
+{
+  "contractVersion": 2,
+  "profile": "motion",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "整幕媒体示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "01",
+      "role": "intro",
+      "kicker": "虚构演示 · 非真实新闻",
+      "title": "阅读助手能做什么？",
+      "bullets": [
+        "整理文章要点",
+        "生成提纲",
+        "保留原文引用"
+      ],
+      "narration": "这是虚构演示。阅读助手可整理要点、生成提纲，并保留原文引用。",
+      "sourceQuote": "一个虚构的 AI 阅读助手演示了三项功能：整理文章要点、生成提纲、将原文引用保留在讲解稿里。",
+      "capability": {
+        "id": "media.fullScene",
+        "version": 1,
+        "params": {
+          "visual": "book"
+        }
+      },
+      "assets": [
+        {
+          "slot": "scene",
+          "assetId": "example-asset-1",
+          "fit": "contain"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "01-sentence-1",
+          "text": "这是虚构演示。阅读助手可整理要点、生成提纲，并保留原文引用。"
+        }
+      ]
+    },
+    {
+      "id": "01-2",
+      "role": "intro",
+      "kicker": "虚构演示 · 非真实新闻",
+      "title": "阅读助手能做什么？",
+      "bullets": [
+        "整理文章要点",
+        "生成提纲",
+        "保留原文引用"
+      ],
+      "narration": "这是虚构演示。阅读助手可整理要点、生成提纲，并保留原文引用。",
+      "sourceQuote": "一个虚构的 AI 阅读助手演示了三项功能：整理文章要点、生成提纲、将原文引用保留在讲解稿里。",
+      "capability": {
+        "id": "media.fullScene",
+        "version": 1,
+        "params": {
+          "visual": "book"
+        }
+      },
+      "assets": [
+        {
+          "slot": "scene",
+          "assetId": "example-asset-1",
+          "fit": "contain"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "01-2-sentence-1",
+          "text": "这是虚构演示。阅读助手可整理要点、生成提纲，并保留原文引用。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

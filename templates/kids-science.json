@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "kids-science",
+  "version": 1,
+  "name": "儿童科普",
+  "description": "从一个小问题出发，用短句和可理解的类比解释。",
+  "audience": "约8～12岁儿童及陪伴家长",
+  "strategy": {
+    "structure": [
+      "好奇问题",
+      "生活中的类比",
+      "简单原理",
+      "回顾发现"
+    ],
+    "tone": "亲切自然，短句、每幕一个概念；类比需明确是比喻，不能冒充科学事实。不虚构实验结果，不提供危险实验操作。",
+    "visuals": [
+      "book",
+      "globe",
+      "rocket"
+    ]
+  },
+  "defaults": {
+    "targetSeconds": 60,
+    "width": 1920,
+    "height": 1080,
+    "visualStyle": "motion",
+    "presenter": false,
+    "musicFile": "",
+    "speechRate": 210,
+    "theme": {
+      "background": "#172C40",
+      "accent": "#FFD166",
+      "text": "#F5F4EC",
+      "muted": "#A9B9CC"
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "id": "chart.metrics",
+  "version": 1,
+  "tier": "builtin",
+  "name": "指标卡片",
+  "summary": "在 classic 画面中用一至四个同类指标卡片和比例条比较数值。",
+  "when": {
+    "use": [
+      "原文给出一至四个有明确来源的数值",
+      "需要比较同单位指标的相对大小"
+    ],
+    "avoid": [
+      "motion profile 中的指标叠层",
+      "没有引用支撑的示意数值",
+      "复杂折线、K 线或表格"
+    ],
+    "roles": [
+      "chart"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "metrics": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label",
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "metrics"
+    ],
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 4,
+    "maxSeconds": 40,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "数值从零递增并显示比例条",
+    "hold": "随旁白保持",
+    "exit": "随场景淡出"
+  },
+  "examples": [
+    {
+      "source": "capabilities/chart.metrics/example-storyboard.json",
+      "scene": {
+        "id": "01",
+        "type": "chart",
+        "kicker": "当前已接入 · 以下为虚构示意数据",
+        "title": "数字从零递增",
+        "bullets": [],
+        "narration": "数字场景先从零开始，再平稳到达目标值。名称、数值和单位一起出现，让观众快速看懂重点。",
+        "sourceQuote": "A 等于二十、B 等于四十、C 等于八十，均为虚构示意数据。",
+        "nodes": [],
+        "metrics": [
+          {
+            "label": "A · 示意数据",
+            "value": 20,
+            "unit": "份"
+          },
+          {
+            "label": "B · 示意数据",
+            "value": 40,
+            "unit": "份"
+          },
+          {
+            "label": "C · 示意数据",
+            "value": 80,
+            "unit": "份"
+          }
+        ],
+        "visual": "book",
+        "diagram": null
+      },
+      "settings": {
+        "visualStyle": "classic"
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "component",
+    "ref": "builtin:chart.metrics"
+  },
+  "notes": "仅允许 classic profile；元数据黄金帧与视觉验收由总调度执行。"
+}

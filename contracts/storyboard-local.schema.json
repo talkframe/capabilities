@@ -1,0 +1,2927 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "transitions": {
+      "minItems": 0,
+      "maxItems": 120,
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "cut"
+              },
+              "after": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "between": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                ],
+                "additionalItems": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "overlap": {
+                "default": "anchor",
+                "type": "string",
+                "enum": [
+                  "anchor",
+                  "trim"
+                ]
+              },
+              "sharedElements": {
+                "minItems": 0,
+                "maxItems": 6,
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "background",
+                        "kicker",
+                        "title",
+                        "bullets",
+                        "particles",
+                        "captions"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "from": {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        "to": {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        "morph": {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "wallet",
+                                    "key",
+                                    "network",
+                                    "coins",
+                                    "lock",
+                                    "compare",
+                                    "shield",
+                                    "globe",
+                                    "book",
+                                    "rocket"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "scatter"
+                                }
+                              ]
+                            },
+                            "to": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "wallet",
+                                    "key",
+                                    "network",
+                                    "coins",
+                                    "lock",
+                                    "compare",
+                                    "shield",
+                                    "globe",
+                                    "book",
+                                    "rocket"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "scatter"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "from",
+                        "to"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "easing": {
+                "type": "string",
+                "enum": [
+                  "smoothstep"
+                ]
+              },
+              "transitionVisual": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "wallet",
+                      "key",
+                      "network",
+                      "coins",
+                      "lock",
+                      "compare",
+                      "shield",
+                      "globe",
+                      "book",
+                      "rocket"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "const": "scatter"
+                  }
+                ]
+              },
+              "duration": {
+                "type": "number",
+                "const": 0
+              },
+              "params": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "overlap",
+              "duration"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "crossfade"
+              },
+              "after": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "between": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                ],
+                "additionalItems": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "overlap": {
+                "default": "anchor",
+                "type": "string",
+                "enum": [
+                  "anchor",
+                  "trim"
+                ]
+              },
+              "sharedElements": {
+                "minItems": 0,
+                "maxItems": 6,
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "background",
+                        "kicker",
+                        "title",
+                        "bullets",
+                        "particles",
+                        "captions"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "from": {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        "to": {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        "morph": {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "wallet",
+                                    "key",
+                                    "network",
+                                    "coins",
+                                    "lock",
+                                    "compare",
+                                    "shield",
+                                    "globe",
+                                    "book",
+                                    "rocket"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "scatter"
+                                }
+                              ]
+                            },
+                            "to": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "wallet",
+                                    "key",
+                                    "network",
+                                    "coins",
+                                    "lock",
+                                    "compare",
+                                    "shield",
+                                    "globe",
+                                    "book",
+                                    "rocket"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "scatter"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "from",
+                        "to"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "easing": {
+                "type": "string",
+                "enum": [
+                  "smoothstep"
+                ]
+              },
+              "transitionVisual": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "wallet",
+                      "key",
+                      "network",
+                      "coins",
+                      "lock",
+                      "compare",
+                      "shield",
+                      "globe",
+                      "book",
+                      "rocket"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "const": "scatter"
+                  }
+                ]
+              },
+              "duration": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "params": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "overlap",
+              "duration"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "handoff"
+              },
+              "after": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "between": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                ],
+                "additionalItems": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "overlap": {
+                "default": "anchor",
+                "type": "string",
+                "enum": [
+                  "anchor",
+                  "trim"
+                ]
+              },
+              "sharedElements": {
+                "minItems": 1,
+                "maxItems": 6,
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "background",
+                        "kicker",
+                        "title",
+                        "bullets",
+                        "particles",
+                        "captions"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "from": {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        "to": {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        "morph": {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "wallet",
+                                    "key",
+                                    "network",
+                                    "coins",
+                                    "lock",
+                                    "compare",
+                                    "shield",
+                                    "globe",
+                                    "book",
+                                    "rocket"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "scatter"
+                                }
+                              ]
+                            },
+                            "to": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "wallet",
+                                    "key",
+                                    "network",
+                                    "coins",
+                                    "lock",
+                                    "compare",
+                                    "shield",
+                                    "globe",
+                                    "book",
+                                    "rocket"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "scatter"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "from",
+                        "to"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "easing": {
+                "type": "string",
+                "enum": [
+                  "smoothstep"
+                ]
+              },
+              "transitionVisual": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "wallet",
+                      "key",
+                      "network",
+                      "coins",
+                      "lock",
+                      "compare",
+                      "shield",
+                      "globe",
+                      "book",
+                      "rocket"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "const": "scatter"
+                  }
+                ]
+              },
+              "duration": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "params": {
+                "type": "object",
+                "properties": {
+                  "lightPhase": {
+                    "type": "object",
+                    "properties": {
+                      "from": {
+                        "type": "boolean"
+                      },
+                      "to": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "from",
+                      "to"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "overlap",
+              "sharedElements",
+              "duration"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "wipe"
+              },
+              "after": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              },
+              "between": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                ],
+                "additionalItems": false,
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "overlap": {
+                "default": "anchor",
+                "type": "string",
+                "enum": [
+                  "anchor",
+                  "trim"
+                ]
+              },
+              "sharedElements": {
+                "minItems": 0,
+                "maxItems": 6,
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "enum": [
+                        "background",
+                        "kicker",
+                        "title",
+                        "bullets",
+                        "particles",
+                        "captions"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "from": {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        "to": {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        "morph": {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "wallet",
+                                    "key",
+                                    "network",
+                                    "coins",
+                                    "lock",
+                                    "compare",
+                                    "shield",
+                                    "globe",
+                                    "book",
+                                    "rocket"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "scatter"
+                                }
+                              ]
+                            },
+                            "to": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "wallet",
+                                    "key",
+                                    "network",
+                                    "coins",
+                                    "lock",
+                                    "compare",
+                                    "shield",
+                                    "globe",
+                                    "book",
+                                    "rocket"
+                                  ]
+                                },
+                                {
+                                  "type": "string",
+                                  "const": "scatter"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "from",
+                        "to"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "easing": {
+                "type": "string",
+                "enum": [
+                  "smoothstep"
+                ]
+              },
+              "transitionVisual": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "wallet",
+                      "key",
+                      "network",
+                      "coins",
+                      "lock",
+                      "compare",
+                      "shield",
+                      "globe",
+                      "book",
+                      "rocket"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "const": "scatter"
+                  }
+                ]
+              },
+              "duration": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "params": {
+                "type": "object",
+                "properties": {
+                  "direction": {
+                    "default": "left",
+                    "type": "string",
+                    "enum": [
+                      "left",
+                      "right",
+                      "up",
+                      "down"
+                    ]
+                  },
+                  "feather": {
+                    "default": 0,
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                },
+                "required": [
+                  "direction",
+                  "feather"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "overlap",
+              "duration"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "contractVersion": {
+      "type": "number",
+      "const": 2
+    },
+    "profile": {
+      "type": "string",
+      "enum": [
+        "motion",
+        "classic",
+        "story",
+        "typography"
+      ]
+    },
+    "profileSettings": {
+      "type": "object",
+      "properties": {
+        "typographyPreset": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "poetry",
+                "science"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "typographyPreset"
+      ],
+      "additionalProperties": false
+    },
+    "outro": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "capability": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "const": "outro.brand"
+                },
+                "version": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 9007199254740991
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "params": {
+                  "type": "object",
+                  "properties": {
+                    "variant": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "ignite",
+                            "ribbon",
+                            "ember"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "version": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "type": "number",
+                              "const": 4
+                            },
+                            {
+                              "type": "number",
+                              "const": 5
+                            }
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "id",
+                "params"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "capability"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "sourceTitle": {
+      "type": "string"
+    },
+    "sourceUrl": {
+      "type": "string"
+    },
+    "scenes": {
+      "minItems": 2,
+      "maxItems": 120,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "transitionOut": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "const": "cut"
+                  },
+                  "overlap": {
+                    "default": "anchor",
+                    "type": "string",
+                    "enum": [
+                      "anchor",
+                      "trim"
+                    ]
+                  },
+                  "sharedElements": {
+                    "minItems": 0,
+                    "maxItems": 6,
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "type": "string",
+                              "enum": [
+                                "background",
+                                "kicker",
+                                "title",
+                                "bullets",
+                                "particles",
+                                "captions"
+                              ]
+                            },
+                            "to": {
+                              "type": "string",
+                              "enum": [
+                                "background",
+                                "kicker",
+                                "title",
+                                "bullets",
+                                "particles",
+                                "captions"
+                              ]
+                            },
+                            "morph": {
+                              "type": "object",
+                              "properties": {
+                                "from": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "wallet",
+                                        "key",
+                                        "network",
+                                        "coins",
+                                        "lock",
+                                        "compare",
+                                        "shield",
+                                        "globe",
+                                        "book",
+                                        "rocket"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "scatter"
+                                    }
+                                  ]
+                                },
+                                "to": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "wallet",
+                                        "key",
+                                        "network",
+                                        "coins",
+                                        "lock",
+                                        "compare",
+                                        "shield",
+                                        "globe",
+                                        "book",
+                                        "rocket"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "scatter"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "from",
+                                "to"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "easing": {
+                    "type": "string",
+                    "enum": [
+                      "smoothstep"
+                    ]
+                  },
+                  "transitionVisual": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "wallet",
+                          "key",
+                          "network",
+                          "coins",
+                          "lock",
+                          "compare",
+                          "shield",
+                          "globe",
+                          "book",
+                          "rocket"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "const": "scatter"
+                      }
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "const": 0
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "kind",
+                  "overlap",
+                  "duration"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "const": "crossfade"
+                  },
+                  "overlap": {
+                    "default": "anchor",
+                    "type": "string",
+                    "enum": [
+                      "anchor",
+                      "trim"
+                    ]
+                  },
+                  "sharedElements": {
+                    "minItems": 0,
+                    "maxItems": 6,
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "type": "string",
+                              "enum": [
+                                "background",
+                                "kicker",
+                                "title",
+                                "bullets",
+                                "particles",
+                                "captions"
+                              ]
+                            },
+                            "to": {
+                              "type": "string",
+                              "enum": [
+                                "background",
+                                "kicker",
+                                "title",
+                                "bullets",
+                                "particles",
+                                "captions"
+                              ]
+                            },
+                            "morph": {
+                              "type": "object",
+                              "properties": {
+                                "from": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "wallet",
+                                        "key",
+                                        "network",
+                                        "coins",
+                                        "lock",
+                                        "compare",
+                                        "shield",
+                                        "globe",
+                                        "book",
+                                        "rocket"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "scatter"
+                                    }
+                                  ]
+                                },
+                                "to": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "wallet",
+                                        "key",
+                                        "network",
+                                        "coins",
+                                        "lock",
+                                        "compare",
+                                        "shield",
+                                        "globe",
+                                        "book",
+                                        "rocket"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "scatter"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "from",
+                                "to"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "easing": {
+                    "type": "string",
+                    "enum": [
+                      "smoothstep"
+                    ]
+                  },
+                  "transitionVisual": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "wallet",
+                          "key",
+                          "network",
+                          "coins",
+                          "lock",
+                          "compare",
+                          "shield",
+                          "globe",
+                          "book",
+                          "rocket"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "const": "scatter"
+                      }
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "kind",
+                  "overlap",
+                  "duration"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "const": "handoff"
+                  },
+                  "overlap": {
+                    "default": "anchor",
+                    "type": "string",
+                    "enum": [
+                      "anchor",
+                      "trim"
+                    ]
+                  },
+                  "sharedElements": {
+                    "minItems": 1,
+                    "maxItems": 6,
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "type": "string",
+                              "enum": [
+                                "background",
+                                "kicker",
+                                "title",
+                                "bullets",
+                                "particles",
+                                "captions"
+                              ]
+                            },
+                            "to": {
+                              "type": "string",
+                              "enum": [
+                                "background",
+                                "kicker",
+                                "title",
+                                "bullets",
+                                "particles",
+                                "captions"
+                              ]
+                            },
+                            "morph": {
+                              "type": "object",
+                              "properties": {
+                                "from": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "wallet",
+                                        "key",
+                                        "network",
+                                        "coins",
+                                        "lock",
+                                        "compare",
+                                        "shield",
+                                        "globe",
+                                        "book",
+                                        "rocket"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "scatter"
+                                    }
+                                  ]
+                                },
+                                "to": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "wallet",
+                                        "key",
+                                        "network",
+                                        "coins",
+                                        "lock",
+                                        "compare",
+                                        "shield",
+                                        "globe",
+                                        "book",
+                                        "rocket"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "scatter"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "from",
+                                "to"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "easing": {
+                    "type": "string",
+                    "enum": [
+                      "smoothstep"
+                    ]
+                  },
+                  "transitionVisual": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "wallet",
+                          "key",
+                          "network",
+                          "coins",
+                          "lock",
+                          "compare",
+                          "shield",
+                          "globe",
+                          "book",
+                          "rocket"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "const": "scatter"
+                      }
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "lightPhase": {
+                        "type": "object",
+                        "properties": {
+                          "from": {
+                            "type": "boolean"
+                          },
+                          "to": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "from",
+                          "to"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "kind",
+                  "overlap",
+                  "sharedElements",
+                  "duration"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "const": "wipe"
+                  },
+                  "overlap": {
+                    "default": "anchor",
+                    "type": "string",
+                    "enum": [
+                      "anchor",
+                      "trim"
+                    ]
+                  },
+                  "sharedElements": {
+                    "minItems": 0,
+                    "maxItems": 6,
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "background",
+                            "kicker",
+                            "title",
+                            "bullets",
+                            "particles",
+                            "captions"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "type": "string",
+                              "enum": [
+                                "background",
+                                "kicker",
+                                "title",
+                                "bullets",
+                                "particles",
+                                "captions"
+                              ]
+                            },
+                            "to": {
+                              "type": "string",
+                              "enum": [
+                                "background",
+                                "kicker",
+                                "title",
+                                "bullets",
+                                "particles",
+                                "captions"
+                              ]
+                            },
+                            "morph": {
+                              "type": "object",
+                              "properties": {
+                                "from": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "wallet",
+                                        "key",
+                                        "network",
+                                        "coins",
+                                        "lock",
+                                        "compare",
+                                        "shield",
+                                        "globe",
+                                        "book",
+                                        "rocket"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "scatter"
+                                    }
+                                  ]
+                                },
+                                "to": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "wallet",
+                                        "key",
+                                        "network",
+                                        "coins",
+                                        "lock",
+                                        "compare",
+                                        "shield",
+                                        "globe",
+                                        "book",
+                                        "rocket"
+                                      ]
+                                    },
+                                    {
+                                      "type": "string",
+                                      "const": "scatter"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "from",
+                                "to"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "easing": {
+                    "type": "string",
+                    "enum": [
+                      "smoothstep"
+                    ]
+                  },
+                  "transitionVisual": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "wallet",
+                          "key",
+                          "network",
+                          "coins",
+                          "lock",
+                          "compare",
+                          "shield",
+                          "globe",
+                          "book",
+                          "rocket"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "const": "scatter"
+                      }
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "direction": {
+                        "default": "left",
+                        "type": "string",
+                        "enum": [
+                          "left",
+                          "right",
+                          "up",
+                          "down"
+                        ]
+                      },
+                      "feather": {
+                        "default": 0,
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      }
+                    },
+                    "required": [
+                      "direction",
+                      "feather"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "kind",
+                  "overlap",
+                  "duration"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "intro",
+              "keypoints",
+              "flow",
+              "chart",
+              "comparison",
+              "outro"
+            ]
+          },
+          "kicker": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "bullets": {
+            "minItems": 0,
+            "maxItems": 4294967295,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "narration": {
+            "type": "string"
+          },
+          "sourceQuote": {
+            "type": "string"
+          },
+          "capability": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "motion.symbol"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "visual": {
+                        "type": "string",
+                        "enum": [
+                          "wallet",
+                          "key",
+                          "network",
+                          "coins",
+                          "lock",
+                          "compare",
+                          "shield",
+                          "globe",
+                          "book",
+                          "rocket"
+                        ]
+                      },
+                      "nodes": {
+                        "minItems": 0,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "metrics": {
+                        "minItems": 0,
+                        "maxItems": 4,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "number"
+                            },
+                            "unit": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label",
+                            "value",
+                            "unit"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "visual"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "motion.diagram"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "layout": {
+                        "type": "string",
+                        "enum": [
+                          "split",
+                          "hub",
+                          "pipeline",
+                          "sequence"
+                        ]
+                      },
+                      "tone": {
+                        "type": "string",
+                        "enum": [
+                          "light",
+                          "dark"
+                        ]
+                      },
+                      "emphasis": {
+                        "type": "string",
+                        "maxLength": 60
+                      },
+                      "nodes": {
+                        "minItems": 2,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 40,
+                              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+                            },
+                            "kind": {
+                              "type": "string",
+                              "enum": [
+                                "screen",
+                                "person",
+                                "server",
+                                "audience",
+                                "segment",
+                                "document",
+                                "card"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 20
+                            },
+                            "detail": {
+                              "type": "string",
+                              "maxLength": 36
+                            },
+                            "media": {
+                              "type": "string",
+                              "maxLength": 80,
+                              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]{0,80}$"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "kind",
+                            "label",
+                            "detail",
+                            "media"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "edges": {
+                        "minItems": 0,
+                        "maxItems": 8,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "from": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 40,
+                              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+                            },
+                            "to": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 40,
+                              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+                            },
+                            "label": {
+                              "type": "string",
+                              "maxLength": 24
+                            },
+                            "direction": {
+                              "type": "string",
+                              "enum": [
+                                "forward",
+                                "both"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "from",
+                            "to",
+                            "label",
+                            "direction"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "transitionVisual": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "wallet",
+                              "key",
+                              "network",
+                              "coins",
+                              "lock",
+                              "compare",
+                              "shield",
+                              "globe",
+                              "book",
+                              "rocket"
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "layout",
+                      "tone",
+                      "emphasis",
+                      "nodes",
+                      "edges"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "physics.orbit"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "trails": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "trails"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "physics.momentum1D"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "m1": {
+                        "type": "number",
+                        "exclusiveMinimum": 0,
+                        "maximum": 1000
+                      },
+                      "m2": {
+                        "type": "number",
+                        "exclusiveMinimum": 0,
+                        "maximum": 1000
+                      },
+                      "v1": {
+                        "type": "number",
+                        "minimum": -100,
+                        "maximum": 100
+                      },
+                      "v2": {
+                        "type": "number",
+                        "minimum": -100,
+                        "maximum": 100
+                      },
+                      "e": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "trails": {
+                        "type": "boolean"
+                      },
+                      "formula": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "m1",
+                      "m2",
+                      "v1",
+                      "v2",
+                      "e",
+                      "trails",
+                      "formula"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "story.wolfCry"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "beat": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 5
+                      },
+                      "sheepCount": {
+                        "type": "integer",
+                        "minimum": 4,
+                        "maximum": 8
+                      },
+                      "villagerCount": {
+                        "type": "integer",
+                        "minimum": 3,
+                        "maximum": 6
+                      }
+                    },
+                    "required": [
+                      "beat",
+                      "sheepCount",
+                      "villagerCount"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "geometry.dimensionLadder"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "steps": {
+                        "minItems": 1,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "dim": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 4
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "previous": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "sentence": {
+                              "type": "string"
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "scale": {
+                              "type": "number"
+                            },
+                            "color": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "dim",
+                            "id",
+                            "previous",
+                            "sentence",
+                            "x",
+                            "scale",
+                            "color"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "steps"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "chart.metrics"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "metrics": {
+                        "minItems": 1,
+                        "maxItems": 4,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "number"
+                            },
+                            "unit": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label",
+                            "value",
+                            "unit"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "metrics"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "classic.card"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "classic.flow"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "nodes": {
+                        "minItems": 2,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "nodes"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "story.readAlong"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "typography.stage"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "media.fullScene"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "visual": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "wallet",
+                              "key",
+                              "network",
+                              "coins",
+                              "lock",
+                              "compare",
+                              "shield",
+                              "globe",
+                              "book",
+                              "rocket"
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "nodes": {
+                        "minItems": 0,
+                        "maxItems": 5,
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "metrics": {
+                        "minItems": 0,
+                        "maxItems": 4,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "number"
+                            },
+                            "unit": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label",
+                            "value",
+                            "unit"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "const": "geometry.solarAngle"
+                  },
+                  "version": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "params": {
+                    "type": "object",
+                    "properties": {
+                      "phase": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "const": 0
+                          },
+                          {
+                            "type": "number",
+                            "const": 1
+                          },
+                          {
+                            "type": "number",
+                            "const": 2
+                          },
+                          {
+                            "type": "number",
+                            "const": 3
+                          },
+                          {
+                            "type": "number",
+                            "const": 4
+                          },
+                          {
+                            "type": "number",
+                            "const": 5
+                          }
+                        ]
+                      },
+                      "lowElevation": {
+                        "type": "number",
+                        "minimum": 20,
+                        "maximum": 90
+                      },
+                      "highElevation": {
+                        "type": "number",
+                        "minimum": 20,
+                        "maximum": 90
+                      },
+                      "formula": {
+                        "type": "boolean"
+                      },
+                      "angleLabels": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "phase",
+                      "lowElevation",
+                      "highElevation",
+                      "formula",
+                      "angleLabels"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "id",
+                  "params"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "assets": {
+            "minItems": 0,
+            "maxItems": 4294967295,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slot": {
+                  "type": "string",
+                  "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_.\\[\\]-]{1,120}$"
+                },
+                "assetId": {
+                  "type": "string",
+                  "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]{1,100}$"
+                },
+                "fit": {
+                  "type": "string",
+                  "enum": [
+                    "contain",
+                    "cover"
+                  ]
+                }
+              },
+              "required": [
+                "slot",
+                "assetId",
+                "fit"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "sentences": {
+            "minItems": 1,
+            "maxItems": 4294967295,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+                },
+                "text": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "text"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "intro",
+              "keypoints",
+              "flow",
+              "chart",
+              "comparison",
+              "outro"
+            ]
+          },
+          "visual": {
+            "type": "string",
+            "enum": [
+              "wallet",
+              "key",
+              "network",
+              "coins",
+              "lock",
+              "compare",
+              "shield",
+              "globe",
+              "book",
+              "rocket"
+            ]
+          },
+          "diagram": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "layout": {
+                    "type": "string",
+                    "enum": [
+                      "split",
+                      "hub",
+                      "pipeline",
+                      "sequence"
+                    ]
+                  },
+                  "tone": {
+                    "type": "string",
+                    "enum": [
+                      "light",
+                      "dark"
+                    ]
+                  },
+                  "emphasis": {
+                    "type": "string",
+                    "maxLength": 60
+                  },
+                  "nodes": {
+                    "minItems": 2,
+                    "maxItems": 5,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40,
+                          "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "screen",
+                            "person",
+                            "server",
+                            "audience",
+                            "segment",
+                            "document",
+                            "card"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 20
+                        },
+                        "detail": {
+                          "type": "string",
+                          "maxLength": 36
+                        },
+                        "media": {
+                          "type": "string",
+                          "maxLength": 80,
+                          "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]{0,80}$"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "kind",
+                        "label",
+                        "detail",
+                        "media"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "edges": {
+                    "minItems": 0,
+                    "maxItems": 8,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "from": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40,
+                          "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+                        },
+                        "to": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40,
+                          "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 24
+                        },
+                        "direction": {
+                          "type": "string",
+                          "enum": [
+                            "forward",
+                            "both"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "from",
+                        "to",
+                        "label",
+                        "direction"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "layout",
+                  "tone",
+                  "emphasis",
+                  "nodes",
+                  "edges"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "nodes": {
+            "minItems": 0,
+            "maxItems": 4294967295,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "metrics": {
+            "minItems": 0,
+            "maxItems": 4294967295,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "label",
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "kicker",
+          "title",
+          "bullets",
+          "narration",
+          "sourceQuote",
+          "capability",
+          "assets",
+          "sentences"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "type": "object",
+              "properties": {
+                "capability": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "const": "motion.diagram"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              },
+              "required": [
+                "capability"
+              ]
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "capability": {
+                  "type": "object",
+                  "properties": {
+                    "params": {
+                      "type": "object",
+                      "allOf": [
+                        {
+                          "if": {
+                            "type": "object",
+                            "properties": {
+                              "layout": {
+                                "const": "split"
+                              }
+                            },
+                            "required": [
+                              "layout"
+                            ]
+                          },
+                          "then": {
+                            "type": "object",
+                            "properties": {
+                              "nodes": {
+                                "type": "array",
+                                "minItems": 2,
+                                "maxItems": 3
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "if": {
+                            "type": "object",
+                            "properties": {
+                              "layout": {
+                                "const": "hub"
+                              }
+                            },
+                            "required": [
+                              "layout"
+                            ]
+                          },
+                          "then": {
+                            "type": "object",
+                            "properties": {
+                              "nodes": {
+                                "type": "array",
+                                "minItems": 3,
+                                "maxItems": 5
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "contractVersion",
+    "profile",
+    "profileSettings",
+    "outro",
+    "title",
+    "subtitle",
+    "sourceTitle",
+    "sourceUrl",
+    "scenes"
+  ],
+  "additionalProperties": false
+}

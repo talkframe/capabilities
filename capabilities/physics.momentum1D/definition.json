@@ -1,0 +1,331 @@
+{
+  "id": "physics.momentum1D",
+  "version": 1,
+  "level": "L1",
+  "name": "一维碰撞与动量守恒",
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "m1": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1000,
+        "description": "质量（kg），大于零且不超过 1000"
+      },
+      "m2": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1000,
+        "description": "质量（kg），大于零且不超过 1000"
+      },
+      "v1": {
+        "type": "number",
+        "minimum": -100,
+        "maximum": 100,
+        "description": "初速度（m/s），正值向右、负值向左"
+      },
+      "v2": {
+        "type": "number",
+        "minimum": -100,
+        "maximum": 100,
+        "description": "初速度（m/s），正值向右、负值向左"
+      },
+      "e": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "恢复系数：1 完全弹性，0 完全非弹性"
+      },
+      "trails": {
+        "type": "boolean"
+      },
+      "formula": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "m1",
+      "m2",
+      "v1",
+      "v2",
+      "e",
+      "trails",
+      "formula"
+    ],
+    "additionalProperties": false
+  },
+  "when": {
+    "use": [
+      "演示孤立系统一维两体碰撞与动量守恒",
+      "比较弹性与完全非弹性碰撞"
+    ],
+    "avoid": [
+      "存在外力或摩擦的碰撞",
+      "多体、二维碰撞或旋转",
+      "按真实半径测量接触几何；圆形尺寸与偏移为示意"
+    ],
+    "roles": [
+      "flow",
+      "comparison"
+    ]
+  },
+  "scene": {
+    "spaces": [
+      {
+        "id": "stage",
+        "type": "space2d",
+        "coordinates": "pixels"
+      }
+    ],
+    "elements": [
+      {
+        "id": "layout",
+        "type": "group",
+        "space": "stage",
+        "bind": {
+          "transform.scale": {
+            "$": "sim.collision.layoutScale"
+          },
+          "transform.position": {
+            "$": "sim.collision.layoutPosition"
+          }
+        },
+        "children": [
+          {
+            "id": "title",
+            "type": "text",
+            "space": "stage",
+            "transform": {
+              "x": 160,
+              "y": 140
+            },
+            "props": {
+              "content": "一维碰撞 · 动量守恒",
+              "fontSize": 52,
+              "fontWeight": 700
+            }
+          },
+          {
+            "id": "phase",
+            "type": "text",
+            "space": "stage",
+            "transform": {
+              "x": 160,
+              "y": 240
+            },
+            "props": {
+              "content": {
+                "$": "sim.collision.phase"
+              },
+              "fontSize": 32
+            }
+          },
+          {
+            "id": "track",
+            "type": "shape",
+            "space": "stage",
+            "transform": {
+              "x": 120,
+              "y": 560
+            },
+            "props": {
+              "kind": "arrow",
+              "points": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1680,
+                  0
+                ]
+              ],
+              "stroke": "#516079",
+              "strokeWidth": 2
+            }
+          },
+          {
+            "id": "body1-trail",
+            "type": "trail",
+            "space": "stage",
+            "if": "params.trails",
+            "props": {
+              "target": "body1",
+              "length": 240,
+              "strokeWidth": 5
+            },
+            "style": {
+              "color": "#55c9f5",
+              "opacity": 0.55
+            }
+          },
+          {
+            "id": "body1",
+            "type": "shape",
+            "space": "stage",
+            "props": {
+              "kind": "circle",
+              "radius": {
+                "$": "sim.collision.radiusPixels"
+              },
+              "fill": "#55c9f5",
+              "strokeWidth": 0
+            },
+            "bind": {
+              "transform.position": {
+                "$": "sim.collision.body1.screenPosition"
+              }
+            }
+          },
+          {
+            "id": "body1-label",
+            "type": "text",
+            "space": "stage",
+            "transform": {
+              "x": 160,
+              "y": 350
+            },
+            "props": {
+              "content": {
+                "$": "sim.collision.body1.label"
+              },
+              "fontSize": 36
+            }
+          },
+          {
+            "id": "body2-trail",
+            "type": "trail",
+            "space": "stage",
+            "if": "params.trails",
+            "props": {
+              "target": "body2",
+              "length": 240,
+              "strokeWidth": 5
+            },
+            "style": {
+              "color": "#ffc16b",
+              "opacity": 0.55
+            }
+          },
+          {
+            "id": "body2",
+            "type": "shape",
+            "space": "stage",
+            "props": {
+              "kind": "circle",
+              "radius": {
+                "$": "sim.collision.radiusPixels"
+              },
+              "fill": "#ffc16b",
+              "strokeWidth": 0
+            },
+            "bind": {
+              "transform.position": {
+                "$": "sim.collision.body2.screenPosition"
+              }
+            }
+          },
+          {
+            "id": "body2-label",
+            "type": "text",
+            "space": "stage",
+            "transform": {
+              "x": 960,
+              "y": 350
+            },
+            "props": {
+              "content": {
+                "$": "sim.collision.body2.label"
+              },
+              "fontSize": 36
+            }
+          },
+          {
+            "id": "law",
+            "type": "formula",
+            "space": "stage",
+            "if": "params.formula",
+            "transform": {
+              "x": 160,
+              "y": 700
+            },
+            "props": {
+              "latex": {
+                "$": "sim.collision.latex"
+              },
+              "fontSize": 32,
+              "maxWidth": 1600
+            }
+          },
+          {
+            "id": "note",
+            "type": "text",
+            "space": "stage",
+            "transform": {
+              "x": 160,
+              "y": 920
+            },
+            "props": {
+              "content": "正速度向右，负速度向左；圆形大小为示意。",
+              "fontSize": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "target": "title",
+      "action": "enter",
+      "preset": "fade",
+      "at": {
+        "seconds": 0.4
+      },
+      "duration": 0.6
+    }
+  ],
+  "sims": {
+    "collision": {
+      "solver": "analytic.collision1D",
+      "version": 1,
+      "timeScale": 1,
+      "params": {
+        "m1": {
+          "$": "params.m1"
+        },
+        "m2": {
+          "$": "params.m2"
+        },
+        "v1": {
+          "$": "params.v1"
+        },
+        "v2": {
+          "$": "params.v2"
+        },
+        "e": {
+          "$": "params.e"
+        },
+        "t_collision": 4,
+        "units": {
+          "length": "m",
+          "time": "s",
+          "mass": "kg"
+        }
+      }
+    }
+  },
+  "checks": [
+    {
+      "kind": "sim.momentumConservation",
+      "sim": "collision",
+      "max": 1e-08
+    },
+    {
+      "kind": "timing.allActionsComplete"
+    }
+  ],
+  "implementation": {
+    "kind": "declarative"
+  }
+}

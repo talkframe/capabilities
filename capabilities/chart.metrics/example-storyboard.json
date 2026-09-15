@@ -1,0 +1,92 @@
+{
+  "contractVersion": 2,
+  "profile": "classic",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "指标卡片示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "01",
+      "role": "chart",
+      "kicker": "当前已接入 · 以下为虚构示意数据",
+      "title": "数字从零递增",
+      "bullets": [],
+      "narration": "数字场景先从零开始，再平稳到达目标值。名称、数值和单位一起出现，让观众快速看懂重点。",
+      "sourceQuote": "A 等于二十、B 等于四十、C 等于八十，均为虚构示意数据。",
+      "capability": {
+        "id": "chart.metrics",
+        "version": 1,
+        "params": {
+          "metrics": [
+            {
+              "label": "A · 示意数据",
+              "value": 20,
+              "unit": "份"
+            },
+            {
+              "label": "B · 示意数据",
+              "value": 40,
+              "unit": "份"
+            },
+            {
+              "label": "C · 示意数据",
+              "value": 80,
+              "unit": "份"
+            }
+          ]
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-sentence-1",
+          "text": "数字场景先从零开始，再平稳到达目标值。名称、数值和单位一起出现，让观众快速看懂重点。"
+        }
+      ]
+    },
+    {
+      "id": "01-2",
+      "role": "chart",
+      "kicker": "当前已接入 · 以下为虚构示意数据",
+      "title": "数字从零递增",
+      "bullets": [],
+      "narration": "数字场景先从零开始，再平稳到达目标值。名称、数值和单位一起出现，让观众快速看懂重点。",
+      "sourceQuote": "A 等于二十、B 等于四十、C 等于八十，均为虚构示意数据。",
+      "capability": {
+        "id": "chart.metrics",
+        "version": 1,
+        "params": {
+          "metrics": [
+            {
+              "label": "A · 示意数据",
+              "value": 20,
+              "unit": "份"
+            },
+            {
+              "label": "B · 示意数据",
+              "value": 40,
+              "unit": "份"
+            },
+            {
+              "label": "C · 示意数据",
+              "value": 80,
+              "unit": "份"
+            }
+          ]
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-2-sentence-1",
+          "text": "数字场景先从零开始，再平稳到达目标值。名称、数值和单位一起出现，让观众快速看懂重点。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

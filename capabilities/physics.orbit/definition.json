@@ -1,0 +1,160 @@
+{
+  "id": "physics.orbit",
+  "version": 1,
+  "name": "圆轨道教学",
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "trails": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "trails"
+    ],
+    "additionalProperties": false
+  },
+  "when": {
+    "use": [
+      "解释圆轨道与周期"
+    ],
+    "avoid": [
+      "某日真实行星位置"
+    ],
+    "roles": [
+      "flow"
+    ]
+  },
+  "scene": {
+    "spaces": [
+      {
+        "id": "solar",
+        "type": "space3d",
+        "lengthUnit": "AU",
+        "camera": {
+          "position": [
+            0,
+            3,
+            5
+          ],
+          "lookAt": [
+            0,
+            0,
+            0
+          ],
+          "fov": 42,
+          "near": 0.1,
+          "far": 100
+        },
+        "handedness": "right",
+        "spaceScale": 1
+      },
+      {
+        "id": "overlay",
+        "type": "space2d",
+        "coordinates": "normalized"
+      }
+    ],
+    "elements": [
+      {
+        "id": "sun",
+        "type": "body",
+        "space": "solar",
+        "props": {
+          "mesh": "sphere",
+          "radius": 0.15
+        }
+      },
+      {
+        "id": "earth",
+        "type": "body",
+        "space": "solar",
+        "props": {
+          "mesh": "sphere",
+          "radius": 0.06
+        },
+        "bind": {
+          "transform.position": {
+            "$": "sim.orbit.earth.position"
+          }
+        }
+      },
+      {
+        "id": "earth-trail",
+        "type": "trail",
+        "space": "solar",
+        "if": "params.trails",
+        "props": {
+          "target": "earth",
+          "length": 200
+        }
+      },
+      {
+        "id": "law",
+        "type": "formula",
+        "space": "overlay",
+        "transform": {
+          "x": 0.72,
+          "y": 0.12
+        },
+        "props": {
+          "latex": "T^2 ∝ a^3"
+        }
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "target": "law",
+      "action": "enter",
+      "preset": "riseSoft",
+      "at": {
+        "sentenceId": "s-law"
+      },
+      "duration": 0.6
+    }
+  ],
+  "implementation": {
+    "kind": "declarative"
+  },
+  "sims": {
+    "orbit": {
+      "solver": "analytic.kepler",
+      "version": 1,
+      "params": {
+        "GM": 0.0002959122082855911,
+        "units": {
+          "length": "AU",
+          "time": "day",
+          "angle": "deg"
+        },
+        "frame": "heliocentric-ecliptic-J2000",
+        "timeStandard": "TT",
+        "epochJD": 2451545,
+        "bodies": {
+          "earth": {
+            "a": 1,
+            "e": 0,
+            "i": 0,
+            "Omega": 0,
+            "omega": 0,
+            "M0": 0
+          }
+        }
+      },
+      "timeScale": 2592000,
+      "t0JD": 2451545
+    }
+  },
+  "checks": [
+    {
+      "kind": "sim.energyDrift",
+      "sim": "orbit",
+      "max": 1e-10
+    },
+    {
+      "kind": "timing.allActionsComplete"
+    }
+  ],
+  "level": "L1"
+}

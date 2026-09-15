@@ -1,0 +1,334 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100,
+      "pattern": "^(?!(?:__proto__|constructor|prototype)(?:\\.|$))[a-z][a-zA-Z0-9-]*(?:\\.[a-z][a-zA-Z0-9-]*)+$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "builtin",
+        "verified",
+        "shared",
+        "local"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "when": {
+      "type": "object",
+      "properties": {
+        "use": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "avoid": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "roles": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "intro",
+              "keypoints",
+              "flow",
+              "chart",
+              "comparison",
+              "outro"
+            ]
+          }
+        }
+      },
+      "required": [
+        "use",
+        "avoid",
+        "roles"
+      ],
+      "additionalProperties": false
+    },
+    "inputs": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {}
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video",
+              "audio",
+              "font",
+              "data"
+            ]
+          },
+          "optional": {
+            "type": "boolean"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "slot",
+          "kind",
+          "optional",
+          "note"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "aspect": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "16:9",
+              "9:16"
+            ]
+          }
+        },
+        "minSeconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxSeconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "languages": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2
+          }
+        }
+      },
+      "required": [
+        "aspect",
+        "minSeconds",
+        "maxSeconds",
+        "languages"
+      ],
+      "additionalProperties": false
+    },
+    "timing": {
+      "type": "object",
+      "properties": {
+        "enter": {
+          "type": "string"
+        },
+        "hold": {
+          "type": "string"
+        },
+        "exit": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "enter",
+        "hold",
+        "exit"
+      ],
+      "additionalProperties": false
+    },
+    "examples": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scene": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          },
+          "board": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          },
+          "settings": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          }
+        },
+        "required": [
+          "source",
+          "settings"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "antiExamples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "why": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scene": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          }
+        },
+        "required": [
+          "why",
+          "scene"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "golden": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "accepted",
+        "experimental"
+      ]
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fingerprint": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "fingerprint"
+      ],
+      "additionalProperties": false
+    },
+    "implementation": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "component",
+            "declarative",
+            "lottie"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "ref"
+      ],
+      "additionalProperties": false
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authoringGuide": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "tier",
+    "name",
+    "summary",
+    "when",
+    "inputs",
+    "assets",
+    "constraints",
+    "timing",
+    "examples",
+    "golden",
+    "status",
+    "license",
+    "author",
+    "implementation"
+  ],
+  "additionalProperties": false
+}

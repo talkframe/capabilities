@@ -1,0 +1,268 @@
+{
+  "id": "motion.diagram",
+  "version": 1,
+  "tier": "builtin",
+  "name": "语义图示",
+  "summary": "用屏幕、人物、服务器、观众等节点与连线表达参与者、步骤、方向与关系。",
+  "when": {
+    "use": [
+      "内容涉及两个以上参与者或系统",
+      "有明确步骤或传递方向",
+      "描述界面操作或直播关系"
+    ],
+    "avoid": [
+      "纯概念解释没有关系",
+      "只有一个主体",
+      "数据比较应使用 chart.metrics"
+    ],
+    "roles": [
+      "flow",
+      "comparison",
+      "keypoints",
+      "intro"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "layout": {
+        "type": "string",
+        "enum": [
+          "split",
+          "hub",
+          "pipeline",
+          "sequence"
+        ]
+      },
+      "tone": {
+        "type": "string",
+        "enum": [
+          "light",
+          "dark"
+        ]
+      },
+      "emphasis": {
+        "type": "string",
+        "maxLength": 60
+      },
+      "nodes": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40,
+              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "screen",
+                "person",
+                "server",
+                "audience",
+                "segment",
+                "document",
+                "card"
+              ]
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 20
+            },
+            "detail": {
+              "type": "string",
+              "maxLength": 36
+            },
+            "media": {
+              "type": "string",
+              "maxLength": 80,
+              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]{0,80}$"
+            }
+          },
+          "required": [
+            "id",
+            "kind",
+            "label",
+            "detail",
+            "media"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "edges": {
+        "type": "array",
+        "minItems": 0,
+        "maxItems": 8,
+        "items": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40,
+              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+            },
+            "to": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40,
+              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 24
+            },
+            "direction": {
+              "type": "string",
+              "enum": [
+                "forward",
+                "both"
+              ]
+            }
+          },
+          "required": [
+            "from",
+            "to",
+            "label",
+            "direction"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "transitionVisual": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "wallet",
+              "key",
+              "network",
+              "coins",
+              "lock",
+              "compare",
+              "shield",
+              "globe",
+              "book",
+              "rocket"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    "required": [
+      "layout",
+      "tone",
+      "emphasis",
+      "nodes",
+      "edges"
+    ],
+    "additionalProperties": false
+  },
+  "assets": [
+    {
+      "slot": "nodes[].media",
+      "kind": "image",
+      "optional": true,
+      "note": "真实界面截图优先用于 screen 节点；空槽由组件绘制语义对象。"
+    }
+  ],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 4,
+    "maxSeconds": 40,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "节点按顺序弹入约 0.6 秒",
+    "hold": "随旁白",
+    "exit": "按 transitionVisual 跨幕连续过渡"
+  },
+  "examples": [
+    {
+      "source": "capabilities/motion.diagram/example-storyboard.json",
+      "scene": {
+        "id": "scene-1",
+        "type": "intro",
+        "kicker": "一分钟认识直播",
+        "title": "看节目，还是一起聊？",
+        "bullets": [
+          "看节目",
+          "一起聊"
+        ],
+        "nodes": [],
+        "visual": "compare",
+        "metrics": [],
+        "narration": "同样是直播，你想让大家看节目，还是一起聊起来？",
+        "sourceQuote": "同样是直播，你想让大家看节目，还是一起聊起来？",
+        "diagram": {
+          "layout": "split",
+          "tone": "light",
+          "emphasis": "一场直播，两种参与方式",
+          "nodes": [
+            {
+              "id": "watch",
+              "kind": "screen",
+              "label": "把节目播出去",
+              "detail": "RTMP · 以观看为主",
+              "media": "scene-1--watch"
+            },
+            {
+              "id": "talk",
+              "kind": "person",
+              "label": "让大家聊起来",
+              "detail": "LiveKit · 实时互动",
+              "media": "scene-1--talk"
+            }
+          ],
+          "edges": []
+        }
+      },
+      "settings": {
+        "visualStyle": "motion",
+        "sceneAssets": {
+          "scene-1--watch": {
+            "assetId": "db8091a0d01493f21c111a07-f45ca647c90c",
+            "fit": "cover"
+          },
+          "scene-1--talk": {
+            "assetId": "b8ae6e201f6f091766846607-7a3057180f1d",
+            "fit": "cover"
+          }
+        }
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "component",
+    "ref": "builtin:motion.diagram"
+  },
+  "authoringGuide": [
+    "- 每个场景都输出 diagram。内容涉及参与者、步骤、传递方向、系统关系或界面操作时，优先使用 diagram；不适合图示时填 null。",
+    "- diagram 布局：split 用 2～3 个并列节点；hub 用 3～5 个节点且第一个节点是中心；pipeline 和 sequence 用 2～5 个有顺序的节点。nodes 的 id 只能由英文字母、数字、下划线和短横线组成且在本幕唯一；edges 只能引用本幕已有节点，不能连接节点自身。每条连线明确 forward 或 both。",
+    "- diagram 节点按语义选择 screen/person/server/audience/segment/document/card。直播画面、产品界面或用户操作优先使用 screen，不要用抽象粒子代替真实屏幕关系。label 简短说明对象，detail 补充其作用；emphasis 用一句短语指出本幕重点。",
+    "- diagram 节点的 media 是素材槽名，不是网址或文件路径。只有原文或用户创作方向明确给出已知素材槽时才能填写；不要猜测、杜撰槽名，默认填空字符串。空字符串表示由组件绘制对应的语义对象。"
+  ],
+  "notes": "split 与 hub 的精确节点数条件由本地校验；元数据黄金帧与视觉验收由总调度执行。"
+}

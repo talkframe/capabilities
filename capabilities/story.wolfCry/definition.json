@@ -1,0 +1,2398 @@
+{
+  "id": "story.wolfCry",
+  "version": 1,
+  "level": "L1",
+  "name": "狼来了 · 诚实与信任",
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "beat": {
+        "type": "integer",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "description": "0 开场；1 首次谎报；2 再次谎报；3 真狼；4 无人赶来；5 寓意"
+      },
+      "sheepCount": {
+        "type": "integer",
+        "minimum": 4,
+        "maximum": 8
+      },
+      "villagerCount": {
+        "type": "integer",
+        "minimum": 3,
+        "maximum": 6
+      }
+    },
+    "required": [
+      "beat",
+      "sheepCount",
+      "villagerCount"
+    ],
+    "additionalProperties": false
+  },
+  "when": {
+    "use": [
+      "用抽象几何讲述狼来了的完整故事",
+      "比较两次谎报与真正求助"
+    ],
+    "avoid": [
+      "写实动物动作",
+      "血腥捕食",
+      "任意故事的自动角色导演"
+    ],
+    "roles": [
+      "flow",
+      "outro"
+    ]
+  },
+  "scene": {
+    "spaces": [
+      {
+        "id": "stage",
+        "type": "space2d",
+        "coordinates": "pixels"
+      }
+    ],
+    "elements": [
+      {
+        "id": "canvas",
+        "type": "group",
+        "space": "stage",
+        "transform": {
+          "scale": 1
+        },
+        "children": [
+          {
+            "id": "pasture",
+            "type": "group",
+            "transform": {},
+            "children": [
+              {
+                "id": "pasture-sky-0",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 0
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(255,241,207)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-1",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 40
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(254,240,205)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-2",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 80
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(253,239,203)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-3",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 120
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(252,238,201)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-4",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 160
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(251,237,199)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-5",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 200
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(250,236,197)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-6",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 240
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(249,235,195)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-7",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 280
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(248,234,193)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-8",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 320
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(247,233,191)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-9",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 360
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(246,232,189)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-10",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 400
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(245,231,187)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-11",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 440
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(244,230,185)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-12",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 480
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(243,229,183)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-13",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 520
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(242,228,181)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-14",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 560
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(241,227,179)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sky-15",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 600
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 1920,
+                  "height": 41,
+                  "fill": "rgb(240,226,177)",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "pasture-sun",
+                "type": "shape",
+                "transform": {
+                  "x": 1650,
+                  "y": 210
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 64,
+                  "fill": "#efbb58"
+                }
+              },
+              {
+                "id": "pasture-far-hill",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M 0 580 Q 420 280 850 530 Q 1460 220 1920 530 L 1920 1080 L 0 1080 Z",
+                  "fill": "#b7c28e"
+                }
+              },
+              {
+                "id": "pasture-near-hill",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M 0 690 Q 420 630 980 546 Q 1520 490 1920 640 L 1920 1080 L 0 1080 Z",
+                  "fill": "#94aa70"
+                }
+              },
+              {
+                "id": "pasture-path",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M 240 695 Q 460 735 730 734 Q 950 730 1080 820 L 1070 852 Q 810 766 640 786 Q 360 781 200 714 Z",
+                  "fill": "#dcc294"
+                }
+              },
+              {
+                "id": "pasture-hut-0",
+                "type": "group",
+                "transform": {
+                  "x": 160,
+                  "y": 610
+                },
+                "children": [
+                  {
+                    "id": "pasture-wall-0",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 110,
+                      "height": 90,
+                      "fill": "#ead8aa",
+                      "cornerRadius": 3
+                    }
+                  },
+                  {
+                    "id": "pasture-roof-0",
+                    "type": "shape",
+                    "transform": {},
+                    "props": {
+                      "kind": "polygon",
+                      "strokeWidth": 0,
+                      "points": [
+                        [
+                          -17,
+                          0
+                        ],
+                        [
+                          55,
+                          -70
+                        ],
+                        [
+                          127,
+                          0
+                        ]
+                      ],
+                      "fill": "#a2784c"
+                    }
+                  },
+                  {
+                    "id": "pasture-door-0",
+                    "type": "shape",
+                    "transform": {
+                      "x": 42,
+                      "y": 30
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 26,
+                      "height": 60,
+                      "fill": "#755e43",
+                      "cornerRadius": 3
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "pasture-hut-1",
+                "type": "group",
+                "transform": {
+                  "x": 330,
+                  "y": 633
+                },
+                "children": [
+                  {
+                    "id": "pasture-wall-1",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 110,
+                      "height": 90,
+                      "fill": "#ead8aa",
+                      "cornerRadius": 3
+                    }
+                  },
+                  {
+                    "id": "pasture-roof-1",
+                    "type": "shape",
+                    "transform": {},
+                    "props": {
+                      "kind": "polygon",
+                      "strokeWidth": 0,
+                      "points": [
+                        [
+                          -17,
+                          0
+                        ],
+                        [
+                          55,
+                          -70
+                        ],
+                        [
+                          127,
+                          0
+                        ]
+                      ],
+                      "fill": "#a2784c"
+                    }
+                  },
+                  {
+                    "id": "pasture-door-1",
+                    "type": "shape",
+                    "transform": {
+                      "x": 42,
+                      "y": 30
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 26,
+                      "height": 60,
+                      "fill": "#755e43",
+                      "cornerRadius": 3
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "pasture-hut-2",
+                "type": "group",
+                "transform": {
+                  "x": 500,
+                  "y": 610
+                },
+                "children": [
+                  {
+                    "id": "pasture-wall-2",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 110,
+                      "height": 90,
+                      "fill": "#ead8aa",
+                      "cornerRadius": 3
+                    }
+                  },
+                  {
+                    "id": "pasture-roof-2",
+                    "type": "shape",
+                    "transform": {},
+                    "props": {
+                      "kind": "polygon",
+                      "strokeWidth": 0,
+                      "points": [
+                        [
+                          -17,
+                          0
+                        ],
+                        [
+                          55,
+                          -70
+                        ],
+                        [
+                          127,
+                          0
+                        ]
+                      ],
+                      "fill": "#a2784c"
+                    }
+                  },
+                  {
+                    "id": "pasture-door-2",
+                    "type": "shape",
+                    "transform": {
+                      "x": 42,
+                      "y": 30
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 26,
+                      "height": 60,
+                      "fill": "#755e43",
+                      "cornerRadius": 3
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "pasture-horizon",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "line",
+                  "strokeWidth": 2,
+                  "points": [
+                    [
+                      90,
+                      903
+                    ],
+                    [
+                      1830,
+                      903
+                    ]
+                  ],
+                  "stroke": "#7d925c"
+                }
+              }
+            ]
+          },
+          {
+            "id": "label-opening",
+            "type": "group",
+            "if": "params.beat == 0",
+            "children": [
+              {
+                "id": "title-opening",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 78
+                },
+                "props": {
+                  "content": "01 · 山坡上的牧童",
+                  "fontSize": 50,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              },
+              {
+                "id": "note-opening",
+                "type": "text",
+                "transform": {
+                  "x": 112,
+                  "y": 165
+                },
+                "props": {
+                  "content": "一声呼喊，本来意味着求助",
+                  "fontSize": 30,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "label-falseAlarm1",
+            "type": "group",
+            "if": "params.beat == 1",
+            "children": [
+              {
+                "id": "title-falseAlarm1",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 78
+                },
+                "props": {
+                  "content": "02 · 第一次谎报",
+                  "fontSize": 50,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              },
+              {
+                "id": "note-falseAlarm1",
+                "type": "text",
+                "transform": {
+                  "x": 112,
+                  "y": 165
+                },
+                "props": {
+                  "content": "人们放下手里的活，赶上山坡",
+                  "fontSize": 30,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "label-falseAlarm2",
+            "type": "group",
+            "if": "params.beat == 2",
+            "children": [
+              {
+                "id": "title-falseAlarm2",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 78
+                },
+                "props": {
+                  "content": "03 · 第二次谎报",
+                  "fontSize": 50,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              },
+              {
+                "id": "note-falseAlarm2",
+                "type": "text",
+                "transform": {
+                  "x": 112,
+                  "y": 165
+                },
+                "props": {
+                  "content": "愿意赶来的人更少了，脚步也更慢了",
+                  "fontSize": 30,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "label-wolf",
+            "type": "group",
+            "if": "params.beat == 3",
+            "children": [
+              {
+                "id": "title-wolf",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 78
+                },
+                "props": {
+                  "content": "04 · 狼真的来了",
+                  "fontSize": 50,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              },
+              {
+                "id": "note-wolf",
+                "type": "text",
+                "transform": {
+                  "x": 112,
+                  "y": 165
+                },
+                "props": {
+                  "content": "这一次，危险就在眼前",
+                  "fontSize": 30,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "label-ignored",
+            "type": "group",
+            "if": "params.beat == 4",
+            "children": [
+              {
+                "id": "title-ignored",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 78
+                },
+                "props": {
+                  "content": "05 · 再也没有人赶来",
+                  "fontSize": 50,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              },
+              {
+                "id": "note-ignored",
+                "type": "text",
+                "transform": {
+                  "x": 112,
+                  "y": 165
+                },
+                "props": {
+                  "content": "村民留在村庄，山坡上只有他的呼喊",
+                  "fontSize": 30,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "label-moral",
+            "type": "group",
+            "if": "params.beat == 5",
+            "children": [
+              {
+                "id": "title-moral",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 78
+                },
+                "props": {
+                  "content": "06 · 信任需要诚实",
+                  "fontSize": 50,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              },
+              {
+                "id": "note-moral",
+                "type": "text",
+                "transform": {
+                  "x": 112,
+                  "y": 165
+                },
+                "props": {
+                  "content": "不要拿谎言，消耗别人的信任",
+                  "fontSize": 30,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "village-label",
+            "type": "text",
+            "transform": {
+              "x": 305,
+              "y": 510
+            },
+            "props": {
+              "content": "村庄",
+              "fontSize": 28,
+              "fontWeight": 600
+            },
+            "style": {
+              "color": "#443e32"
+            }
+          },
+          {
+            "id": "crowd",
+            "type": "group",
+            "if": "(params.beat == 1 or params.beat == 2) or params.beat == 4",
+            "children": [
+              {
+                "$each": {
+                  "in": [
+                    {
+                      "x": 140,
+                      "y": 810,
+                      "scale": 0.8,
+                      "coat": "#477875"
+                    },
+                    {
+                      "x": 220,
+                      "y": 830,
+                      "scale": 0.8400000000000001,
+                      "coat": "#587995"
+                    },
+                    {
+                      "x": 300,
+                      "y": 810,
+                      "scale": 0.8,
+                      "coat": "#6b8050"
+                    },
+                    {
+                      "x": 380,
+                      "y": 830,
+                      "scale": 0.8400000000000001,
+                      "coat": "#477875"
+                    },
+                    {
+                      "x": 460,
+                      "y": 810,
+                      "scale": 0.8,
+                      "coat": "#587995"
+                    },
+                    {
+                      "x": 540,
+                      "y": 830,
+                      "scale": 0.8400000000000001,
+                      "coat": "#6b8050"
+                    }
+                  ],
+                  "as": "villager",
+                  "index": "vIndex",
+                  "template": {
+                    "id": "villager-{vIndex}",
+                    "type": "group",
+                    "transform": {
+                      "x": "{villager.x}",
+                      "y": "{villager.y}",
+                      "scale": "{villager.scale}"
+                    },
+                    "children": [
+                      {
+                        "id": "villager-{vIndex}-leg-l",
+                        "type": "shape",
+                        "transform": {
+                          "x": -23,
+                          "y": -68
+                        },
+                        "props": {
+                          "kind": "rect",
+                          "strokeWidth": 0,
+                          "width": 16,
+                          "height": 68,
+                          "fill": "#514d40",
+                          "cornerRadius": 3
+                        },
+                        "bind": {
+                          "transform.rotation": {
+                            "$": "params.beat == 4 ? 0 : 1 * 0.28 * sin(t * (params.beat == 1 ? 12 : 7) + {vIndex})"
+                          }
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-leg-r",
+                        "type": "shape",
+                        "transform": {
+                          "x": 9,
+                          "y": -68
+                        },
+                        "props": {
+                          "kind": "rect",
+                          "strokeWidth": 0,
+                          "width": 16,
+                          "height": 68,
+                          "fill": "#514d40",
+                          "cornerRadius": 3
+                        },
+                        "bind": {
+                          "transform.rotation": {
+                            "$": "params.beat == 4 ? 0 : -1 * 0.28 * sin(t * (params.beat == 1 ? 12 : 7) + {vIndex})"
+                          }
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-tunic",
+                        "type": "shape",
+                        "transform": {},
+                        "props": {
+                          "kind": "polygon",
+                          "strokeWidth": 0,
+                          "points": [
+                            [
+                              -25,
+                              -142
+                            ],
+                            [
+                              25,
+                              -142
+                            ],
+                            [
+                              37,
+                              -60
+                            ],
+                            [
+                              -37,
+                              -60
+                            ]
+                          ],
+                          "fill": "{villager.coat}"
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-arm-l",
+                        "type": "shape",
+                        "transform": {
+                          "x": -39,
+                          "y": -134
+                        },
+                        "props": {
+                          "kind": "rect",
+                          "strokeWidth": 0,
+                          "width": 13,
+                          "height": 66,
+                          "fill": "#e9b989",
+                          "cornerRadius": 3
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-arm-r",
+                        "type": "group",
+                        "transform": {
+                          "x": 28,
+                          "y": -134,
+                          "rotation": 0
+                        },
+                        "children": [
+                          {
+                            "id": "villager-{vIndex}-forearm",
+                            "type": "shape",
+                            "transform": {
+                              "x": 0,
+                              "y": 0
+                            },
+                            "props": {
+                              "kind": "rect",
+                              "strokeWidth": 0,
+                              "width": 13,
+                              "height": 66,
+                              "fill": "#e9b989",
+                              "cornerRadius": 3
+                            }
+                          }
+                        ],
+                        "bind": {
+                          "transform.rotation": {
+                            "$": "params.beat == 4 ? 0 : 1 * 0.28 * sin(t * (params.beat == 1 ? 12 : 7) + {vIndex})"
+                          }
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-head",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": -174
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 29,
+                          "fill": "#e9b989"
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-hair",
+                        "type": "shape",
+                        "transform": {},
+                        "props": {
+                          "kind": "path",
+                          "strokeWidth": 0,
+                          "d": "M -29 -178 Q -28 -211 0 -206 Q 28 -205 29 -179 L 17 -186 Q 0 -178 -15 -189 Z",
+                          "fill": "#514538"
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-eye-l",
+                        "type": "shape",
+                        "transform": {
+                          "x": -10,
+                          "y": -173
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 2.7,
+                          "fill": "#443e32"
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-eye-r",
+                        "type": "shape",
+                        "transform": {
+                          "x": 10,
+                          "y": -173
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 2.7,
+                          "fill": "#443e32"
+                        }
+                      },
+                      {
+                        "id": "villager-{vIndex}-mouth",
+                        "type": "shape",
+                        "transform": {},
+                        "props": {
+                          "kind": "path",
+                          "strokeWidth": 2,
+                          "d": "M -7 -153 Q 0 -164 7 -153",
+                          "stroke": "#713f32"
+                        }
+                      }
+                    ],
+                    "if": "{vIndex} < params.villagerCount - (params.beat == 2 ? 2 : 0)"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "boy-calm",
+            "type": "group",
+            "transform": {
+              "x": 950,
+              "y": 730,
+              "scale": 1
+            },
+            "children": [
+              {
+                "id": "boy-calm-leg-l",
+                "type": "shape",
+                "transform": {
+                  "x": -23,
+                  "y": -68
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 16,
+                  "height": 68,
+                  "fill": "#514d40",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-calm-leg-r",
+                "type": "shape",
+                "transform": {
+                  "x": 9,
+                  "y": -68
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 16,
+                  "height": 68,
+                  "fill": "#514d40",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-calm-tunic",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "polygon",
+                  "strokeWidth": 0,
+                  "points": [
+                    [
+                      -25,
+                      -142
+                    ],
+                    [
+                      25,
+                      -142
+                    ],
+                    [
+                      37,
+                      -60
+                    ],
+                    [
+                      -37,
+                      -60
+                    ]
+                  ],
+                  "fill": "#d87936"
+                }
+              },
+              {
+                "id": "boy-calm-arm-l",
+                "type": "shape",
+                "transform": {
+                  "x": -39,
+                  "y": -134
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 13,
+                  "height": 66,
+                  "fill": "#e9b989",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-calm-arm-r",
+                "type": "group",
+                "transform": {
+                  "x": 28,
+                  "y": -134,
+                  "rotation": 0
+                },
+                "children": [
+                  {
+                    "id": "boy-calm-forearm",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 13,
+                      "height": 66,
+                      "fill": "#e9b989",
+                      "cornerRadius": 3
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "boy-calm-head",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": -174
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 29,
+                  "fill": "#e9b989"
+                }
+              },
+              {
+                "id": "boy-calm-hair",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M -29 -178 Q -28 -211 0 -206 Q 28 -205 29 -179 L 17 -186 Q 0 -178 -15 -189 Z",
+                  "fill": "#514538"
+                }
+              },
+              {
+                "id": "boy-calm-eye-l",
+                "type": "shape",
+                "transform": {
+                  "x": -10,
+                  "y": -173
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 2.7,
+                  "fill": "#443e32"
+                }
+              },
+              {
+                "id": "boy-calm-eye-r",
+                "type": "shape",
+                "transform": {
+                  "x": 10,
+                  "y": -173
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 2.7,
+                  "fill": "#443e32"
+                }
+              },
+              {
+                "id": "boy-calm-mouth",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 2,
+                  "d": "M -7 -157 Q 0 -153 7 -157",
+                  "stroke": "#713f32"
+                }
+              }
+            ],
+            "if": "params.beat == 0"
+          },
+          {
+            "id": "boy-sad",
+            "type": "group",
+            "transform": {
+              "x": 950,
+              "y": 730,
+              "scale": 1
+            },
+            "children": [
+              {
+                "id": "boy-sad-leg-l",
+                "type": "shape",
+                "transform": {
+                  "x": -23,
+                  "y": -68
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 16,
+                  "height": 68,
+                  "fill": "#514d40",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-sad-leg-r",
+                "type": "shape",
+                "transform": {
+                  "x": 9,
+                  "y": -68
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 16,
+                  "height": 68,
+                  "fill": "#514d40",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-sad-tunic",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "polygon",
+                  "strokeWidth": 0,
+                  "points": [
+                    [
+                      -25,
+                      -142
+                    ],
+                    [
+                      25,
+                      -142
+                    ],
+                    [
+                      37,
+                      -60
+                    ],
+                    [
+                      -37,
+                      -60
+                    ]
+                  ],
+                  "fill": "#d87936"
+                }
+              },
+              {
+                "id": "boy-sad-arm-l",
+                "type": "shape",
+                "transform": {
+                  "x": -39,
+                  "y": -134
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 13,
+                  "height": 66,
+                  "fill": "#e9b989",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-sad-arm-r",
+                "type": "group",
+                "transform": {
+                  "x": 28,
+                  "y": -134,
+                  "rotation": 0
+                },
+                "children": [
+                  {
+                    "id": "boy-sad-forearm",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 13,
+                      "height": 66,
+                      "fill": "#e9b989",
+                      "cornerRadius": 3
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "boy-sad-head",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": -174
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 29,
+                  "fill": "#e9b989"
+                }
+              },
+              {
+                "id": "boy-sad-hair",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M -29 -178 Q -28 -211 0 -206 Q 28 -205 29 -179 L 17 -186 Q 0 -178 -15 -189 Z",
+                  "fill": "#514538"
+                }
+              },
+              {
+                "id": "boy-sad-eye-l",
+                "type": "shape",
+                "transform": {
+                  "x": -10,
+                  "y": -173
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 2.7,
+                  "fill": "#443e32"
+                }
+              },
+              {
+                "id": "boy-sad-eye-r",
+                "type": "shape",
+                "transform": {
+                  "x": 10,
+                  "y": -173
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 2.7,
+                  "fill": "#443e32"
+                }
+              },
+              {
+                "id": "boy-sad-mouth",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 2,
+                  "d": "M -7 -153 Q 0 -164 7 -153",
+                  "stroke": "#713f32"
+                }
+              }
+            ],
+            "if": "params.beat == 5"
+          },
+          {
+            "id": "boy-call",
+            "type": "group",
+            "transform": {
+              "x": 950,
+              "y": 730,
+              "scale": 1
+            },
+            "children": [
+              {
+                "id": "boy-call-leg-l",
+                "type": "shape",
+                "transform": {
+                  "x": -23,
+                  "y": -68
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 16,
+                  "height": 68,
+                  "fill": "#514d40",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-call-leg-r",
+                "type": "shape",
+                "transform": {
+                  "x": 9,
+                  "y": -68
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 16,
+                  "height": 68,
+                  "fill": "#514d40",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-call-tunic",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "polygon",
+                  "strokeWidth": 0,
+                  "points": [
+                    [
+                      -25,
+                      -142
+                    ],
+                    [
+                      25,
+                      -142
+                    ],
+                    [
+                      37,
+                      -60
+                    ],
+                    [
+                      -37,
+                      -60
+                    ]
+                  ],
+                  "fill": "#d87936"
+                }
+              },
+              {
+                "id": "boy-call-arm-l",
+                "type": "shape",
+                "transform": {
+                  "x": -39,
+                  "y": -134
+                },
+                "props": {
+                  "kind": "rect",
+                  "strokeWidth": 0,
+                  "width": 13,
+                  "height": 66,
+                  "fill": "#e9b989",
+                  "cornerRadius": 3
+                }
+              },
+              {
+                "id": "boy-call-arm-r",
+                "type": "group",
+                "transform": {
+                  "x": 28,
+                  "y": -134,
+                  "rotation": -2.35
+                },
+                "children": [
+                  {
+                    "id": "boy-call-forearm",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "strokeWidth": 0,
+                      "width": 13,
+                      "height": 66,
+                      "fill": "#e9b989",
+                      "cornerRadius": 3
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "boy-call-head",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": -174
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 29,
+                  "fill": "#e9b989"
+                }
+              },
+              {
+                "id": "boy-call-hair",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M -29 -178 Q -28 -211 0 -206 Q 28 -205 29 -179 L 17 -186 Q 0 -178 -15 -189 Z",
+                  "fill": "#514538"
+                }
+              },
+              {
+                "id": "boy-call-eye-l",
+                "type": "shape",
+                "transform": {
+                  "x": -10,
+                  "y": -173
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 2.7,
+                  "fill": "#443e32"
+                }
+              },
+              {
+                "id": "boy-call-eye-r",
+                "type": "shape",
+                "transform": {
+                  "x": 10,
+                  "y": -173
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 2.7,
+                  "fill": "#443e32"
+                }
+              },
+              {
+                "id": "boy-call-mouth",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": -157
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 6,
+                  "fill": "#713f32"
+                }
+              }
+            ],
+            "if": "not (params.beat == 0 or params.beat == 5)"
+          },
+          {
+            "id": "flock",
+            "type": "group",
+            "transform": {
+              "x": {
+                "$": "params.beat == 4 ? 75 : 0"
+              },
+              "y": {
+                "$": "params.beat == 4 ? 35 : 0"
+              }
+            },
+            "children": [
+              {
+                "$each": {
+                  "in": [
+                    {
+                      "x": 1120,
+                      "y": 680,
+                      "scale": 0.95
+                    },
+                    {
+                      "x": 1270,
+                      "y": 696,
+                      "scale": 0.95
+                    },
+                    {
+                      "x": 1420,
+                      "y": 680,
+                      "scale": 0.95
+                    },
+                    {
+                      "x": 1570,
+                      "y": 696,
+                      "scale": 0.95
+                    },
+                    {
+                      "x": 1155,
+                      "y": 824,
+                      "scale": 1.05
+                    },
+                    {
+                      "x": 1305,
+                      "y": 840,
+                      "scale": 1.05
+                    },
+                    {
+                      "x": 1455,
+                      "y": 824,
+                      "scale": 1.05
+                    },
+                    {
+                      "x": 1605,
+                      "y": 840,
+                      "scale": 1.05
+                    }
+                  ],
+                  "as": "sheep",
+                  "index": "sIndex",
+                  "template": {
+                    "id": "sheep-{sIndex}",
+                    "type": "group",
+                    "transform": {
+                      "x": "{sheep.x}",
+                      "y": "{sheep.y}",
+                      "scale": "{sheep.scale}"
+                    },
+                    "children": [
+                      {
+                        "id": "sheep-{sIndex}-leg-0",
+                        "type": "shape",
+                        "transform": {
+                          "x": -38,
+                          "y": -33
+                        },
+                        "props": {
+                          "kind": "rect",
+                          "strokeWidth": 0,
+                          "width": 8,
+                          "height": 33,
+                          "fill": "#675d49",
+                          "cornerRadius": 3
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-leg-1",
+                        "type": "shape",
+                        "transform": {
+                          "x": -17,
+                          "y": -33
+                        },
+                        "props": {
+                          "kind": "rect",
+                          "strokeWidth": 0,
+                          "width": 8,
+                          "height": 33,
+                          "fill": "#675d49",
+                          "cornerRadius": 3
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-leg-2",
+                        "type": "shape",
+                        "transform": {
+                          "x": 17,
+                          "y": -33
+                        },
+                        "props": {
+                          "kind": "rect",
+                          "strokeWidth": 0,
+                          "width": 8,
+                          "height": 33,
+                          "fill": "#675d49",
+                          "cornerRadius": 3
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-leg-3",
+                        "type": "shape",
+                        "transform": {
+                          "x": 38,
+                          "y": -33
+                        },
+                        "props": {
+                          "kind": "rect",
+                          "strokeWidth": 0,
+                          "width": 8,
+                          "height": 33,
+                          "fill": "#675d49",
+                          "cornerRadius": 3
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-wool-0",
+                        "type": "shape",
+                        "transform": {
+                          "x": -31,
+                          "y": -53
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 26,
+                          "fill": "#fff9e9"
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-wool-1",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": -62
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 32,
+                          "fill": "#fff9e9"
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-wool-2",
+                        "type": "shape",
+                        "transform": {
+                          "x": 31,
+                          "y": -52
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 27,
+                          "fill": "#fff9e9"
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-wool-3",
+                        "type": "shape",
+                        "transform": {
+                          "x": -14,
+                          "y": -39
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 29,
+                          "fill": "#fff9e9"
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-wool-4",
+                        "type": "shape",
+                        "transform": {
+                          "x": 20,
+                          "y": -37
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 26,
+                          "fill": "#fff9e9"
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-ear",
+                        "type": "shape",
+                        "transform": {},
+                        "props": {
+                          "kind": "polygon",
+                          "strokeWidth": 0,
+                          "points": [
+                            [
+                              44,
+                              -66
+                            ],
+                            [
+                              65,
+                              -78
+                            ],
+                            [
+                              61,
+                              -55
+                            ]
+                          ],
+                          "fill": "#75634c"
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-face",
+                        "type": "shape",
+                        "transform": {},
+                        "props": {
+                          "kind": "path",
+                          "strokeWidth": 0,
+                          "d": "M 48 -62 Q 76 -66 75 -42 L 69 -23 Q 52 -17 49 -38 Z",
+                          "fill": "#75634c"
+                        }
+                      },
+                      {
+                        "id": "sheep-{sIndex}-eye",
+                        "type": "shape",
+                        "transform": {
+                          "x": 65,
+                          "y": -51
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "strokeWidth": 0,
+                          "radius": 3,
+                          "fill": "#fff9e9"
+                        }
+                      }
+                    ],
+                    "if": "{sIndex} < params.sheepCount - (params.beat == 5 ? 2 : 0)"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "wolf",
+            "type": "group",
+            "transform": {
+              "x": {
+                "$": "params.beat == 4 ? 1710 : 1770"
+              },
+              "y": 565,
+              "scale": 1.05
+            },
+            "children": [
+              {
+                "id": "wolf-tail",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M 68 -78 Q 126 -54 139 -17 L 119 -26 Q 94 -35 72 -48 Z",
+                  "fill": "#566169"
+                }
+              },
+              {
+                "id": "wolf-legs",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M -54 -55 L -61 -8 L -81 0 L -40 0 L -28 -55 M 21 -49 L 50 -7 L 39 0 L 72 0 L 50 -60",
+                  "fill": "#465159"
+                }
+              },
+              {
+                "id": "wolf-body",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M -75 -76 Q -42 -109 29 -96 Q 87 -93 86 -63 Q 75 -43 18 -44 L -58 -48 Z",
+                  "fill": "#66757b"
+                }
+              },
+              {
+                "id": "wolf-head",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "path",
+                  "strokeWidth": 0,
+                  "d": "M -67 -69 L -92 -85 L -151 -88 L -166 -104 L -119 -121 L -115 -169 L -90 -138 L -73 -162 L -59 -121 L -43 -90 Z",
+                  "fill": "#56666e"
+                }
+              },
+              {
+                "id": "wolf-ruff",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "polygon",
+                  "strokeWidth": 0,
+                  "points": [
+                    [
+                      -71,
+                      -123
+                    ],
+                    [
+                      -43,
+                      -91
+                    ],
+                    [
+                      -51,
+                      -80
+                    ],
+                    [
+                      -37,
+                      -76
+                    ],
+                    [
+                      -61,
+                      -57
+                    ],
+                    [
+                      -91,
+                      -84
+                    ]
+                  ],
+                  "fill": "#899598"
+                }
+              },
+              {
+                "id": "wolf-ear-inner",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "polygon",
+                  "strokeWidth": 0,
+                  "points": [
+                    [
+                      -109,
+                      -151
+                    ],
+                    [
+                      -99,
+                      -132
+                    ],
+                    [
+                      -109,
+                      -132
+                    ]
+                  ],
+                  "fill": "#d6c1ad"
+                }
+              },
+              {
+                "id": "wolf-eye",
+                "type": "shape",
+                "transform": {},
+                "props": {
+                  "kind": "line",
+                  "strokeWidth": 4,
+                  "points": [
+                    [
+                      -123,
+                      -116
+                    ],
+                    [
+                      -110,
+                      -119
+                    ]
+                  ],
+                  "stroke": "#fff2ce"
+                }
+              },
+              {
+                "id": "wolf-nose",
+                "type": "shape",
+                "transform": {
+                  "x": -161,
+                  "y": -104
+                },
+                "props": {
+                  "kind": "circle",
+                  "strokeWidth": 0,
+                  "radius": 5,
+                  "fill": "#343e43"
+                }
+              }
+            ],
+            "if": "params.beat == 3 or params.beat == 4"
+          },
+          {
+            "id": "cry",
+            "type": "group",
+            "if": "not (params.beat == 0 or params.beat == 5)",
+            "transform": {
+              "x": 815,
+              "y": 390
+            },
+            "children": [
+              {
+                "id": "cry-box",
+                "type": "shape",
+                "props": {
+                  "kind": "rect",
+                  "width": 335,
+                  "height": 85,
+                  "cornerRadius": 24,
+                  "fill": "#fff9e9",
+                  "strokeWidth": 0
+                }
+              },
+              {
+                "id": "cry-tail",
+                "type": "shape",
+                "props": {
+                  "kind": "polygon",
+                  "points": [
+                    [
+                      160,
+                      80
+                    ],
+                    [
+                      190,
+                      80
+                    ],
+                    [
+                      155,
+                      120
+                    ]
+                  ],
+                  "fill": "#fff9e9",
+                  "strokeWidth": 0
+                }
+              },
+              {
+                "id": "cry-label",
+                "type": "text",
+                "transform": {
+                  "x": 60,
+                  "y": 15
+                },
+                "props": {
+                  "content": "狼来了！",
+                  "fontSize": 46,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "discovery",
+            "type": "group",
+            "if": "(params.beat == 1 or params.beat == 2)",
+            "children": [
+              {
+                "id": "no-wolf",
+                "type": "text",
+                "transform": {
+                  "x": 740,
+                  "y": 390
+                },
+                "props": {
+                  "content": "没有狼。别再骗人了！",
+                  "fontSize": 36,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "empty-path",
+            "type": "group",
+            "if": "params.beat == 4",
+            "children": [
+              {
+                "id": "unbelieved",
+                "type": "text",
+                "transform": {
+                  "x": 155,
+                  "y": 410
+                },
+                "props": {
+                  "content": "“他又在骗人吧。”",
+                  "fontSize": 32,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          },
+          {
+            "id": "lesson",
+            "type": "group",
+            "if": "params.beat == 5",
+            "children": [
+              {
+                "id": "moral-line",
+                "type": "text",
+                "transform": {
+                  "x": 690,
+                  "y": 345
+                },
+                "props": {
+                  "content": "诚实，才能守住信任。",
+                  "fontSize": 50,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              },
+              {
+                "id": "lost-sheep",
+                "type": "text",
+                "transform": {
+                  "x": 710,
+                  "y": 423
+                },
+                "props": {
+                  "content": "羊群失散了，牧童后悔不已。",
+                  "fontSize": 30,
+                  "fontWeight": 600
+                },
+                "style": {
+                  "color": "#443e32"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "target": "label-opening",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-1"
+      },
+      "duration": 0.5,
+      "preset": "fade",
+      "if": "params.beat == 0"
+    },
+    {
+      "target": "label-falseAlarm1",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-1"
+      },
+      "duration": 0.5,
+      "preset": "fade",
+      "if": "params.beat == 1"
+    },
+    {
+      "target": "label-falseAlarm2",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-1"
+      },
+      "duration": 0.5,
+      "preset": "fade",
+      "if": "params.beat == 2"
+    },
+    {
+      "target": "label-wolf",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-1"
+      },
+      "duration": 0.5,
+      "preset": "fade",
+      "if": "params.beat == 3"
+    },
+    {
+      "target": "label-ignored",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-1"
+      },
+      "duration": 0.5,
+      "preset": "fade",
+      "if": "params.beat == 4"
+    },
+    {
+      "target": "label-moral",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-1"
+      },
+      "duration": 0.5,
+      "preset": "fade",
+      "if": "params.beat == 5"
+    },
+    {
+      "target": "cry",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-1"
+      },
+      "duration": 0.35,
+      "preset": "fade",
+      "if": "not (params.beat == 0 or params.beat == 5)"
+    },
+    {
+      "target": "crowd",
+      "action": "move",
+      "at": {
+        "sentenceId": "cue-2"
+      },
+      "duration": 2,
+      "to": {
+        "position": [
+          300,
+          -12,
+          0
+        ]
+      },
+      "easing": "motion.settle",
+      "if": "params.beat == 1"
+    },
+    {
+      "target": "crowd",
+      "action": "move",
+      "at": {
+        "sentenceId": "cue-2"
+      },
+      "duration": 3.2,
+      "to": {
+        "position": [
+          300,
+          -12,
+          0
+        ]
+      },
+      "easing": "motion.settle",
+      "if": "params.beat == 2"
+    },
+    {
+      "target": "crowd",
+      "action": "move",
+      "at": {
+        "sentenceId": "cue-3"
+      },
+      "duration": 2.2,
+      "to": {
+        "position": [
+          0,
+          0,
+          0
+        ]
+      },
+      "easing": "motion.settle",
+      "if": "(params.beat == 1 or params.beat == 2)"
+    },
+    {
+      "target": "cry",
+      "action": "exit",
+      "at": {
+        "sentenceId": "cue-3"
+      },
+      "duration": 0.4,
+      "if": "(params.beat == 1 or params.beat == 2)"
+    },
+    {
+      "target": "discovery",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-3"
+      },
+      "duration": 0.4,
+      "preset": "fade",
+      "if": "(params.beat == 1 or params.beat == 2)"
+    },
+    {
+      "target": "wolf",
+      "action": "move",
+      "at": {
+        "sentenceId": "cue-1"
+      },
+      "duration": 2.2,
+      "to": {
+        "position": [
+          1710,
+          565,
+          0
+        ]
+      },
+      "easing": "motion.settle",
+      "if": "params.beat == 3"
+    },
+    {
+      "target": "flock",
+      "action": "move",
+      "at": {
+        "sentenceId": "cue-2"
+      },
+      "duration": 2.2,
+      "to": {
+        "position": [
+          75,
+          35,
+          0
+        ]
+      },
+      "easing": "motion.settle",
+      "if": "params.beat == 3"
+    },
+    {
+      "target": "empty-path",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-2"
+      },
+      "duration": 0.5,
+      "preset": "fade",
+      "if": "params.beat == 4"
+    },
+    {
+      "target": "lesson",
+      "action": "enter",
+      "at": {
+        "sentenceId": "cue-2"
+      },
+      "duration": 0.7,
+      "preset": "fade",
+      "if": "params.beat == 5"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "timing.allActionsComplete"
+    }
+  ],
+  "implementation": {
+    "kind": "declarative"
+  }
+}

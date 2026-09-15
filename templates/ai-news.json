@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "ai-news",
+  "version": 1,
+  "name": "AI 新闻",
+  "description": "讲清发布内容、适用对象、实际可用能力及限制。",
+  "audience": "关注AI的产品人、开发者及一般使用者",
+  "strategy": {
+    "structure": [
+      "发布了什么",
+      "能力与适用对象",
+      "开放状态与限制",
+      "值得关注什么"
+    ],
+    "tone": "准确解释技术名词。区分发布方声明、演示、测试结果和已开放功能；没有来源不得补造跑分、价格、上线日期或竞争结论。",
+    "visuals": [
+      "network",
+      "rocket",
+      "compare"
+    ]
+  },
+  "defaults": {
+    "targetSeconds": 60,
+    "width": 1080,
+    "height": 1920,
+    "visualStyle": "motion",
+    "presenter": false,
+    "musicFile": "",
+    "speechRate": 245,
+    "theme": {
+      "background": "#1A1830",
+      "accent": "#9AE9E3",
+      "text": "#F5F4EC",
+      "muted": "#A9B9CC"
+    }
+  }
+}

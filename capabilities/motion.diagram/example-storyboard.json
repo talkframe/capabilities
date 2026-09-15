@@ -1,0 +1,104 @@
+{
+  "contractVersion": 2,
+  "profile": "motion",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "语义图示示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "scene-1",
+      "role": "intro",
+      "kicker": "一分钟认识直播",
+      "title": "看节目，还是一起聊？",
+      "bullets": [
+        "看节目",
+        "一起聊"
+      ],
+      "narration": "同样是直播，你想让大家看节目，还是一起聊起来？",
+      "sourceQuote": "同样是直播，你想让大家看节目，还是一起聊起来？",
+      "capability": {
+        "id": "motion.diagram",
+        "version": 1,
+        "params": {
+          "layout": "split",
+          "tone": "light",
+          "emphasis": "一场直播，两种参与方式",
+          "nodes": [
+            {
+              "id": "watch",
+              "kind": "screen",
+              "label": "把节目播出去",
+              "detail": "RTMP · 以观看为主",
+              "media": "scene-1--watch"
+            },
+            {
+              "id": "talk",
+              "kind": "person",
+              "label": "让大家聊起来",
+              "detail": "LiveKit · 实时互动",
+              "media": "scene-1--talk"
+            }
+          ],
+          "edges": []
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "scene-1-sentence-1",
+          "text": "同样是直播，你想让大家看节目，还是一起聊起来？"
+        }
+      ]
+    },
+    {
+      "id": "scene-1-2",
+      "role": "intro",
+      "kicker": "一分钟认识直播",
+      "title": "看节目，还是一起聊？",
+      "bullets": [
+        "看节目",
+        "一起聊"
+      ],
+      "narration": "同样是直播，你想让大家看节目，还是一起聊起来？",
+      "sourceQuote": "同样是直播，你想让大家看节目，还是一起聊起来？",
+      "capability": {
+        "id": "motion.diagram",
+        "version": 1,
+        "params": {
+          "layout": "split",
+          "tone": "light",
+          "emphasis": "一场直播，两种参与方式",
+          "nodes": [
+            {
+              "id": "watch",
+              "kind": "screen",
+              "label": "把节目播出去",
+              "detail": "RTMP · 以观看为主",
+              "media": "scene-1--watch"
+            },
+            {
+              "id": "talk",
+              "kind": "person",
+              "label": "让大家聊起来",
+              "detail": "LiveKit · 实时互动",
+              "media": "scene-1--talk"
+            }
+          ],
+          "edges": []
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "scene-1-2-sentence-1",
+          "text": "同样是直播，你想让大家看节目，还是一起聊起来？"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

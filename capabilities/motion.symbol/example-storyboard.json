@@ -1,0 +1,66 @@
+{
+  "contractVersion": 2,
+  "profile": "motion",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "形态粒子示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "01",
+      "role": "intro",
+      "kicker": "从协作关系说起",
+      "title": "社区如何连接？",
+      "bullets": [
+        "成员参与共同事务",
+        "连接互动、表达与认同"
+      ],
+      "narration": "一个活跃社区依靠成员持续参与，通过互动、表达与共同认同建立连接。",
+      "sourceQuote": "社区通过成员参与、互动与表达形成持续的协作关系。",
+      "capability": {
+        "id": "motion.symbol",
+        "version": 1,
+        "params": {
+          "visual": "coins"
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-sentence-1",
+          "text": "一个活跃社区依靠成员持续参与，通过互动、表达与共同认同建立连接。"
+        }
+      ]
+    },
+    {
+      "id": "01-2",
+      "role": "intro",
+      "kicker": "从协作关系说起",
+      "title": "社区如何连接？",
+      "bullets": [
+        "成员参与共同事务",
+        "连接互动、表达与认同"
+      ],
+      "narration": "一个活跃社区依靠成员持续参与，通过互动、表达与共同认同建立连接。",
+      "sourceQuote": "社区通过成员参与、互动与表达形成持续的协作关系。",
+      "capability": {
+        "id": "motion.symbol",
+        "version": 1,
+        "params": {
+          "visual": "coins"
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-2-sentence-1",
+          "text": "一个活跃社区依靠成员持续参与，通过互动、表达与共同认同建立连接。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

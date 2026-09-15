@@ -1,0 +1,38 @@
+name: Validate public capabilities
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install unpublished contracts package placeholder
+        env:
+          CONTRACTS_TGZ: vendor/talkframe-contracts-0.1.0.tgz
+        run: |
+          # Placeholder until @talkframe/contracts is published. The core release
+          # job must npm pack the package and place the exact archive at this path.
+          test -f "$CONTRACTS_TGZ" || {
+            echo "Missing placeholder archive: $CONTRACTS_TGZ"
+            echo "Replace this step with the published package after release."
+            exit 1
+          }
+          npm install --no-save "$CONTRACTS_TGZ"
+      - name: Validate capability packages
+        run: |
+          find capabilities -mindepth 2 -maxdepth 2 -name capability.json -print0 \
+            | sort -z \
+            | xargs -0 -n1 npx --no-install @talkframe/contracts validate-capability
+      - name: Validate capability storyboards
+        run: |
+          find capabilities -mindepth 2 -maxdepth 2 -name example-storyboard.json -print0 \
+            | sort -z \
+            | xargs -0 -n1 npx --no-install @talkframe/contracts validate-storyboard
+      - name: Scan public boundary
+        run: node scripts/check-public.mjs .

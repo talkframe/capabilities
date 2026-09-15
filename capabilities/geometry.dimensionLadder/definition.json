@@ -1,0 +1,243 @@
+{
+  "id": "geometry.dimensionLadder",
+  "version": 1,
+  "name": "维度阶梯",
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "steps": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 5,
+        "items": {
+          "type": "object",
+          "properties": {
+            "dim": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "id": {
+              "type": "string"
+            },
+            "previous": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sentence": {
+              "type": "string"
+            },
+            "x": {
+              "type": "number"
+            },
+            "scale": {
+              "type": "number"
+            },
+            "color": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "dim",
+            "id",
+            "previous",
+            "sentence",
+            "x",
+            "scale",
+            "color"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": [
+      "steps"
+    ],
+    "additionalProperties": false
+  },
+  "scene": {
+    "spaces": [
+      {
+        "id": "geometry",
+        "type": "space3d",
+        "lengthUnit": "display-unit",
+        "handedness": "right",
+        "camera": {
+          "position": [
+            0,
+            2.2,
+            22
+          ],
+          "lookAt": [
+            0,
+            0,
+            0
+          ],
+          "fov": 42,
+          "near": 0.1,
+          "far": 100
+        },
+        "spaceScale": 1
+      },
+      {
+        "id": "overlay",
+        "type": "space2d",
+        "coordinates": "pixels"
+      }
+    ],
+    "elements": [
+      {
+        "id": "title",
+        "type": "text",
+        "space": "overlay",
+        "transform": {
+          "x": 80,
+          "y": 64
+        },
+        "props": {
+          "content": "维度阶梯：点 → 线 → 面 → 体 → 四维投影",
+          "fontSize": 46
+        }
+      },
+      {
+        "$each": {
+          "in": "params.steps",
+          "as": "step",
+          "index": "index",
+          "template": [
+            {
+              "id": "{step.id}",
+              "type": "group",
+              "space": "geometry",
+              "transform": {
+                "position": [
+                  "{step.x}",
+                  0,
+                  0
+                ],
+                "scale": "{step.scale}"
+              },
+              "children": [
+                {
+                  "id": "{step.id}Wire",
+                  "type": "shape",
+                  "props": {
+                    "kind": "hypercube",
+                    "dimensions": "{step.dim}",
+                    "projection": {
+                      "method": "perspective",
+                      "distance": 3,
+                      "rotationPlanes": [
+                        {
+                          "axes": [
+                            0,
+                            3
+                          ],
+                          "angle": {
+                            "$": "t*0.65"
+                          },
+                          "if": "{step.dim} >= 4"
+                        },
+                        {
+                          "axes": [
+                            1,
+                            2
+                          ],
+                          "angle": {
+                            "$": "t*0.32"
+                          },
+                          "if": "{step.dim} >= 3"
+                        }
+                      ],
+                      "clip": "reject",
+                      "fitScale": 1
+                    },
+                    "stroke": "{step.color}"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "{step.id}Label",
+              "type": "label",
+              "space": "geometry",
+              "props": {
+                "target": "{step.id}",
+                "offset": [
+                  -42,
+                  155
+                ],
+                "content": "{step.dim} 维",
+                "color": "{step.color}"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "$each": {
+        "in": "params.steps",
+        "as": "step",
+        "template": [
+          {
+            "target": "{step.id}",
+            "action": "enter",
+            "preset": "fade",
+            "at": {
+              "sentenceId": "{step.sentence}"
+            },
+            "duration": 0.6,
+            "if": "{step.dim} == 0"
+          },
+          {
+            "target": "{step.id}",
+            "action": "enter",
+            "preset": "handoff",
+            "fromTarget": "{step.previous}",
+            "at": {
+              "sentenceId": "{step.sentence}"
+            },
+            "duration": 0.6,
+            "if": "{step.dim} > 0"
+          },
+          {
+            "target": "{step.id}Label",
+            "action": "enter",
+            "at": {
+              "sentenceId": "{step.sentence}",
+              "offset": 0.6
+            },
+            "duration": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "target": "*",
+      "action": "exit",
+      "at": {
+        "anchor": "sceneEnd",
+        "offset": -0.5
+      },
+      "duration": 0.5
+    }
+  ],
+  "sims": {},
+  "checks": [
+    {
+      "kind": "timing.allActionsComplete"
+    },
+    {
+      "kind": "geometry.hypercubeCounts"
+    }
+  ],
+  "implementation": {
+    "kind": "declarative"
+  },
+  "level": "L1"
+}

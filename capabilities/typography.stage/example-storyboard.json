@@ -1,0 +1,60 @@
+{
+  "contractVersion": 2,
+  "profile": "typography",
+  "profileSettings": {
+    "typographyPreset": "poetry"
+  },
+  "title": "文字舞台示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "01",
+      "role": "intro",
+      "kicker": "",
+      "title": "把酒问天",
+      "bullets": [],
+      "narration": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年？",
+      "sourceQuote": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年？",
+      "capability": {
+        "id": "typography.stage",
+        "version": 1,
+        "params": {}
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-sentence-1",
+          "text": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年？"
+        }
+      ]
+    },
+    {
+      "id": "01-2",
+      "role": "intro",
+      "kicker": "开篇",
+      "title": "力怎样改变运动",
+      "bullets": [
+        "经典力学：惯性参考系",
+        "公式采用质量不变的情形",
+        "不讨论相对论与量子尺度"
+      ],
+      "narration": "牛顿三大定律，讲清力怎样改变运动。这里讨论惯性参考系，公式采用质量不变的情形。",
+      "sourceQuote": "以下是经典力学在惯性参考系中的入门讲解，公式采用质量不变的情形。不讨论相对论与量子尺度。",
+      "capability": {
+        "id": "typography.stage",
+        "version": 1,
+        "params": {}
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "01-2-sentence-1",
+          "text": "牛顿三大定律，讲清力怎样改变运动。这里讨论惯性参考系，公式采用质量不变的情形。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

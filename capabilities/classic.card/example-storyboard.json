@@ -1,0 +1,62 @@
+{
+  "contractVersion": 2,
+  "profile": "classic",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "经典文字卡片示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "03",
+      "role": "keypoints",
+      "kicker": "能力边界 · 非真实业务数据",
+      "title": "数据有来源，能力有边界",
+      "bullets": [
+        "A=20、B=40、C=80仅作动画演示",
+        "折线、K线与直接表格导入尚未接入"
+      ],
+      "narration": "这里的 A 二十、B 四十、C 八十只用于演示动画，不代表真实业务结果。复杂图表和表格导入尚未接入。",
+      "sourceQuote": "这里的 A 二十、B 四十、C 八十只用于演示动画，不代表真实业务结果。复杂图表和表格导入尚未接入。",
+      "capability": {
+        "id": "classic.card",
+        "version": 1,
+        "params": {}
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "03-sentence-1",
+          "text": "这里的 A 二十、B 四十、C 八十只用于演示动画，不代表真实业务结果。复杂图表和表格导入尚未接入。"
+        }
+      ]
+    },
+    {
+      "id": "03-2",
+      "role": "keypoints",
+      "kicker": "能力边界 · 非真实业务数据",
+      "title": "数据有来源，能力有边界",
+      "bullets": [
+        "A=20、B=40、C=80仅作动画演示",
+        "折线、K线与直接表格导入尚未接入"
+      ],
+      "narration": "这里的 A 二十、B 四十、C 八十只用于演示动画，不代表真实业务结果。复杂图表和表格导入尚未接入。",
+      "sourceQuote": "这里的 A 二十、B 四十、C 八十只用于演示动画，不代表真实业务结果。复杂图表和表格导入尚未接入。",
+      "capability": {
+        "id": "classic.card",
+        "version": 1,
+        "params": {}
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "03-2-sentence-1",
+          "text": "这里的 A 二十、B 四十、C 八十只用于演示动画，不代表真实业务结果。复杂图表和表格导入尚未接入。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

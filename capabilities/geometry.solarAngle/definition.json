@@ -1,0 +1,2827 @@
+{
+  "id": "geometry.solarAngle",
+  "version": 1,
+  "level": "L1",
+  "name": "太阳高度角与观察推理",
+  "inputs": {
+    "type": "object",
+    "properties": {
+      "phase": {
+        "type": "integer",
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "description": "0 辩论 / 1 视直径 / 2 折射 / 3 投影 / 4 大气 / 5 结论"
+      },
+      "lowElevation": {
+        "type": "number",
+        "minimum": 20,
+        "maximum": 90,
+        "description": "对比 A 的太阳高度角，度；限制近地平线近似误差"
+      },
+      "highElevation": {
+        "type": "number",
+        "minimum": 20,
+        "maximum": 90,
+        "description": "对比 B 的太阳高度角，度；可与 A 相等或交换"
+      },
+      "formula": {
+        "type": "boolean"
+      },
+      "angleLabels": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "phase",
+      "lowElevation",
+      "highElevation",
+      "formula",
+      "angleLabels"
+    ],
+    "additionalProperties": false
+  },
+  "when": {
+    "use": [
+      "用两个角度比较直射光投影与大气路径",
+      "解释太阳视大小错觉与经典争论"
+    ],
+    "avoid": [
+      "真实日期日地距离或天气预报",
+      "接近地平线的精确大气模型",
+      "竖屏与三维地球曲率"
+    ],
+    "roles": [
+      "intro",
+      "comparison",
+      "outro"
+    ]
+  },
+  "scene": {
+    "spaces": [
+      {
+        "id": "stage",
+        "type": "space2d",
+        "coordinates": "pixels"
+      }
+    ],
+    "elements": [
+      {
+        "id": "layout",
+        "type": "group",
+        "space": "stage",
+        "bind": {
+          "transform.scale": {
+            "$": "sim.light.layoutScale"
+          },
+          "transform.position": {
+            "$": "sim.light.layoutPosition"
+          }
+        },
+        "children": [
+          {
+            "id": "debate-scene",
+            "type": "group",
+            "if": "params.phase == 0",
+            "transform": {
+              "x": 0,
+              "y": 0
+            },
+            "children": [
+              {
+                "id": "debate-title",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 105
+                },
+                "props": {
+                  "content": "两小儿辩日",
+                  "fontSize": 54,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "debate-source",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 180
+                },
+                "props": {
+                  "content": "《列子·汤问》 · 同一个太阳，两种“距离计”",
+                  "fontSize": 26,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "debate-disc",
+                "type": "shape",
+                "transform": {
+                  "x": 960,
+                  "y": 310
+                },
+                "props": {
+                  "kind": "circle",
+                  "radius": 65,
+                  "fill": "#ffd17a",
+                  "strokeWidth": 0
+                }
+              },
+              {
+                "id": "debate-left-card",
+                "type": "shape",
+                "transform": {
+                  "x": 110,
+                  "y": 290
+                },
+                "props": {
+                  "kind": "rect",
+                  "width": 620,
+                  "height": 165,
+                  "fill": "#1c343d",
+                  "strokeWidth": 0,
+                  "cornerRadius": 18
+                }
+              },
+              {
+                "id": "debate-right-card",
+                "type": "shape",
+                "transform": {
+                  "x": 1190,
+                  "y": 290
+                },
+                "props": {
+                  "kind": "rect",
+                  "width": 620,
+                  "height": 165,
+                  "fill": "#1c343d",
+                  "strokeWidth": 0,
+                  "cornerRadius": 18
+                }
+              },
+              {
+                "id": "debate-left-claim",
+                "type": "text",
+                "transform": {
+                  "x": 150,
+                  "y": 320
+                },
+                "props": {
+                  "content": "“看着大” → 早晨近",
+                  "fontSize": 38,
+                  "maxWidth": 560
+                },
+                "style": {
+                  "color": "#ffd17a"
+                }
+              },
+              {
+                "id": "debate-left-detail",
+                "type": "text",
+                "transform": {
+                  "x": 150,
+                  "y": 383
+                },
+                "props": {
+                  "content": "以视觉大小推断远近",
+                  "fontSize": 29,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "debate-right-claim",
+                "type": "text",
+                "transform": {
+                  "x": 1230,
+                  "y": 320
+                },
+                "props": {
+                  "content": "“更热” → 中午近",
+                  "fontSize": 38,
+                  "maxWidth": 560
+                },
+                "style": {
+                  "color": "#a8ded7"
+                }
+              },
+              {
+                "id": "debate-right-detail",
+                "type": "text",
+                "transform": {
+                  "x": 1230,
+                  "y": 383
+                },
+                "props": {
+                  "content": "以冷热感受推断远近",
+                  "fontSize": 29,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "debate-ground",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 0
+                },
+                "props": {
+                  "kind": "line",
+                  "points": [
+                    [
+                      110,
+                      800
+                    ],
+                    [
+                      1810,
+                      800
+                    ]
+                  ],
+                  "stroke": "#83b7ad",
+                  "strokeWidth": 3,
+                  "arrowHead": false
+                }
+              },
+              {
+                "id": "child-a",
+                "type": "group",
+                "space": "stage",
+                "transform": {
+                  "position": [
+                    490,
+                    670
+                  ],
+                  "scale": 1.65
+                },
+                "children": [
+                  {
+                    "id": "child-a-left-leg",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M -16 14 L -23 72",
+                      "fill": "none",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 12
+                    }
+                  },
+                  {
+                    "id": "child-a-right-leg",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M 16 14 L 23 72",
+                      "fill": "none",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 12
+                    }
+                  },
+                  {
+                    "id": "child-a-left-arm",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M -29 -43 L -49 4",
+                      "fill": "none",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 10
+                    }
+                  },
+                  {
+                    "id": "child-a-right-arm",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M 29 -43 L 78 -43",
+                      "fill": "none",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 10
+                    }
+                  },
+                  {
+                    "id": "child-a-torso",
+                    "type": "shape",
+                    "props": {
+                      "kind": "polygon",
+                      "points": [
+                        [
+                          -29,
+                          -58
+                        ],
+                        [
+                          29,
+                          -58
+                        ],
+                        [
+                          38,
+                          18
+                        ],
+                        [
+                          -38,
+                          18
+                        ]
+                      ],
+                      "fill": "#ffd17a",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 3
+                    }
+                  },
+                  {
+                    "id": "child-a-head",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": -88
+                    },
+                    "props": {
+                      "kind": "circle",
+                      "radius": 28,
+                      "fill": "#F2C7A5",
+                      "stroke": "#302A2A",
+                      "strokeWidth": 3
+                    }
+                  },
+                  {
+                    "id": "child-a-hair",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M -23 -97 Q 0 -122 23 -97",
+                      "fill": "none",
+                      "stroke": "#302A2A",
+                      "strokeWidth": 8
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "child-b",
+                "type": "group",
+                "space": "stage",
+                "transform": {
+                  "position": [
+                    1430,
+                    670
+                  ],
+                  "scale": 1.65
+                },
+                "children": [
+                  {
+                    "id": "child-b-left-leg",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M -16 14 L -23 72",
+                      "fill": "none",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 12
+                    }
+                  },
+                  {
+                    "id": "child-b-right-leg",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M 16 14 L 23 72",
+                      "fill": "none",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 12
+                    }
+                  },
+                  {
+                    "id": "child-b-left-arm",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M -29 -43 L -78 -43",
+                      "fill": "none",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 10
+                    }
+                  },
+                  {
+                    "id": "child-b-right-arm",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M 29 -43 L 49 4",
+                      "fill": "none",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 10
+                    }
+                  },
+                  {
+                    "id": "child-b-torso",
+                    "type": "shape",
+                    "props": {
+                      "kind": "polygon",
+                      "points": [
+                        [
+                          -29,
+                          -58
+                        ],
+                        [
+                          29,
+                          -58
+                        ],
+                        [
+                          38,
+                          18
+                        ],
+                        [
+                          -38,
+                          18
+                        ]
+                      ],
+                      "fill": "#a8ded7",
+                      "stroke": "#bdced0",
+                      "strokeWidth": 3
+                    }
+                  },
+                  {
+                    "id": "child-b-head",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": -88
+                    },
+                    "props": {
+                      "kind": "circle",
+                      "radius": 28,
+                      "fill": "#F2C7A5",
+                      "stroke": "#302A2A",
+                      "strokeWidth": 3
+                    }
+                  },
+                  {
+                    "id": "child-b-hair",
+                    "type": "shape",
+                    "props": {
+                      "kind": "path",
+                      "d": "M -23 -97 Q 0 -122 23 -97",
+                      "fill": "none",
+                      "stroke": "#302A2A",
+                      "strokeWidth": 8
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "confucius-question",
+                "type": "text",
+                "transform": {
+                  "x": 795,
+                  "y": 540
+                },
+                "props": {
+                  "content": "孔子不能决",
+                  "fontSize": 43,
+                  "maxWidth": 340
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "debate-method",
+                "type": "text",
+                "transform": {
+                  "x": 700,
+                  "y": 640
+                },
+                "props": {
+                  "content": "把“观察”与“归因”分开",
+                  "fontSize": 30,
+                  "maxWidth": 650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "debate-bottom",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 855
+                },
+                "props": {
+                  "content": "待检验：角大小真的变了吗？   地面为什么得到更多能量？",
+                  "fontSize": 34,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              }
+            ]
+          },
+          {
+            "id": "diameter-scene",
+            "type": "group",
+            "if": "params.phase == 1",
+            "transform": {
+              "x": 0,
+              "y": 0
+            },
+            "children": [
+              {
+                "id": "diameter-title",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 105
+                },
+                "props": {
+                  "content": "“看起来大”，是知觉，不是实测变大",
+                  "fontSize": 54,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "diameter-subtitle",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 180
+                },
+                "props": {
+                  "content": "地景参照可能改变大小判断 · 类似 Ponzo / 月亮错觉，完整机制仍在研究",
+                  "fontSize": 26,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "diameter-a",
+                "type": "group",
+                "transform": {
+                  "x": 110,
+                  "y": 290
+                },
+                "children": [
+                  {
+                    "id": "a-panel",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 800,
+                      "height": 440,
+                      "fill": "#1c343d",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "a-caption",
+                    "type": "text",
+                    "transform": {
+                      "x": 35,
+                      "y": 24
+                    },
+                    "props": {
+                      "content": "低空 · 地平线、树木、建筑",
+                      "fontSize": 30,
+                      "maxWidth": 1650
+                    },
+                    "style": {
+                      "color": "#fff2da"
+                    }
+                  },
+                  {
+                    "id": "hills",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "path",
+                      "d": "M 0 315 Q 140 220 290 305 Q 490 215 800 310 L 800 440 L 0 440 Z",
+                      "fill": "#24443f",
+                      "strokeWidth": 0
+                    }
+                  },
+                  {
+                    "id": "house",
+                    "type": "shape",
+                    "transform": {
+                      "x": 580,
+                      "y": 280
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 64,
+                      "height": 60,
+                      "fill": "#83b7ad",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "roof",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "polygon",
+                      "points": [
+                        [
+                          570,
+                          280
+                        ],
+                        [
+                          612,
+                          245
+                        ],
+                        [
+                          654,
+                          280
+                        ]
+                      ],
+                      "fill": "#83b7ad",
+                      "strokeWidth": 0
+                    }
+                  },
+                  {
+                    "id": "tree-trunk",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        [
+                          135,
+                          295
+                        ],
+                        [
+                          135,
+                          370
+                        ]
+                      ],
+                      "stroke": "#83b7ad",
+                      "strokeWidth": 10,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "tree",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "polygon",
+                      "points": [
+                        [
+                          90,
+                          305
+                        ],
+                        [
+                          135,
+                          235
+                        ],
+                        [
+                          180,
+                          305
+                        ]
+                      ],
+                      "fill": "#83b7ad",
+                      "strokeWidth": 0
+                    }
+                  },
+                  {
+                    "id": "a-disc",
+                    "type": "shape",
+                    "transform": {
+                      "x": 420,
+                      "y": 260
+                    },
+                    "props": {
+                      "kind": "circle",
+                      "radius": 43,
+                      "fill": "#ffd17a",
+                      "strokeWidth": 0
+                    }
+                  },
+                  {
+                    "id": "a-gauge",
+                    "type": "group",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "children": [
+                      {
+                        "id": "a-diameter",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              377,
+                              260
+                            ],
+                            [
+                              463,
+                              260
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 3,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "a-tick-l",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              377,
+                              244
+                            ],
+                            [
+                              377,
+                              276
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 3,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "a-tick-r",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              463,
+                              244
+                            ],
+                            [
+                              463,
+                              276
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 3,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "a-sight-left",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              420,
+                              350
+                            ],
+                            [
+                              377,
+                              260
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 2,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "a-sight-right",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              420,
+                              350
+                            ],
+                            [
+                              463,
+                              260
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 2,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "a-arc",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "path",
+                          "d": "M 396.3 300.3 A 55 55 0 0 1 443.7 300.3",
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 3
+                        }
+                      },
+                      {
+                        "id": "a-gauge-origin",
+                        "type": "shape",
+                        "transform": {
+                          "x": 420,
+                          "y": 350
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "radius": 4,
+                          "fill": "#f3ab83",
+                          "strokeWidth": 0
+                        }
+                      },
+                      {
+                        "id": "a-reading",
+                        "type": "text",
+                        "transform": {
+                          "x": 290,
+                          "y": 385
+                        },
+                        "props": {
+                          "content": "水平视直径 ≈ 0.53°",
+                          "fontSize": 30,
+                          "maxWidth": 470
+                        },
+                        "style": {
+                          "color": "#f3ab83"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "diameter-b",
+                "type": "group",
+                "transform": {
+                  "x": 1010,
+                  "y": 290
+                },
+                "children": [
+                  {
+                    "id": "b-panel",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 800,
+                      "height": 440,
+                      "fill": "#1c343d",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "b-caption",
+                    "type": "text",
+                    "transform": {
+                      "x": 35,
+                      "y": 24
+                    },
+                    "props": {
+                      "content": "高空 · 参照线索少",
+                      "fontSize": 30,
+                      "maxWidth": 1650
+                    },
+                    "style": {
+                      "color": "#fff2da"
+                    }
+                  },
+                  {
+                    "id": "b-disc",
+                    "type": "shape",
+                    "transform": {
+                      "x": 420,
+                      "y": 155
+                    },
+                    "props": {
+                      "kind": "circle",
+                      "radius": 43,
+                      "fill": "#ffd17a",
+                      "strokeWidth": 0
+                    }
+                  },
+                  {
+                    "id": "b-gauge",
+                    "type": "group",
+                    "transform": {
+                      "x": 0,
+                      "y": -105
+                    },
+                    "children": [
+                      {
+                        "id": "b-diameter",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              377,
+                              260
+                            ],
+                            [
+                              463,
+                              260
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 3,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "b-tick-l",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              377,
+                              244
+                            ],
+                            [
+                              377,
+                              276
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 3,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "b-tick-r",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              463,
+                              244
+                            ],
+                            [
+                              463,
+                              276
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 3,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "b-sight-left",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              420,
+                              350
+                            ],
+                            [
+                              377,
+                              260
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 2,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "b-sight-right",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "line",
+                          "points": [
+                            [
+                              420,
+                              350
+                            ],
+                            [
+                              463,
+                              260
+                            ]
+                          ],
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 2,
+                          "arrowHead": false
+                        }
+                      },
+                      {
+                        "id": "b-arc",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "path",
+                          "d": "M 396.3 300.3 A 55 55 0 0 1 443.7 300.3",
+                          "stroke": "#f3ab83",
+                          "strokeWidth": 3
+                        }
+                      },
+                      {
+                        "id": "b-gauge-origin",
+                        "type": "shape",
+                        "transform": {
+                          "x": 420,
+                          "y": 350
+                        },
+                        "props": {
+                          "kind": "circle",
+                          "radius": 4,
+                          "fill": "#f3ab83",
+                          "strokeWidth": 0
+                        }
+                      },
+                      {
+                        "id": "b-reading",
+                        "type": "text",
+                        "transform": {
+                          "x": 290,
+                          "y": 385
+                        },
+                        "props": {
+                          "content": "水平视直径 ≈ 0.53°",
+                          "fontSize": 30,
+                          "maxWidth": 470
+                        },
+                        "style": {
+                          "color": "#f3ab83"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "diameter-law",
+                "type": "formula",
+                "if": "params.formula",
+                "transform": {
+                  "x": 110,
+                  "y": 744
+                },
+                "props": {
+                  "latex": "\\theta_A \\simeq \\theta_B \\simeq 0.53^\\circ",
+                  "fontSize": 40,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "diameter-note",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 850
+                },
+                "props": {
+                  "content": "同一角标尺、相同水平读数；小角度放大示意，非实测照片。",
+                  "fontSize": 30,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "diameter-safety",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 903
+                },
+                "props": {
+                  "content": "验证用合格太阳滤镜拍摄的等倍率照片；不要直视太阳。",
+                  "fontSize": 26,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              }
+            ]
+          },
+          {
+            "id": "refraction-scene",
+            "type": "group",
+            "if": "params.phase == 2",
+            "transform": {
+              "x": 0,
+              "y": 0
+            },
+            "children": [
+              {
+                "id": "refraction-title",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 105
+                },
+                "props": {
+                  "content": "大气折射：抬高视位置，垂直压扁",
+                  "fontSize": 54,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "refraction-subtitle",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 180
+                },
+                "props": {
+                  "content": "排除“折射放大太阳”的解释 · 下图只示方向，不计算精确折射率",
+                  "fontSize": 26,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "refract-left",
+                "type": "shape",
+                "transform": {
+                  "x": 110,
+                  "y": 280
+                },
+                "props": {
+                  "kind": "rect",
+                  "width": 800,
+                  "height": 455,
+                  "fill": "#1c343d",
+                  "strokeWidth": 0,
+                  "cornerRadius": 18
+                }
+              },
+              {
+                "id": "refract-right",
+                "type": "shape",
+                "transform": {
+                  "x": 1010,
+                  "y": 280
+                },
+                "props": {
+                  "kind": "rect",
+                  "width": 800,
+                  "height": 455,
+                  "fill": "#1c343d",
+                  "strokeWidth": 0,
+                  "cornerRadius": 18
+                }
+              },
+              {
+                "id": "round-disc",
+                "type": "shape",
+                "transform": {
+                  "x": 510,
+                  "y": 485
+                },
+                "props": {
+                  "kind": "circle",
+                  "radius": 100,
+                  "fill": "#ffd17a",
+                  "strokeWidth": 0
+                }
+              },
+              {
+                "id": "flattened-disc",
+                "type": "group",
+                "transform": {
+                  "x": 1410,
+                  "y": 435,
+                  "scale": [
+                    1,
+                    0.64,
+                    1
+                  ]
+                },
+                "children": [
+                  {
+                    "id": "flat-disc",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "circle",
+                      "radius": 100,
+                      "fill": "#ffd17a",
+                      "strokeWidth": 0
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "round-label",
+                "type": "text",
+                "transform": {
+                  "x": 285,
+                  "y": 315
+                },
+                "props": {
+                  "content": "圆形参照",
+                  "fontSize": 34,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "flat-label",
+                "type": "text",
+                "transform": {
+                  "x": 1145,
+                  "y": 315
+                },
+                "props": {
+                  "content": "低空：下缘抬得更多",
+                  "fontSize": 34,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "rise-indicator",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 0
+                },
+                "props": {
+                  "kind": "line",
+                  "points": [
+                    [
+                      1610,
+                      575
+                    ],
+                    [
+                      1610,
+                      445
+                    ]
+                  ],
+                  "stroke": "#a8ded7",
+                  "strokeWidth": 4,
+                  "arrowHead": true
+                }
+              },
+              {
+                "id": "rise-label",
+                "type": "text",
+                "transform": {
+                  "x": 1650,
+                  "y": 490
+                },
+                "props": {
+                  "content": "抬高",
+                  "fontSize": 29,
+                  "maxWidth": 150
+                },
+                "style": {
+                  "color": "#a8ded7"
+                }
+              },
+              {
+                "id": "width-round",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 0
+                },
+                "props": {
+                  "kind": "line",
+                  "points": [
+                    [
+                      410,
+                      640
+                    ],
+                    [
+                      610,
+                      640
+                    ]
+                  ],
+                  "stroke": "#f3ab83",
+                  "strokeWidth": 3,
+                  "arrowHead": false
+                }
+              },
+              {
+                "id": "width-flat",
+                "type": "shape",
+                "transform": {
+                  "x": 0,
+                  "y": 0
+                },
+                "props": {
+                  "kind": "line",
+                  "points": [
+                    [
+                      1310,
+                      640
+                    ],
+                    [
+                      1510,
+                      640
+                    ]
+                  ],
+                  "stroke": "#f3ab83",
+                  "strokeWidth": 3,
+                  "arrowHead": false
+                }
+              },
+              {
+                "id": "round-width",
+                "type": "text",
+                "transform": {
+                  "x": 380,
+                  "y": 674
+                },
+                "props": {
+                  "content": "水平宽度相同",
+                  "fontSize": 29,
+                  "maxWidth": 400
+                },
+                "style": {
+                  "color": "#f3ab83"
+                }
+              },
+              {
+                "id": "flat-width",
+                "type": "text",
+                "transform": {
+                  "x": 1280,
+                  "y": 674
+                },
+                "props": {
+                  "content": "水平宽度相同",
+                  "fontSize": 29,
+                  "maxWidth": 400
+                },
+                "style": {
+                  "color": "#f3ab83"
+                }
+              },
+              {
+                "id": "refract-bottom",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 825
+                },
+                "props": {
+                  "content": "垂直压扁 ≠ 横向放大；更不能证明太阳更近。",
+                  "fontSize": 39,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              }
+            ]
+          },
+          {
+            "id": "geometry-scene",
+            "type": "group",
+            "if": "params.phase == 3 or params.phase == 4",
+            "transform": {
+              "x": 0,
+              "y": 0
+            },
+            "children": [
+              {
+                "id": "projection-title",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 105
+                },
+                "props": {
+                  "content": "① 入射角：同一功率，摊开的面积不同",
+                  "fontSize": 54,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                },
+                "if": "params.phase == 3"
+              },
+              {
+                "id": "atmosphere-title",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 105
+                },
+                "props": {
+                  "content": "② 大气路径：同一厚度，斜程更长",
+                  "fontSize": 54,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                },
+                "if": "params.phase == 4"
+              },
+              {
+                "id": "geometry-subtitle",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 180
+                },
+                "props": {
+                  "content": "α 从地平线量起；z = 90° − α 从天顶量起 · 两图同尺度，同时显示条带与路径",
+                  "fontSize": 26,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "geometry-low",
+                "type": "group",
+                "transform": {
+                  "x": 110,
+                  "y": 255
+                },
+                "children": [
+                  {
+                    "id": "low-panel",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 800,
+                      "height": 570,
+                      "fill": "#1c343d",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "low-header",
+                    "type": "text",
+                    "transform": {
+                      "x": 30,
+                      "y": 22
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.low.header"
+                      },
+                      "fontSize": 31,
+                      "maxWidth": 1650
+                    },
+                    "style": {
+                      "color": "#fff2da"
+                    }
+                  },
+                  {
+                    "id": "low-atmosphere",
+                    "type": "shape",
+                    "transform": {
+                      "x": 30,
+                      "y": 260
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 740,
+                      "height": 100,
+                      "fill": "#294956",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "low-atmosphere-title",
+                    "type": "text",
+                    "transform": {
+                      "x": 30,
+                      "y": 110
+                    },
+                    "props": {
+                      "content": "相同光束：垂直截面宽 b，入射强度 E₀",
+                      "fontSize": 25,
+                      "maxWidth": 750
+                    },
+                    "style": {
+                      "color": "#bdced0"
+                    }
+                  },
+                  {
+                    "id": "low-beam",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "path",
+                      "d": {
+                        "$": "sim.light.low.beamPath"
+                      },
+                      "fill": "#725c39",
+                      "strokeWidth": 0
+                    }
+                  },
+                  {
+                    "id": "low-left-ray",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.low.leftStart"
+                        },
+                        {
+                          "$": "sim.light.low.leftEnd"
+                        }
+                      ],
+                      "stroke": "#ffd17a",
+                      "strokeWidth": 4,
+                      "arrowHead": true
+                    }
+                  },
+                  {
+                    "id": "low-right-ray",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.low.rightStart"
+                        },
+                        {
+                          "$": "sim.light.low.rightEnd"
+                        }
+                      ],
+                      "stroke": "#ffd17a",
+                      "strokeWidth": 4,
+                      "arrowHead": true
+                    }
+                  },
+                  {
+                    "id": "low-center-ray",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.low.start"
+                        },
+                        {
+                          "$": "sim.light.low.end"
+                        }
+                      ],
+                      "stroke": "#ffd17a",
+                      "strokeWidth": 4,
+                      "arrowHead": true
+                    }
+                  },
+                  {
+                    "id": "low-cross-section",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.low.crossStart"
+                        },
+                        {
+                          "$": "sim.light.low.crossEnd"
+                        }
+                      ],
+                      "stroke": "#fff2da",
+                      "strokeWidth": 2,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "low-ground",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        [
+                          30,
+                          360
+                        ],
+                        [
+                          770,
+                          360
+                        ]
+                      ],
+                      "stroke": "#83b7ad",
+                      "strokeWidth": 3,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "low-lit-strip",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.low.leftEnd"
+                        },
+                        {
+                          "$": "sim.light.low.rightEnd"
+                        }
+                      ],
+                      "stroke": "#ffd17a",
+                      "strokeWidth": 7,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "low-sample",
+                    "type": "shape",
+                    "transform": {
+                      "x": 443,
+                      "y": 361
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 24,
+                      "height": 15,
+                      "fill": "#f3ab83",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "low-sample-label",
+                    "type": "text",
+                    "transform": {
+                      "x": 530,
+                      "y": 378
+                    },
+                    "props": {
+                      "content": "同规格取样小块",
+                      "fontSize": 24,
+                      "maxWidth": 240
+                    },
+                    "style": {
+                      "color": "#f3ab83"
+                    }
+                  },
+                  {
+                    "id": "low-normal",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        [
+                          455,
+                          360
+                        ],
+                        [
+                          455,
+                          205
+                        ]
+                      ],
+                      "stroke": "#bdced0",
+                      "strokeWidth": 2,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "low-angle-labels",
+                    "type": "group",
+                    "if": "params.angleLabels",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "children": [
+                      {
+                        "id": "low-arc",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "path",
+                          "d": {
+                            "$": "sim.light.low.anglePath"
+                          },
+                          "stroke": "#a8ded7",
+                          "strokeWidth": 3
+                        }
+                      },
+                      {
+                        "id": "low-alpha",
+                        "type": "text",
+                        "transform": {
+                          "x": 270,
+                          "y": 380
+                        },
+                        "props": {
+                          "content": {
+                            "$": "sim.light.low.angleLabel"
+                          },
+                          "fontSize": 28,
+                          "maxWidth": 240
+                        },
+                        "style": {
+                          "color": "#a8ded7"
+                        }
+                      },
+                      {
+                        "id": "low-normal-label",
+                        "type": "text",
+                        "transform": {
+                          "x": 475,
+                          "y": 178
+                        },
+                        "props": {
+                          "content": "天顶方向",
+                          "fontSize": 24,
+                          "maxWidth": 190
+                        },
+                        "style": {
+                          "color": "#bdced0"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "low-thickness",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        [
+                          725,
+                          260
+                        ],
+                        [
+                          725,
+                          360
+                        ]
+                      ],
+                      "stroke": "#a8ded7",
+                      "strokeWidth": 3,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "low-H",
+                    "type": "text",
+                    "transform": {
+                      "x": 742,
+                      "y": 281
+                    },
+                    "props": {
+                      "content": "H",
+                      "fontSize": 26,
+                      "maxWidth": 50
+                    },
+                    "style": {
+                      "color": "#a8ded7"
+                    }
+                  },
+                  {
+                    "id": "low-L",
+                    "type": "text",
+                    "transform": {
+                      "x": 45,
+                      "y": 185
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.low.pathLabel"
+                      },
+                      "fontSize": 29,
+                      "maxWidth": 700
+                    },
+                    "style": {
+                      "color": "#a8ded7"
+                    }
+                  },
+                  {
+                    "id": "low-width",
+                    "type": "text",
+                    "transform": {
+                      "x": 30,
+                      "y": 438
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.low.widthLabel"
+                      },
+                      "fontSize": 29,
+                      "maxWidth": 740
+                    },
+                    "style": {
+                      "color": "#ffd17a"
+                    }
+                  },
+                  {
+                    "id": "low-intensity",
+                    "type": "text",
+                    "transform": {
+                      "x": 30,
+                      "y": 487
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.low.intensityLabel"
+                      },
+                      "fontSize": 31,
+                      "maxWidth": 740
+                    },
+                    "style": {
+                      "color": "#ffd17a"
+                    }
+                  },
+                  {
+                    "id": "low-pulse-trail",
+                    "type": "trail",
+                    "props": {
+                      "target": "low-pulse",
+                      "length": 10,
+                      "strokeWidth": 3
+                    },
+                    "style": {
+                      "color": "#ffd17a"
+                    }
+                  },
+                  {
+                    "id": "low-pulse",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "circle",
+                      "radius": 5,
+                      "fill": "#ffd17a",
+                      "strokeWidth": 0
+                    },
+                    "bind": {
+                      "transform.position": {
+                        "$": "lerp(sim.light.low.pulseStart,sim.light.low.pulseEnd,clamp(t/6,0,1))"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "geometry-high",
+                "type": "group",
+                "transform": {
+                  "x": 1010,
+                  "y": 255
+                },
+                "children": [
+                  {
+                    "id": "high-panel",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 800,
+                      "height": 570,
+                      "fill": "#1c343d",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "high-header",
+                    "type": "text",
+                    "transform": {
+                      "x": 30,
+                      "y": 22
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.high.header"
+                      },
+                      "fontSize": 31,
+                      "maxWidth": 1650
+                    },
+                    "style": {
+                      "color": "#fff2da"
+                    }
+                  },
+                  {
+                    "id": "high-atmosphere",
+                    "type": "shape",
+                    "transform": {
+                      "x": 30,
+                      "y": 260
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 740,
+                      "height": 100,
+                      "fill": "#294956",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "high-atmosphere-title",
+                    "type": "text",
+                    "transform": {
+                      "x": 30,
+                      "y": 110
+                    },
+                    "props": {
+                      "content": "相同光束：垂直截面宽 b，入射强度 E₀",
+                      "fontSize": 25,
+                      "maxWidth": 750
+                    },
+                    "style": {
+                      "color": "#bdced0"
+                    }
+                  },
+                  {
+                    "id": "high-beam",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "path",
+                      "d": {
+                        "$": "sim.light.high.beamPath"
+                      },
+                      "fill": "#725c39",
+                      "strokeWidth": 0
+                    }
+                  },
+                  {
+                    "id": "high-left-ray",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.high.leftStart"
+                        },
+                        {
+                          "$": "sim.light.high.leftEnd"
+                        }
+                      ],
+                      "stroke": "#ffd17a",
+                      "strokeWidth": 4,
+                      "arrowHead": true
+                    }
+                  },
+                  {
+                    "id": "high-right-ray",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.high.rightStart"
+                        },
+                        {
+                          "$": "sim.light.high.rightEnd"
+                        }
+                      ],
+                      "stroke": "#ffd17a",
+                      "strokeWidth": 4,
+                      "arrowHead": true
+                    }
+                  },
+                  {
+                    "id": "high-center-ray",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.high.start"
+                        },
+                        {
+                          "$": "sim.light.high.end"
+                        }
+                      ],
+                      "stroke": "#ffd17a",
+                      "strokeWidth": 4,
+                      "arrowHead": true
+                    }
+                  },
+                  {
+                    "id": "high-cross-section",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.high.crossStart"
+                        },
+                        {
+                          "$": "sim.light.high.crossEnd"
+                        }
+                      ],
+                      "stroke": "#fff2da",
+                      "strokeWidth": 2,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "high-ground",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        [
+                          30,
+                          360
+                        ],
+                        [
+                          770,
+                          360
+                        ]
+                      ],
+                      "stroke": "#83b7ad",
+                      "strokeWidth": 3,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "high-lit-strip",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        {
+                          "$": "sim.light.high.leftEnd"
+                        },
+                        {
+                          "$": "sim.light.high.rightEnd"
+                        }
+                      ],
+                      "stroke": "#ffd17a",
+                      "strokeWidth": 7,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "high-sample",
+                    "type": "shape",
+                    "transform": {
+                      "x": 443,
+                      "y": 361
+                    },
+                    "props": {
+                      "kind": "rect",
+                      "width": 24,
+                      "height": 15,
+                      "fill": "#f3ab83",
+                      "strokeWidth": 0,
+                      "cornerRadius": 18
+                    }
+                  },
+                  {
+                    "id": "high-sample-label",
+                    "type": "text",
+                    "transform": {
+                      "x": 530,
+                      "y": 378
+                    },
+                    "props": {
+                      "content": "同规格取样小块",
+                      "fontSize": 24,
+                      "maxWidth": 240
+                    },
+                    "style": {
+                      "color": "#f3ab83"
+                    }
+                  },
+                  {
+                    "id": "high-normal",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        [
+                          455,
+                          360
+                        ],
+                        [
+                          455,
+                          205
+                        ]
+                      ],
+                      "stroke": "#bdced0",
+                      "strokeWidth": 2,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "high-angle-labels",
+                    "type": "group",
+                    "if": "params.angleLabels",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "children": [
+                      {
+                        "id": "high-arc",
+                        "type": "shape",
+                        "transform": {
+                          "x": 0,
+                          "y": 0
+                        },
+                        "props": {
+                          "kind": "path",
+                          "d": {
+                            "$": "sim.light.high.anglePath"
+                          },
+                          "stroke": "#a8ded7",
+                          "strokeWidth": 3
+                        }
+                      },
+                      {
+                        "id": "high-alpha",
+                        "type": "text",
+                        "transform": {
+                          "x": 270,
+                          "y": 380
+                        },
+                        "props": {
+                          "content": {
+                            "$": "sim.light.high.angleLabel"
+                          },
+                          "fontSize": 28,
+                          "maxWidth": 240
+                        },
+                        "style": {
+                          "color": "#a8ded7"
+                        }
+                      },
+                      {
+                        "id": "high-normal-label",
+                        "type": "text",
+                        "transform": {
+                          "x": 475,
+                          "y": 178
+                        },
+                        "props": {
+                          "content": "天顶方向",
+                          "fontSize": 24,
+                          "maxWidth": 190
+                        },
+                        "style": {
+                          "color": "#bdced0"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "high-thickness",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "line",
+                      "points": [
+                        [
+                          725,
+                          260
+                        ],
+                        [
+                          725,
+                          360
+                        ]
+                      ],
+                      "stroke": "#a8ded7",
+                      "strokeWidth": 3,
+                      "arrowHead": false
+                    }
+                  },
+                  {
+                    "id": "high-H",
+                    "type": "text",
+                    "transform": {
+                      "x": 742,
+                      "y": 281
+                    },
+                    "props": {
+                      "content": "H",
+                      "fontSize": 26,
+                      "maxWidth": 50
+                    },
+                    "style": {
+                      "color": "#a8ded7"
+                    }
+                  },
+                  {
+                    "id": "high-L",
+                    "type": "text",
+                    "transform": {
+                      "x": 45,
+                      "y": 185
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.high.pathLabel"
+                      },
+                      "fontSize": 29,
+                      "maxWidth": 700
+                    },
+                    "style": {
+                      "color": "#a8ded7"
+                    }
+                  },
+                  {
+                    "id": "high-width",
+                    "type": "text",
+                    "transform": {
+                      "x": 30,
+                      "y": 438
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.high.widthLabel"
+                      },
+                      "fontSize": 29,
+                      "maxWidth": 740
+                    },
+                    "style": {
+                      "color": "#ffd17a"
+                    }
+                  },
+                  {
+                    "id": "high-intensity",
+                    "type": "text",
+                    "transform": {
+                      "x": 30,
+                      "y": 487
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.high.intensityLabel"
+                      },
+                      "fontSize": 31,
+                      "maxWidth": 740
+                    },
+                    "style": {
+                      "color": "#ffd17a"
+                    }
+                  },
+                  {
+                    "id": "high-pulse-trail",
+                    "type": "trail",
+                    "props": {
+                      "target": "high-pulse",
+                      "length": 10,
+                      "strokeWidth": 3
+                    },
+                    "style": {
+                      "color": "#ffd17a"
+                    }
+                  },
+                  {
+                    "id": "high-pulse",
+                    "type": "shape",
+                    "transform": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "props": {
+                      "kind": "circle",
+                      "radius": 5,
+                      "fill": "#ffd17a",
+                      "strokeWidth": 0
+                    },
+                    "bind": {
+                      "transform.position": {
+                        "$": "lerp(sim.light.high.pulseStart,sim.light.high.pulseEnd,clamp(t/6,0,1))"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "projection-law",
+                "type": "group",
+                "if": "params.phase == 3",
+                "transform": {
+                  "x": 0,
+                  "y": 0
+                },
+                "children": [
+                  {
+                    "id": "projection-formula",
+                    "type": "formula",
+                    "if": "params.formula",
+                    "transform": {
+                      "x": 110,
+                      "y": 827
+                    },
+                    "props": {
+                      "latex": "W=\\frac{b}{\\cos z},\\quad \\frac{E}{E_0}=\\frac{b}{W}=\\cos z=\\sin\\alpha",
+                      "fontSize": 33,
+                      "maxWidth": 1650
+                    },
+                    "style": {
+                      "color": "#fff2da"
+                    }
+                  },
+                  {
+                    "id": "projection-limit",
+                    "type": "text",
+                    "transform": {
+                      "x": 110,
+                      "y": 977
+                    },
+                    "props": {
+                      "content": "此处 E 只含投影效应，暂不计大气损耗；固定光束垂直截面与相同纵深。",
+                      "fontSize": 24,
+                      "maxWidth": 1650
+                    },
+                    "style": {
+                      "color": "#bdced0"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "atmosphere-law",
+                "type": "group",
+                "if": "params.phase == 4",
+                "transform": {
+                  "x": 0,
+                  "y": 0
+                },
+                "children": [
+                  {
+                    "id": "path-formula",
+                    "type": "formula",
+                    "if": "params.formula",
+                    "transform": {
+                      "x": 110,
+                      "y": 830
+                    },
+                    "props": {
+                      "latex": "L\\cos z=H,\\quad T=e^{-\\tau L/H},\\quad E_{\\rm dir}/E_0=\\cos z\\,T",
+                      "fontSize": 31,
+                      "maxWidth": 1650
+                    },
+                    "style": {
+                      "color": "#fff2da"
+                    }
+                  },
+                  {
+                    "id": "transmission-low",
+                    "type": "text",
+                    "transform": {
+                      "x": 110,
+                      "y": 915
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.low.attenuationLabel"
+                      },
+                      "fontSize": 27,
+                      "maxWidth": 850
+                    },
+                    "style": {
+                      "color": "#a8ded7"
+                    }
+                  },
+                  {
+                    "id": "transmission-high",
+                    "type": "text",
+                    "transform": {
+                      "x": 1010,
+                      "y": 915
+                    },
+                    "props": {
+                      "content": {
+                        "$": "sim.light.high.attenuationLabel"
+                      },
+                      "fontSize": 27,
+                      "maxWidth": 850
+                    },
+                    "style": {
+                      "color": "#a8ded7"
+                    }
+                  },
+                  {
+                    "id": "tau-note",
+                    "type": "text",
+                    "transform": {
+                      "x": 110,
+                      "y": 963
+                    },
+                    "props": {
+                      "content": "示例 τ = 0.20；仅直射、固定消光条件，非实测；散射光另计。",
+                      "fontSize": 24,
+                      "maxWidth": 1650
+                    },
+                    "style": {
+                      "color": "#bdced0"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "conclusion-scene",
+            "type": "group",
+            "if": "params.phase == 5",
+            "transform": {
+              "x": 0,
+              "y": 0
+            },
+            "children": [
+              {
+                "id": "conclusion-title",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 105
+                },
+                "props": {
+                  "content": "观察值得尊重，归因需要检验",
+                  "fontSize": 54,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "conclusion-source",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 180
+                },
+                "props": {
+                  "content": "孔子不能决也。 · 今天，我们可以多问一步：“用什么量来验证？”",
+                  "fontSize": 26,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "conclusion-a",
+                "type": "shape",
+                "transform": {
+                  "x": 110,
+                  "y": 310
+                },
+                "props": {
+                  "kind": "rect",
+                  "width": 800,
+                  "height": 375,
+                  "fill": "#1c343d",
+                  "strokeWidth": 0,
+                  "cornerRadius": 18
+                }
+              },
+              {
+                "id": "conclusion-b",
+                "type": "shape",
+                "transform": {
+                  "x": 1010,
+                  "y": 310
+                },
+                "props": {
+                  "kind": "rect",
+                  "width": 800,
+                  "height": 375,
+                  "fill": "#1c343d",
+                  "strokeWidth": 0,
+                  "cornerRadius": 18
+                }
+              },
+              {
+                "id": "conclusion-first",
+                "type": "text",
+                "transform": {
+                  "x": 150,
+                  "y": 355
+                },
+                "props": {
+                  "content": "孩子一 · “看着大”",
+                  "fontSize": 40,
+                  "maxWidth": 750
+                },
+                "style": {
+                  "color": "#ffd17a"
+                }
+              },
+              {
+                "id": "conclusion-first-body",
+                "type": "text",
+                "transform": {
+                  "x": 150,
+                  "y": 443
+                },
+                "props": {
+                  "content": "大小感受真实\n角直径几乎不变\n不能推出“早晨更近”",
+                  "fontSize": 35,
+                  "maxWidth": 700
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "conclusion-second",
+                "type": "text",
+                "transform": {
+                  "x": 1050,
+                  "y": 355
+                },
+                "props": {
+                  "content": "孩子二 · “更热”",
+                  "fontSize": 40,
+                  "maxWidth": 750
+                },
+                "style": {
+                  "color": "#a8ded7"
+                }
+              },
+              {
+                "id": "conclusion-second-body",
+                "type": "text",
+                "transform": {
+                  "x": 1050,
+                  "y": 443
+                },
+                "props": {
+                  "content": "冷热感受真实\n投影更集中、路径更短\n不能推出“中午更近”",
+                  "fontSize": 35,
+                  "maxWidth": 700
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "conclusion-method",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 750
+                },
+                "props": {
+                  "content": "观察  →  提出解释  →  选可测的量  →  复测",
+                  "fontSize": 42,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#fff2da"
+                }
+              },
+              {
+                "id": "conclusion-temperature",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 850
+                },
+                "props": {
+                  "content": "辐照增强不等于气温立即最高；云、风与地表蓄热也会影响气温。",
+                  "fontSize": 30,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              },
+              {
+                "id": "conclusion-lag",
+                "type": "text",
+                "transform": {
+                  "x": 110,
+                  "y": 905
+                },
+                "props": {
+                  "content": "最高气温常滞后到午后。本模型不把温度感受换算为太阳距离。",
+                  "fontSize": 28,
+                  "maxWidth": 1650
+                },
+                "style": {
+                  "color": "#bdced0"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "target": "layout",
+      "action": "enter",
+      "preset": "fade",
+      "at": {
+        "seconds": 0
+      },
+      "duration": 0.53
+    }
+  ],
+  "sims": {
+    "light": {
+      "solver": "analytic.solarAngle",
+      "version": 1,
+      "params": {
+        "angleUnit": "deg"
+      }
+    }
+  },
+  "checks": [
+    {
+      "kind": "geometry.solarProjection",
+      "sim": "light",
+      "max": 1e-12
+    },
+    {
+      "kind": "timing.allActionsComplete"
+    }
+  ],
+  "implementation": {
+    "kind": "declarative"
+  }
+}

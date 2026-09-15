@@ -1,0 +1,72 @@
+{
+  "contractVersion": 2,
+  "profile": "motion",
+  "profileSettings": {
+    "typographyPreset": null
+  },
+  "title": "一维碰撞与动量守恒示例",
+  "subtitle": "独立契约校验样例",
+  "sourceTitle": "能力包内置示例",
+  "sourceUrl": "",
+  "scenes": [
+    {
+      "id": "elastic",
+      "role": "flow",
+      "kicker": "一维碰撞 · 孤立系统",
+      "title": "弹性碰撞：动量守恒",
+      "bullets": [],
+      "narration": "两个物体碰撞前后，总动量保持不变。",
+      "sourceQuote": "两个物体碰撞前后，总动量保持不变。",
+      "capability": {
+        "id": "physics.momentum1D",
+        "version": 1,
+        "params": {
+          "m1": 2,
+          "m2": 1,
+          "v1": 2,
+          "v2": -1,
+          "e": 1,
+          "trails": true,
+          "formula": true
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "s-law",
+          "text": "两个物体碰撞前后，总动量保持不变。"
+        }
+      ]
+    },
+    {
+      "id": "inelastic",
+      "role": "flow",
+      "kicker": "一维碰撞 · 孤立系统",
+      "title": "完全非弹性：共同速度",
+      "bullets": [],
+      "narration": "两个物体碰撞前后，总动量保持不变。",
+      "sourceQuote": "两个物体碰撞前后，总动量保持不变。",
+      "capability": {
+        "id": "physics.momentum1D",
+        "version": 1,
+        "params": {
+          "m1": 2,
+          "m2": 1,
+          "v1": 2,
+          "v2": -1,
+          "e": 0,
+          "trails": true,
+          "formula": true
+        }
+      },
+      "assets": [],
+      "sentences": [
+        {
+          "id": "s-law",
+          "text": "两个物体碰撞前后，总动量保持不变。"
+        }
+      ]
+    }
+  ],
+  "outro": null
+}

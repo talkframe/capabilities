@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "poetry",
+  "version": 1,
+  "name": "诗词朗读",
+  "description": "无需图片，复用弹入文字与句级同步。粒子月亮、树下举杯营造诗词意境。",
+  "audience": "希望清楚阅读与聆听的普通观众",
+  "strategy": {
+    "structure": [
+      "开篇",
+      "展开",
+      "收束"
+    ],
+    "tone": "完整保留原词正文与次序，不朗读小序、作者或解释；每幕20～35字。标题只用于画面，以简短意境概括。使用文字舞台，diagram为null，nodes和metrics为空，不需要外部素材。",
+    "visuals": [
+      "book"
+    ]
+  },
+  "defaults": {
+    "targetSeconds": 80,
+    "width": 1920,
+    "height": 1080,
+    "visualStyle": "typography",
+    "typographyPreset": "poetry",
+    "presenter": false,
+    "brandOutro": "off",
+    "musicFile": "",
+    "speechRate": 220,
+    "theme": {
+      "background": "#080F20",
+      "accent": "#E4C78F",
+      "text": "#F5F4EC",
+      "muted": "#9BA8AD"
+    }
+  }
+}

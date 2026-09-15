@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "capabilities": [
+    {
+      "id": "chart.metrics",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L3",
+      "name": "指标卡片",
+      "summary": "在 classic 画面中用一至四个同类指标卡片和比例条比较数值。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "classic.card",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L3",
+      "name": "经典文字卡片",
+      "summary": "按叙事角色使用经典样式的标题、要点、引用与总结卡片。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "classic.flow",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L3",
+      "name": "经典流程",
+      "summary": "用两至五个短节点依次呈现线性流程。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "geometry.dimensionLadder",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L1",
+      "name": "维度阶梯",
+      "summary": "L1 声明式能力：逐句展示点、线、面、体与四维投影。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "geometry.solarAngle",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L1",
+      "name": "太阳高度角与观察推理",
+      "summary": "L1 角度与光学教学：恒定视直径、平行光投影与大气斜程；共享几何角色。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "media.fullScene",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L3",
+      "name": "整幕媒体",
+      "summary": "在 motion 画面中以一张整幕图片替代粒子主体，并保留形态提示及可选指标和节点叠层。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "motion.diagram",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L3",
+      "name": "语义图示",
+      "summary": "用屏幕、人物、服务器、观众等节点与连线表达参与者、步骤、方向与关系。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "motion.symbol",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L3",
+      "name": "形态粒子",
+      "summary": "用十种稳定的粒子形态表达单一主题，并可叠加少量指标或短标签。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "physics.momentum1D",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L1",
+      "name": "一维碰撞与动量守恒",
+      "summary": "L1 声明式能力：解析一维两体碰撞，展示速度变化与总动量守恒。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "physics.orbit",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L1",
+      "name": "圆轨道教学",
+      "summary": "L1 声明式能力：以冻结状态表展示二体圆轨道与周期公式。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "story.readAlong",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L3",
+      "name": "故事跟读",
+      "summary": "以旁白正文和一张场景插画组成适合故事阅读的画面。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "story.wolfCry",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L1",
+      "name": "狼来了 · 诚实与信任",
+      "summary": "L1 纯几何寓言：两次谎报消耗信任，真正求助时无人赶来。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    },
+    {
+      "id": "typography.stage",
+      "version": 1,
+      "tier": "builtin",
+      "level": "L3",
+      "name": "文字舞台",
+      "summary": "用项目级 poetry 或 science 预设呈现以文字为主体的分镜。",
+      "license": "CC-BY-4.0",
+      "sourceCommit": "6cacb7ded21c9bf0862e609616c7dbaa5c31e9b8"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "typography.stage",
+  "version": 1,
+  "tier": "builtin",
+  "name": "文字舞台",
+  "summary": "用项目级 poetry 或 science 预设呈现以文字为主体的分镜。",
+  "when": {
+    "use": [
+      "全片以文字节奏和排版为主要画面",
+      "项目已统一选择 poetry 或 science 预设"
+    ],
+    "avoid": [
+      "单幕需要独立切换诗词与科学预设",
+      "需要图片、节点、指标或语义关系图"
+    ],
+    "roles": [
+      "intro",
+      "keypoints",
+      "flow",
+      "chart",
+      "comparison",
+      "outro"
+    ]
+  },
+  "inputs": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "assets": [],
+  "constraints": {
+    "aspect": [
+      "16:9",
+      "9:16"
+    ],
+    "minSeconds": 4,
+    "maxSeconds": 40,
+    "languages": [
+      "zh",
+      "en"
+    ]
+  },
+  "timing": {
+    "enter": "文字按项目预设进入",
+    "hold": "随旁白保持并强调当前内容",
+    "exit": "按项目预设退场"
+  },
+  "examples": [
+    {
+      "source": "capabilities/typography.stage/example-storyboard.json",
+      "scene": {
+        "id": "01",
+        "type": "intro",
+        "kicker": "",
+        "title": "把酒问天",
+        "bullets": [],
+        "narration": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年？",
+        "sourceQuote": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年？",
+        "nodes": [],
+        "metrics": [],
+        "visual": "book",
+        "diagram": null
+      },
+      "settings": {
+        "visualStyle": "typography",
+        "typographyPreset": "poetry",
+        "sceneAssets": {}
+      }
+    },
+    {
+      "source": "capabilities/typography.stage/example-storyboard.json",
+      "scene": {
+        "id": "01",
+        "type": "intro",
+        "kicker": "开篇",
+        "title": "力怎样改变运动",
+        "bullets": [
+          "经典力学：惯性参考系",
+          "公式采用质量不变的情形",
+          "不讨论相对论与量子尺度"
+        ],
+        "narration": "牛顿三大定律，讲清力怎样改变运动。这里讨论惯性参考系，公式采用质量不变的情形。",
+        "sourceQuote": "以下是经典力学在惯性参考系中的入门讲解，公式采用质量不变的情形。不讨论相对论与量子尺度。",
+        "nodes": [],
+        "metrics": [],
+        "visual": "book",
+        "diagram": null
+      },
+      "settings": {
+        "visualStyle": "typography",
+        "typographyPreset": "science",
+        "sceneAssets": {}
+      }
+    }
+  ],
+  "golden": [],
+  "status": "experimental",
+  "license": "CC-BY-4.0",
+  "author": {
+    "name": "core",
+    "fingerprint": ""
+  },
+  "implementation": {
+    "kind": "component",
+    "ref": "builtin:typography.stage"
+  },
+  "aliases": [
+    "typography.poetry",
+    "typography.science"
+  ],
+  "notes": "poetry 与 science 是 profileSettings.typographyPreset 的项目级预设；旧能力 ID 仅作兼容别名。黄金帧与视觉验收由总调度执行。"
+}
