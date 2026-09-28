@@ -10,13 +10,17 @@
 
 The rendering engine, code-implemented capabilities and desktop app live in the private `talkframe/core` repository. Anyone can read, fork and contribute here; you need the Talkframe app to render.
 
+One exception is standalone: [`tools/beat-sync-promo`](tools/beat-sync-promo/) renders beat-locked product promo films from a single HTML page, with a kick-fitted beat grid, a pacing lint and real sub-frame motion blur. It needs only Node, Python/numpy, ffmpeg and a Chromium browser, not the Talkframe engine, and is MIT-licensed.
+
 文影把文档变成有旁白、有动画的视频，配音与渲染都在本机完成。本仓库只放**数据**，不放引擎代码：契约 Schema、L1 声明式与 L2 素材型能力包、题材模板与风格档、外部 agent 的驾驭说明、社区索引与验收电池。引擎、代码实现的能力与桌面 App 在私有仓库 `talkframe/core`。任何人都可以阅读、fork 与贡献；渲染需要 Talkframe App。
+
+唯一的例外是一个独立工具 [`tools/beat-sync-promo`](tools/beat-sync-promo/)：用单个 HTML 页面渲染卡节拍的产品宣传片，节拍网格按底鼓拟合，带节奏检查和真实的子帧运动模糊。它只需要 Node、Python/numpy、ffmpeg 和 Chromium 浏览器，不依赖 Talkframe 引擎，MIT 许可。
 
 ## Status / 状态
 
-The initial data snapshot contains 13 capability entries, including five L1 declarative definitions, nine templates and two agent skills. Code-implemented capabilities expose inert metadata only. The skills drive an installed Talkframe app or core checkout; this public repository does not contain the app, rendering scripts or engine components.
+The initial data snapshot contains 13 capability entries, including five L1 declarative definitions, nine templates and two agent skills. Code-implemented capabilities expose inert metadata only. The skills drive an installed Talkframe app or core checkout; apart from the standalone `tools/beat-sync-promo`, this public repository does not contain the app, rendering scripts or engine components.
 
-首批数据快照包含 13 支能力，其中五支带 L1 声明式定义，另有九份模板和两份 agent 技能。代码实现的能力只公开不可执行的元数据。技能用于连接已安装的 Talkframe App 或核心项目；本仓库不含 App、渲染脚本或引擎组件。
+首批数据快照包含 13 支能力，其中五支带 L1 声明式定义，另有九份模板和两份 agent 技能。代码实现的能力只公开不可执行的元数据。技能用于连接已安装的 Talkframe App 或核心项目；除独立工具 `tools/beat-sync-promo` 外，本仓库不含 App、渲染脚本或引擎组件。
 
 `@talkframe/contracts@0.1.0` is published on npm; the validation workflow installs it directly.
 

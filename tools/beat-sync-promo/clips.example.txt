@@ -1,0 +1,18 @@
+# <id> <video> <start_s> <centre_x 0..1 | -1 already vertical> [top 0..1] [seconds]
+# 15 ids: hero is the clip the carousel lands on and the phone plays (needs ~10 s).
+# Use footage you own; skip end cards, logos of other brands and people without releases.
+hero footage/river.mp4        12.0  0.74
+c01  footage/meadow.mp4        3.5  0.73
+c03  footage/barn.mp4          6.5  0.72
+c04  footage/river.mp4         2.0  0.76
+c05  footage/tree.mp4          4.0  0.76
+c06  footage/sketch.mp4        1.0  0.84
+c07  footage/shield.mp4        2.0  0.62
+c08  footage/network.mp4       0.5  0.60
+c09  footage/sphere.mp4        1.0  0.55
+c10  footage/lock.mp4          1.0  0.60
+c11  footage/globe.mp4         3.0  0.62
+c12  footage/ring.mp4          1.0  0.60
+c13  footage/graph.mp4         2.0  0.70
+c14  footage/radar.mp4         1.0  0.80  0.06
+c15  footage/phone-ui.mp4      0.5  -1

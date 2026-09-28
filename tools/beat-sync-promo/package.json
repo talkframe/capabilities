@@ -1,0 +1,16 @@
+{
+  "name": "beat-sync-promo",
+  "version": "0.1.0",
+  "description": "Beat-locked, minimal product promo films rendered from a single HTML page with real motion blur",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "lint": "node tools/render.mjs lint",
+    "render": "node tools/render.mjs full",
+    "finish": "tools/finish.sh",
+    "demo": "python3 tools/make_test_song.py --bpm 122 --out build/test/song.wav && python3 tools/prepare_music.py build/test/song.wav && tools/make_test_clips.sh && node tools/render.mjs lint && node tools/render.mjs full && tools/finish.sh"
+  },
+  "devDependencies": {
+    "playwright": "^1.55.0"
+  }
+}
