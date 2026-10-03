@@ -32,25 +32,23 @@ The current target is Apple Silicon Macs. A public download is not yet available
 
 ## What is in this public repository
 
-The rendering engine and desktop app are not in this repository. It currently retains early public creative resources and a standalone promo-film tool:
+This repository offers open creative resources and a standalone promo-film tool:
 
 | Path | Contents |
 | --- | --- |
-| [capabilities/](capabilities/) | The early capability catalog and examples, including L1 declarative definitions |
-| [templates/](templates/) | Early narrative templates and style resources |
-| [contracts/](contracts/) | Early storyboard, capability and transition contracts; `@talkframe/contracts@0.1.0` belongs to the old version |
-| [skills/](skills/) | Early agent workflow guides |
-| [community/](community/) | The early community index |
+| [capabilities/](capabilities/) | Visual capability resources and examples |
+| [templates/](templates/) | Narrative templates and style resources |
+| [contracts/](contracts/) | Format references for storyboards, visual capabilities and transitions |
+| [skills/](skills/) | Agent workflow references |
+| [community/](community/) | The community index |
 | [tools/beat-sync-promo/](tools/beat-sync-promo/) | A standalone beat-synced promo tool: one HTML page, a measured beat grid, frame-by-frame rendering and sub-frame motion blur |
-
-**Compatibility:** The current app uses TSX scene code and live playback. L1 capability packs and some older MCP interfaces have been removed. The early resources above do not define the current app's interfaces; use the MCP runtime guidance and skills bundled with your installed version. Updated scene templates, runtime typings and sample storyboards are being prepared and have not yet been published here.
 
 The standalone `beat-sync-promo` tool does not need the Talkframe engine. It uses Node, Python / numpy, ffmpeg and a Chromium browser; see its [README](tools/beat-sync-promo/README.md).
 
 ## Contributing and licensing
 
-Questions, suggestions and improvements are welcome through [Issues](https://github.com/talkframe/capabilities/issues) and [Pull requests](https://github.com/talkframe/capabilities/pulls). See [CONTRIBUTING.md](CONTRIBUTING.md) for the early resources' contribution guidelines, and confirm the version and directory your change applies to.
+Questions, suggestions and improvements are welcome through [Issues](https://github.com/talkframe/capabilities/issues) and [Pull requests](https://github.com/talkframe/capabilities/pulls). See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 - Contracts, tooling and CI: [MIT](LICENSE-MIT).
 - Capability packs, templates, examples and media: [CC BY 4.0](LICENSE-CC-BY-4.0). Follow any license declaration in the relevant directory or file.
-- Only submit content you have the right to share publicly. An author signature establishes integrity and continuity of that key; it does not establish originality, permission or factual correctness.
+- Only submit content you have the right to share publicly.

@@ -32,25 +32,23 @@
 
 ## 这个公开仓库里有什么
 
-渲染引擎与桌面 App 不在本仓库。这里目前保留早期公开的创作资料，以及一个可独立使用的宣传片工具：
+这里提供开放的创作资料，以及一个可独立使用的宣传片工具：
 
 | 路径 | 内容 |
 | --- | --- |
-| [capabilities/](capabilities/) | 早期能力目录及示例，包括 L1 声明式定义 |
-| [templates/](templates/) | 早期题材模板与风格资料 |
-| [contracts/](contracts/) | 早期分镜、能力与转场契约；`@talkframe/contracts@0.1.0` 属于旧版本 |
-| [skills/](skills/) | 早期 agent 工作流说明 |
-| [community/](community/) | 早期社区索引 |
+| [capabilities/](capabilities/) | 画面能力资料与示例 |
+| [templates/](templates/) | 题材模板与风格资料 |
+| [contracts/](contracts/) | 分镜、画面能力与转场的格式说明 |
+| [skills/](skills/) | agent 工作流参考 |
+| [community/](community/) | 社区索引 |
 | [tools/beat-sync-promo/](tools/beat-sync-promo/) | 独立的卡点宣传片工具：单个 HTML 页面、实测节拍网格、逐帧渲染与子帧运动模糊 |
-
-**兼容范围：** 当前 App 已采用 TSX 幕代码与即时播放流程，旧版 L1 能力包和部分旧 MCP 接口已移除。上面的早期资料不代表当前 App 的接口；使用时请以已安装版本的 MCP 运行时说明与随包技能为准。新版幕模板、运行时类型与样片分镜正在整理，尚未发布到本仓库。
 
 独立的 `beat-sync-promo` 工具无需文影引擎，使用 Node、Python / numpy、ffmpeg 和 Chromium 浏览器；用法见其 [README](tools/beat-sync-promo/README.md)。
 
 ## 贡献与许可
 
-欢迎通过 [Issues](https://github.com/talkframe/capabilities/issues) 和 [Pull requests](https://github.com/talkframe/capabilities/pulls) 提出问题、建议或改进。旧版资料的贡献约定见 [CONTRIBUTING.md](CONTRIBUTING.md)，请先确认改动对应的版本和目录。
+欢迎通过 [Issues](https://github.com/talkframe/capabilities/issues) 和 [Pull requests](https://github.com/talkframe/capabilities/pulls) 提出问题、建议或改进。贡献约定见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 - 契约、工具与 CI：[MIT](LICENSE-MIT)。
 - 能力包、模板、示例与媒体：[CC BY 4.0](LICENSE-CC-BY-4.0)；具体文件以所在目录的许可声明为准。
-- 仅提交你有权公开分享的内容。作者签名证明包的完整性与持钥连续性，不替代原创性、授权或内容正确性核查。
+- 仅提交你有权公开分享的内容。
